@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genskill_test/core/constants/CColor.dart';
 import 'package:genskill_test/core/constants/SizeConfig.dart';
+import 'package:genskill_test/features/initial/presentation/bloc/StudentsPageBloc/StudentsPageBloc.dart';
+import 'package:genskill_test/features/initial/presentation/bloc/subjects_page/subjects_page_bloc.dart';
+import 'package:genskill_test/features/initial/presentation/pages/StudentPages/StudentPage.dart';
+import 'package:genskill_test/features/initial/presentation/pages/SubjectPages/SubjectPage.dart';
 import 'package:genskill_test/features/initial/presentation/widgets/CustomRaisedGradientButton.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key key}) : super(key: key);
@@ -12,7 +18,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double gap=20;
+  double gap = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SafeArea(
             child: Center(
           child: Container(
-            width: SizeConfig.screenWidth*0.65,
+            width: SizeConfig.screenWidth * 0.65,
             height: SizeConfig.screenHeight,
             color: CColor.HomeScreenBGColor,
             child: Column(
@@ -37,50 +43,123 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomRaisedGradientButton(
-                    child:Container(width: SizeConfig.screenWidth*0.48,child: Center(
-                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-                        Container(
-                            width: SizeConfig.blockSizeHorizontal*4,
-                            child: Icon(Icons.school,color: CColor.HomeScreenBGColor,)),
-                        Text("Students",style: GoogleFonts.roboto(color: CColor.HomeScreenBGColor,fontSize: SizeConfig.blockSizeVertical*3),),
-                        Container(color: Colors.transparent,width: SizeConfig.blockSizeHorizontal*4)
-                      ],),
-                    ),),
-                    gradient: LinearGradient(colors: [CColor.HomeScreenStudentButtonLeft,CColor.HomeScreenStudentButtonRight],begin: Alignment.centerLeft,end: Alignment.centerRight),
-                    height: SizeConfig.blockSizeVertical*7,
-                    onPressed:()=>onStudentButtonPressed(),
-                    radius:SizeConfig.blockSizeVertical*4),
-                SizedBox(height: gap,),
+                    child: Container(
+                      width: SizeConfig.screenWidth * 0.48,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                                width: SizeConfig.blockSizeHorizontal * 4,
+                                child: Icon(
+                                  Icons.school,
+                                  color: CColor.HomeScreenBGColor,
+                                )),
+                            Text(
+                              "Students",
+                              style: GoogleFonts.roboto(
+                                  color: CColor.HomeScreenBGColor,
+                                  fontSize: SizeConfig.blockSizeVertical * 3),
+                            ),
+                            Container(
+                                color: Colors.transparent,
+                                width: SizeConfig.blockSizeHorizontal * 4)
+                          ],
+                        ),
+                      ),
+                    ),
+                    gradient: LinearGradient(
+                        colors: [
+                          CColor.HomeScreenStudentButtonLeft,
+                          CColor.HomeScreenStudentButtonRight
+                        ],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight),
+                    height: SizeConfig.blockSizeVertical * 7,
+                    onPressed: () {
+                      onStudentButtonPressed(context);
+                    },
+                    radius: SizeConfig.blockSizeVertical * 4),
+                SizedBox(
+                  height: gap,
+                ),
                 CustomRaisedGradientButton(
-                    child:Container(width: SizeConfig.screenWidth*0.48,child: Center(
-                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-                        Container(
-                            width: SizeConfig.blockSizeHorizontal*4,
-                            child: Icon(Icons.book,color: CColor.HomeScreenBGColor,)),
-                        Text("Subjects",style: GoogleFonts.roboto(color: CColor.HomeScreenBGColor,fontSize: SizeConfig.blockSizeVertical*3),),
-                        Container(color: Colors.transparent,width: SizeConfig.blockSizeHorizontal*4)
-                      ],),
-                    ),),
-                    gradient: LinearGradient(colors: [CColor.HomeScreenSubjectButtonLeft,CColor.HomeScreenSubjectButtonRight],begin: Alignment.centerLeft,end: Alignment.centerRight),
-                    height: SizeConfig.blockSizeVertical*7,
-                    onPressed:()=>onSubjectButtonPressed(),
-                    radius:SizeConfig.blockSizeVertical*7),
-                SizedBox(height: gap,),
+                    child: Container(
+                      width: SizeConfig.screenWidth * 0.48,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                                width: SizeConfig.blockSizeHorizontal * 4,
+                                child: Icon(
+                                  Icons.book,
+                                  color: CColor.HomeScreenBGColor,
+                                )),
+                            Text(
+                              "Subjects",
+                              style: GoogleFonts.roboto(
+                                  color: CColor.HomeScreenBGColor,
+                                  fontSize: SizeConfig.blockSizeVertical * 3),
+                            ),
+                            Container(
+                                color: Colors.transparent,
+                                width: SizeConfig.blockSizeHorizontal * 4)
+                          ],
+                        ),
+                      ),
+                    ),
+                    gradient: LinearGradient(
+                        colors: [
+                          CColor.HomeScreenSubjectButtonLeft,
+                          CColor.HomeScreenSubjectButtonRight
+                        ],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight),
+                    height: SizeConfig.blockSizeVertical * 7,
+                    onPressed: () {
+                      onSubjectPress(context);
+                    },
+                    radius: SizeConfig.blockSizeVertical * 7),
+                SizedBox(
+                  height: gap,
+                ),
                 CustomRaisedGradientButton(
-                    child:Container(width: SizeConfig.screenWidth*0.48,child: Center(
-                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-                        Container(
-                            width: SizeConfig.blockSizeHorizontal*4,
-                            child: Icon(Icons.portrait,color: CColor.HomeScreenBGColor,)),
-                        Text("Classroom",style: GoogleFonts.roboto(color: CColor.HomeScreenBGColor,fontSize: SizeConfig.blockSizeVertical*3),),
-                        Container(color: Colors.transparent,width: SizeConfig.blockSizeHorizontal*4)
-                      ],),
-                    ),),
-                    gradient: LinearGradient(colors: [CColor.HomeScreenClassButtonLeft,CColor.HomeScreenClassButtonRight],begin: Alignment.centerLeft,end: Alignment.centerRight),
-                    height: SizeConfig.blockSizeVertical*7,
-                    onPressed:(){},
-                    radius:SizeConfig.blockSizeVertical*4),
-
+                    child: Container(
+                      width: SizeConfig.screenWidth * 0.48,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                                width: SizeConfig.blockSizeHorizontal * 4,
+                                child: Icon(
+                                  Icons.portrait,
+                                  color: CColor.HomeScreenBGColor,
+                                )),
+                            Text(
+                              "Classroom",
+                              style: GoogleFonts.roboto(
+                                  color: CColor.HomeScreenBGColor,
+                                  fontSize: SizeConfig.blockSizeVertical * 3),
+                            ),
+                            Container(
+                                color: Colors.transparent,
+                                width: SizeConfig.blockSizeHorizontal * 4)
+                          ],
+                        ),
+                      ),
+                    ),
+                    gradient: LinearGradient(
+                        colors: [
+                          CColor.HomeScreenClassButtonLeft,
+                          CColor.HomeScreenClassButtonRight
+                        ],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight),
+                    height: SizeConfig.blockSizeVertical * 7,
+                    onPressed: () {},
+                    radius: SizeConfig.blockSizeVertical * 4),
               ],
             ),
           ),
@@ -89,7 +168,24 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  onStudentButtonPressed() {}
-  onSubjectButtonPressed() {}
+  void onSubjectPress(BuildContext context) {
+
+        BlocProvider.of<SubjectsPageBloc>(context).add(GetSubject());
+
+    Navigator.push(context,
+        PageTransition(child: SubjectPage(), type: PageTransitionType.fade));
+
+  }
+
+  void onStudentButtonPressed(BuildContext context) {
+
+       BlocProvider.of<StudentsPageBloc>(context).add(GetStudent());
+
+    Navigator.push(context,
+        PageTransition(child: StudentPage(), type: PageTransitionType.fade));
+
+  }
+
+
   onClassroomButtonPressed() {}
 }
