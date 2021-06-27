@@ -59,9 +59,7 @@ class ClassRoomPage extends StatelessWidget {
                                       Navigator.push(
                                           context,
                                           PageTransition(
-                                              child: InnerClasssRoomPage(
-                                                classroom: classroom,
-                                              ),
+                                              child: InnerClasssRoomPage(),
                                               type: PageTransitionType.fade));
                                     },
                                     child: ClassRoomCard(classroom: classroom));

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genskill_test/core/constants/CColor.dart';
 import 'package:genskill_test/core/constants/SizeConfig.dart';
 import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
-import 'package:genskill_test/features/initial/domain/entities/Subjects.dart';
-import 'package:genskill_test/features/initial/presentation/pages/ClassroomPages/InnerClassRoomPage.dart';
-import 'package:page_transition/page_transition.dart';
+
 
 class ClassRoomCard extends StatefulWidget{
   final Classrooms classroom;
