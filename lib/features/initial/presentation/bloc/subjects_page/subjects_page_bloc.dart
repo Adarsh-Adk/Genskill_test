@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:genskill_test/core/error/Failures.dart';
 import 'package:genskill_test/core/usecases/UseCase.dart';
 import 'package:genskill_test/features/initial/domain/entities/Subjects.dart';
-import 'package:genskill_test/features/initial/domain/usecases/GetSubjects.dart';
+import 'package:genskill_test/features/initial/domain/usecases/SubjectsUseCase.dart';
 import 'package:meta/meta.dart';
 
 part 'subjects_page_event.dart';
@@ -13,8 +13,8 @@ part 'subjects_page_state.dart';
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 
 class SubjectsPageBloc extends Bloc<SubjectsPageEvent, SubjectsPageState> {
-  final GetSubjects getSubject;
-  SubjectsPageBloc({@required GetSubjects subject}) :assert(subject!=null),getSubject=subject, super(Empty());
+  final SubjectsUseCase getSubject;
+  SubjectsPageBloc({@required SubjectsUseCase subject}) :assert(subject!=null),getSubject=subject, super(Empty());
 
   SubjectsPageState get initialState=> Empty();
 

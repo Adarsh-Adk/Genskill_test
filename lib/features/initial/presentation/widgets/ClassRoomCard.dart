@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:genskill_test/core/constants/CColor.dart';
 import 'package:genskill_test/core/constants/SizeConfig.dart';
+import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
 import 'package:genskill_test/features/initial/domain/entities/Subjects.dart';
 
-class SubjectsCard extends StatefulWidget{
-  final Subject subject;
+class ClassRoomCard extends StatefulWidget{
+  final Classroom classroom;
 
 
-  SubjectsCard({Key key,@required this.subject}) : super(key: key);
+  ClassRoomCard({Key key,@required this.classroom}) : super(key: key);
 
   @override
-  _SubjectsCardState createState() => _SubjectsCardState();
+  _ClassRoomCardState createState() => _ClassRoomCardState();
 }
 
-class _SubjectsCardState extends State<SubjectsCard> {
+class _ClassRoomCardState extends State<ClassRoomCard> {
   final double gap = SizeConfig.blockSizeVertical * 1;
 
   final double _width = SizeConfig.screenWidth * 0.45;
@@ -57,13 +58,13 @@ class _SubjectsCardState extends State<SubjectsCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Subject",
+                          "Name",
                           style: TextStyle(color: CColor.HomeScreenBGColor),
                         ),
                         Container(
                           width: _width,
                           child: Text(
-                            widget.subject.name ?? "N/A",
+                            widget.classroom.name ?? "N/A",
                             textAlign: align2,
                             style: TextStyle(color: CColor.HomeScreenBGColor),
                           ),
@@ -95,7 +96,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                         Container(
                           width: _width,
                           child: Text(
-                            widget.subject.id.toString() ?? "N/A",
+                            widget.classroom.id.toString() ?? "N/A",
                             textAlign: align2,
                             style: TextStyle(color: CColor.HomeScreenBGColor),
                           ),
@@ -112,7 +113,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                         Container(
                           width: _width,
                           child: Text(
-                            "Credits",
+                            "Size",
                             textAlign: align1,
                             style: TextStyle(color: CColor.HomeScreenBGColor),
                           ),
@@ -120,7 +121,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                         Container(
                             width: _width,
                             child: Text(
-                              widget.subject.credits.toString() ?? "N/A",
+                              widget.classroom.size.toString() ?? "N/A",
                               textAlign: align2,
                               style: TextStyle(color: CColor.HomeScreenBGColor),
                             )),
@@ -136,7 +137,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                         Container(
                           width: _width,
                           child: Text(
-                            "Teacher",
+                            "Layout",
                             textAlign: align1,
                             style: TextStyle(color: CColor.HomeScreenBGColor),
                           ),
@@ -144,7 +145,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                         Container(
                             width: _width,
                             child: Text(
-                              widget.subject.teacher ?? "N/A",
+                              widget.classroom.layout ?? "N/A",
                               textAlign: align2,
                               style: TextStyle(color: CColor.HomeScreenBGColor),
                             )),

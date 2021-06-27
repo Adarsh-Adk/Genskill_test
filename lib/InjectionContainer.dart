@@ -1,16 +1,22 @@
-import 'package:genskill_test/features/initial/data/datasources/Students/StudentsDataRemoteSource.dart';
-import 'package:genskill_test/features/initial/data/datasources/Students/StudentsDataRemoteSourceImpl.dart';
+import 'package:genskill_test/features/initial/data/datasources/ClassRoom/ClassRoomRemoteDataSource.dart';
+import 'package:genskill_test/features/initial/data/datasources/ClassRoom/ClassRoomRemoteDataSourceImpl.dart';
+import 'package:genskill_test/features/initial/data/datasources/Students/StudentsRemoteDataSource.dart';
+import 'package:genskill_test/features/initial/data/datasources/Students/StudentsRemoteDataSourceImpl.dart';
+import 'package:genskill_test/features/initial/data/repositories/ClassRoomRepositoryImpl.dart';
 import 'package:genskill_test/features/initial/data/repositories/StudentsRepositoryImpl.dart';
+import 'package:genskill_test/features/initial/domain/repositories/ClassRoomRepository.dart';
 import 'package:genskill_test/features/initial/domain/repositories/StudentsRepository.dart';
 import 'package:genskill_test/features/initial/domain/repositories/SubjectsRepository.dart';
-import 'package:genskill_test/features/initial/domain/usecases/GetStudents.dart';
-import 'package:genskill_test/features/initial/domain/usecases/GetSubjects.dart';
+import 'package:genskill_test/features/initial/domain/usecases/ClassRoomUseCase.dart';
+import 'package:genskill_test/features/initial/domain/usecases/StudentsUseCase.dart';
+import 'package:genskill_test/features/initial/domain/usecases/SubjectsUseCase.dart';
 import 'package:genskill_test/features/initial/presentation/bloc/StudentsPageBloc/StudentsPageBloc.dart';
+import 'package:genskill_test/features/initial/presentation/bloc/class_room_page/class_room_page_bloc.dart';
 import 'package:genskill_test/features/initial/presentation/bloc/subjects_page/subjects_page_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
-import 'features/initial/data/datasources/Subjects/SubjectsDataRemoteSource.dart';
-import 'features/initial/data/datasources/Subjects/SubjectsDataRemoteSourceImpl.dart';
+import 'features/initial/data/datasources/Subjects/SubjectsRemoteDataSource.dart';
+import 'features/initial/data/datasources/Subjects/SubjectsRemoteDataSourceImpl.dart';
 import 'features/initial/data/repositories/SubjectsRepositoryImpl.dart';
 
 final sl = GetIt.instance;
@@ -18,12 +24,16 @@ Future<void> init()async{
 
   sl.registerLazySingleton<StudentsPageBloc>(() => StudentsPageBloc(student: sl()));
   sl.registerLazySingleton<SubjectsPageBloc>(() => SubjectsPageBloc(subject: sl()));
-  sl.registerLazySingleton(() => GetStudents(sl()));
-  sl.registerLazySingleton(() => GetSubjects(sl()));
+  sl.registerLazySingleton<ClassRoomPageBloc>(() => ClassRoomPageBloc(classrooms: sl()));
+  sl.registerLazySingleton(() => StudentsUseCase(sl()));
+  sl.registerLazySingleton(() => SubjectsUseCase(sl()));
+  sl.registerLazySingleton(() => ClassRoomUseCase(sl()));
   sl.registerLazySingleton<StudentsRepository>(() => StudentsRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<SubjectsRepository>(() => SubjectsRepositoryImpl(remoteDataSource: sl()));
-  sl.registerLazySingleton<StudentsDataRemoteDataSource>(() => StudentsDataRemoteSourceImpl(client: sl()));
-  sl.registerLazySingleton<SubjectsDataRemoteDataSource>(() => SubjectsDataRemoteSourceImpl(client: sl()));
+  sl.registerLazySingleton<ClassRoomRepository>(() => ClassRoomRepositoryImpl(remoteDataSource: sl()));
+  sl.registerLazySingleton<StudentsRemoteDataSource>(() => StudentsRemoteDataSourceImpl(client: sl()));
+  sl.registerLazySingleton<SubjectsRemoteDataSource>(() => SubjectsRemoteDataSourceImpl(client: sl()));
+  sl.registerLazySingleton<ClassRoomRemoteDataSource>(() => ClassRoomRemoteDataSourceImpl(client: sl()));
   sl.registerLazySingleton(() => http.Client());
 
 

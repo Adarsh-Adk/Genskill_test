@@ -3,12 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genskill_test/core/constants/CColor.dart';
 import 'package:genskill_test/core/constants/SizeConfig.dart';
 import 'package:genskill_test/features/initial/presentation/bloc/StudentsPageBloc/StudentsPageBloc.dart';
+import 'package:genskill_test/features/initial/presentation/bloc/class_room_page/class_room_page_bloc.dart';
 import 'package:genskill_test/features/initial/presentation/bloc/subjects_page/subjects_page_bloc.dart';
 import 'package:genskill_test/features/initial/presentation/pages/StudentPages/StudentPage.dart';
 import 'package:genskill_test/features/initial/presentation/pages/SubjectPages/SubjectPage.dart';
 import 'package:genskill_test/features/initial/presentation/widgets/CustomRaisedGradientButton.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+
+import 'ClassroomPages/ClassRoomPage.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key key}) : super(key: key);
@@ -158,7 +161,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight),
                     height: SizeConfig.blockSizeVertical * 7,
-                    onPressed: () {},
+                    onPressed: () {
+                      onClassRoomButtonPressed(context);
+                    },
                     radius: SizeConfig.blockSizeVertical * 4),
               ],
             ),
@@ -185,7 +190,15 @@ class _MyHomePageState extends State<MyHomePage> {
         PageTransition(child: StudentPage(), type: PageTransitionType.fade));
 
   }
+  void onClassRoomButtonPressed(BuildContext context) {
+
+    BlocProvider.of<ClassRoomPageBloc>(context).add(GetClassRoom());
+
+    Navigator.push(context,
+        PageTransition(child: ClassRoomPage(), type: PageTransitionType.fade));
+
+  }
 
 
-  onClassroomButtonPressed() {}
+
 }

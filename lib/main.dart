@@ -4,6 +4,7 @@ import 'package:genskill_test/features/initial/presentation/bloc/StudentsPageBlo
 import 'package:genskill_test/features/initial/presentation/pages/HomePage.dart';
 import 'package:genskill_test/InjectionContainer.dart' as di;
 
+import 'features/initial/presentation/bloc/class_room_page/class_room_page_bloc.dart';
 import 'features/initial/presentation/bloc/subjects_page/subjects_page_bloc.dart';
 
 void main() async {
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
             create: (_)=>di.sl<StudentsPageBloc>(),),
           BlocProvider(
             create: (_)=>di.sl<SubjectsPageBloc>(),),
+          BlocProvider(
+            create: (_)=>di.sl<ClassRoomPageBloc>(),),
         ],
         child: MyHomePage(),
       ),

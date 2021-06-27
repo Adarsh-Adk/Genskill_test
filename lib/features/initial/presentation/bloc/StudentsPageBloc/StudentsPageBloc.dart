@@ -6,7 +6,7 @@ import 'package:genskill_test/core/usecases/UseCase.dart';
 import 'package:genskill_test/features/initial/domain/entities/Students.dart';
 import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
-import 'package:genskill_test/features/initial/domain/usecases/GetStudents.dart';
+import 'package:genskill_test/features/initial/domain/usecases/StudentsUseCase.dart';
 
 part 'StudentsPageEvent.dart';
 part 'StudentsPageState.dart';
@@ -17,9 +17,9 @@ const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 
 class StudentsPageBloc extends Bloc<StudentsPageEvent, StudentsPageState> {
 
-  final GetStudents getStudent;
+  final StudentsUseCase getStudent;
 
-  StudentsPageBloc( {@required GetStudents student}) : assert(student!=null),getStudent=student, super(Empty());
+  StudentsPageBloc( {@required StudentsUseCase student}) : assert(student!=null),getStudent=student, super(Empty());
 
   StudentsPageState get initialState=> Empty();
 
