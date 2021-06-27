@@ -12,12 +12,13 @@ class Empty extends ClassRoomPageState {}
 class Loading extends ClassRoomPageState {}
 
 class Loaded extends ClassRoomPageState {
+  final ClassRoomsDataModel classrooms;
   final ClassRoomDataModel classroom;
 
-  Loaded({@required this.classroom});
+  Loaded({this.classrooms,this.classroom, });
 
   @override
-  List<Object> get props => [classroom];
+  List<Object> get props => [classrooms];
 
 }
 

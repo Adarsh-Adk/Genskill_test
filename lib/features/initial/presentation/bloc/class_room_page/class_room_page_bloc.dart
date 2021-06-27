@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:genskill_test/core/error/Failures.dart';
 import 'package:genskill_test/core/usecases/UseCase.dart';
 import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
-import 'package:genskill_test/features/initial/domain/usecases/ClassRoomUseCase.dart';
+import 'package:genskill_test/features/initial/domain/usecases/ClassRoomGetClassRooms.dart';
 import 'package:meta/meta.dart';
 
 part 'class_room_page_event.dart';
@@ -14,32 +14,44 @@ part 'class_room_page_state.dart';
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 
 class ClassRoomPageBloc extends Bloc<ClassRoomPageEvent, ClassRoomPageState> {
-  final ClassRoomUseCase getClassRoom;
+  final ClassRoomGetClassRooms getClassRooms;
 
-  ClassRoomPageBloc({@required ClassRoomUseCase classrooms}) :assert(classrooms!=null),getClassRoom=classrooms ,super(Empty());
+
+  ClassRoomPageBloc({@required ClassRoomGetClassRooms classrooms,}) :assert(classrooms!=null),getClassRooms=classrooms ,super(Empty());
 
   ClassRoomPageState get initial=>Empty();
 
   @override
   Stream<ClassRoomPageState> mapEventToState(ClassRoomPageEvent event) async* {
 
-    if(event is GetClassRoom){
-      yield Loading();
-      final failureOrStudents= await getClassRoom(NoParams());
-      print("map event to state called");
-      yield* _eitherLoadedOrErrorState(failureOrStudents);
+    if(event is GetClassRooms){
+      Failure failure;
 
+      yield Loading();
+      try{
+        final Either<Failure, ClassRoomsDataModel> failureOrClassRooms = await getClassRooms(NoParams());
+        failureOrClassRooms.fold((l) => failure=l, (r) => null);
+        print(failureOrClassRooms.runtimeType);
+        yield* _eitherLoadedOrErrorState(failureOrClassRooms);
+      }
+      catch(e){
+        yield Error(message: _mapFailureToMessage(failure));
+      }
     }
 
   }
 
   Stream<ClassRoomPageState> _eitherLoadedOrErrorState(
-      Either<Failure, ClassRoomDataModel> failureOrTrivia,
+      Either<Failure, ClassRoomsDataModel> failureOrTrivia,
       ) async* {
     print("either loaded called");
     yield failureOrTrivia.fold(
-          (failure) => Error(message: _mapFailureToMessage(failure)),
-          (result) => Loaded(classroom: result),
+          (failure) {
+            print("failure was called");
+            return Error(message: _mapFailureToMessage(failure));},
+          (result) {
+            print("result was called");
+          return  Loaded(classrooms: result);},
     );
   }
 

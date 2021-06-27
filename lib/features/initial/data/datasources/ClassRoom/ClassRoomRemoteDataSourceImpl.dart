@@ -12,9 +12,24 @@ class ClassRoomRemoteDataSourceImpl implements ClassRoomRemoteDataSource{
   ClassRoomRemoteDataSourceImpl({@required this.client});
 
   @override
-  Future<ClassRoomDataModel> getClassRooms() async{
+  Future<ClassRoomsDataModel> getClassRooms() async{
     print("get classrooms called");
     Uri uri=Uri.parse("${URL.BASEURL}/classrooms/${URL.APIKEY}");
+    final response=await client.get(uri,headers: {'Content-Type': 'application/json'});
+    if(response.statusCode==200){
+      var result=classRoomsDataModelFromJson(response.body);
+      print(result);
+      return result;
+    }else{
+      print(response.statusCode);
+      throw ServerException;
+    }
+  }
+
+  @override
+  Future<ClassRoomDataModel> getClassRoom(int id) async{
+    print("get classrooms called");
+    Uri uri=Uri.parse("${URL.BASEURL}/classrooms/$id${URL.APIKEY}");
     final response=await client.get(uri,headers: {'Content-Type': 'application/json'});
     if(response.statusCode==200){
       var result=classRoomDataModelFromJson(response.body);

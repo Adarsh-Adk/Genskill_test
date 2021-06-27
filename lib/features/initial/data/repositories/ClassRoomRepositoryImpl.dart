@@ -13,13 +13,27 @@ class ClassRoomRepositoryImpl implements ClassRoomRepository{
   ClassRoomRepositoryImpl({@required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, ClassRoomDataModel>> getClassRooms() async{
+  Future<Either<Failure, ClassRoomsDataModel>> getClassRooms() async{
     try{
       final data=await remoteDataSource.getClassRooms();
-      return Right(data);
+      return Right<Failure,ClassRoomsDataModel>(data);
 
     }on ServerException{
 
+      return Left<Failure,ClassRoomsDataModel>(ServerFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, ClassRoomDataModel>> getClassRoom(int id) async{
+    try{
+      final data=await remoteDataSource.getClassRoom(id);
+      print("right was called");
+      return Right(data);
+
+
+    }on ServerException{
+      print("left was called");
       return Left(ServerFailure());
     }
   }

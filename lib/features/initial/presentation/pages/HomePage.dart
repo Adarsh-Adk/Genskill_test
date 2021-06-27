@@ -192,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   void onClassRoomButtonPressed(BuildContext context) {
 
-    BlocProvider.of<ClassRoomPageBloc>(context).add(GetClassRoom());
+    BlocProvider.of<ClassRoomPageBloc>(context).add(GetClassRooms());
 
     Navigator.push(context,
         PageTransition(child: ClassRoomPage(), type: PageTransitionType.fade));

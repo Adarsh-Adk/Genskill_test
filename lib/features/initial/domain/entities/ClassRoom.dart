@@ -1,13 +1,13 @@
 import 'package:meta/meta.dart';
-class ClassRoomDataModel {
-  ClassRoomDataModel({
+class ClassRoomsDataModel {
+  ClassRoomsDataModel({
     @required this.classrooms,
   });
 
-  List<Classroom> classrooms;
+  List<Classrooms> classrooms;
 
-  factory ClassRoomDataModel.fromJson(Map<String, dynamic> json) => ClassRoomDataModel(
-    classrooms: List<Classroom>.from(json["classrooms"].map((x) => Classroom.fromJson(x))),
+  factory ClassRoomsDataModel.fromJson(Map<String, dynamic> json) => ClassRoomsDataModel(
+    classrooms: List<Classrooms>.from(json["classrooms"].map((x) => Classrooms.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -15,8 +15,8 @@ class ClassRoomDataModel {
   };
 }
 
-class Classroom {
-  Classroom({
+class Classrooms {
+  Classrooms({
     @required this.id,
     @required this.layout,
     @required this.name,
@@ -28,7 +28,7 @@ class Classroom {
   String name;
   int size;
 
-  factory Classroom.fromJson(Map<String, dynamic> json) => Classroom(
+  factory Classrooms.fromJson(Map<String, dynamic> json) => Classrooms(
     id: json["id"],
     layout: json["layout"],
     name: json["name"],
@@ -40,5 +40,37 @@ class Classroom {
     "layout": layout,
     "name": name,
     "size": size,
+  };
+}
+
+class ClassRoomDataModel {
+  ClassRoomDataModel({
+    @required this.id,
+    @required this.layout,
+    @required this.name,
+    @required this.size,
+    @required this.subject,
+  });
+
+  int id;
+  String layout;
+  String name;
+  int size;
+  String subject;
+
+  factory ClassRoomDataModel.fromJson(Map<String, dynamic> json) => ClassRoomDataModel(
+    id: json["id"],
+    layout: json["layout"],
+    name: json["name"],
+    size: json["size"],
+    subject: json["subject"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "layout": layout,
+    "name": name,
+    "size": size,
+    "subject": subject,
   };
 }

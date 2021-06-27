@@ -28,10 +28,17 @@ class StudentsPageBloc extends Bloc<StudentsPageEvent, StudentsPageState> {
     StudentsPageEvent event,
   ) async* {
     if(event is GetStudent){
+      Failure failure;
       yield Loading();
-      final failureOrStudents= await getStudent(NoParams());
-      print("map event to state called");
-      yield* _eitherLoadedOrErrorState(failureOrStudents);
+      try{
+        final failureOrStudents= await getStudent(NoParams());
+        failureOrStudents.fold((l) => failure=l, (r) => null);
+        print("map event to state called");
+        yield* _eitherLoadedOrErrorState(failureOrStudents);
+      }catch(e){
+        Error(message: _mapFailureToMessage(failure));
+      }
+
 
     }
   }

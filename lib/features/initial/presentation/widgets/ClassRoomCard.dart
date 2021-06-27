@@ -3,9 +3,11 @@ import 'package:genskill_test/core/constants/CColor.dart';
 import 'package:genskill_test/core/constants/SizeConfig.dart';
 import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
 import 'package:genskill_test/features/initial/domain/entities/Subjects.dart';
+import 'package:genskill_test/features/initial/presentation/pages/ClassroomPages/InnerClassRoomPage.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ClassRoomCard extends StatefulWidget{
-  final Classroom classroom;
+  final Classrooms classroom;
 
 
   ClassRoomCard({Key key,@required this.classroom}) : super(key: key);
@@ -25,10 +27,10 @@ class _ClassRoomCardState extends State<ClassRoomCard> {
 
   @override
   Widget build(BuildContext context) {
+
     return Card(
       clipBehavior: Clip.antiAlias,
       elevation: 10,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -39,128 +41,168 @@ class _ClassRoomCardState extends State<ClassRoomCard> {
                   Colors.lightBlueAccent,
                   Colors.lightBlue
                 ])),
-        child: Theme(
-          data: ThemeData(
-            unselectedWidgetColor: Colors.white,
-          ),
-          child: ExpansionTile(
-            backgroundColor: Colors.transparent,
-            initiallyExpanded: false,
-            title: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Name",
-                          style: TextStyle(color: CColor.HomeScreenBGColor),
-                        ),
-                        Container(
-                          width: _width,
-                          child: Text(
-                            widget.classroom.name ?? "N/A",
-                            textAlign: align2,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: gap,
-                    ),
-
-                  ],
-                ),
+        child: Padding(padding: EdgeInsets.symmetric(horizontal:10.0,vertical: 15),
+          child:  Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Classroom Name",
+              style: TextStyle(color: CColor.HomeScreenBGColor),
+            ),
+            Container(
+              width: _width,
+              child: Text(
+                widget.classroom.name ?? "N/A",
+                textAlign: align2,
+                style: TextStyle(color: CColor.HomeScreenBGColor),
               ),
             ),
-            collapsedBackgroundColor: Colors.transparent,
-            children: [
-              Container(
-                padding: EdgeInsets.all(SizeConfig.blockSizeVertical * 2),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Id",
-                          style: TextStyle(color: CColor.HomeScreenBGColor),
-                        ),
-                        Container(
-                          width: _width,
-                          child: Text(
-                            widget.classroom.id.toString() ?? "N/A",
-                            textAlign: align2,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: gap,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: _width,
-                          child: Text(
-                            "Size",
-                            textAlign: align1,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
-                          ),
-                        ),
-                        Container(
-                            width: _width,
-                            child: Text(
-                              widget.classroom.size.toString() ?? "N/A",
-                              textAlign: align2,
-                              style: TextStyle(color: CColor.HomeScreenBGColor),
-                            )),
-                      ],
-                    ),
-                    SizedBox(
-                      height: gap,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: _width,
-                          child: Text(
-                            "Layout",
-                            textAlign: align1,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
-                          ),
-                        ),
-                        Container(
-                            width: _width,
-                            child: Text(
-                              widget.classroom.layout ?? "N/A",
-                              textAlign: align2,
-                              style: TextStyle(color: CColor.HomeScreenBGColor),
-                            )),
-                      ],
-                    ),
-                    SizedBox(
-                      height: gap,
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+          ],
+        ),),
       ),
     );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Card(
+  //     clipBehavior: Clip.antiAlias,
+  //     elevation: 10,
+  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+  //     child: Container(
+  //       decoration: BoxDecoration(
+  //           gradient: LinearGradient(
+  //               begin: Alignment.topRight,
+  //               end: Alignment.bottomLeft,
+  //               colors: [
+  //                 Colors.lightBlue,
+  //                 Colors.lightBlueAccent,
+  //                 Colors.lightBlue
+  //               ])),
+  //       child: Theme(
+  //         data: ThemeData(
+  //           unselectedWidgetColor: Colors.white,
+  //         ),
+  //         child: ExpansionTile(
+  //           backgroundColor: Colors.transparent,
+  //           initiallyExpanded: false,
+  //           title: Padding(
+  //             padding: const EdgeInsets.all(8.0),
+  //             child: Container(
+  //               child: Column(
+  //                 mainAxisSize: MainAxisSize.min,
+  //                 mainAxisAlignment: MainAxisAlignment.start,
+  //                 children: [
+  //                   Row(
+  //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                     crossAxisAlignment: CrossAxisAlignment.start,
+  //                     children: [
+  //                       Text(
+  //                         "Name",
+  //                         style: TextStyle(color: CColor.HomeScreenBGColor),
+  //                       ),
+  //                       Container(
+  //                         width: _width,
+  //                         child: Text(
+  //                           widget.classroom.name ?? "N/A",
+  //                           textAlign: align2,
+  //                           style: TextStyle(color: CColor.HomeScreenBGColor),
+  //                         ),
+  //                       ),
+  //                     ],
+  //                   ),
+  //                   SizedBox(
+  //                     height: gap,
+  //                   ),
+  //
+  //                 ],
+  //               ),
+  //             ),
+  //           ),
+  //           collapsedBackgroundColor: Colors.transparent,
+  //           children: [
+  //             Container(
+  //               padding: EdgeInsets.all(SizeConfig.blockSizeVertical * 2),
+  //               child: Column(
+  //                 children: [
+  //                   Row(
+  //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                     crossAxisAlignment: CrossAxisAlignment.start,
+  //                     children: [
+  //                       Text(
+  //                         "Id",
+  //                         style: TextStyle(color: CColor.HomeScreenBGColor),
+  //                       ),
+  //                       Container(
+  //                         width: _width,
+  //                         child: Text(
+  //                           widget.classroom.id.toString() ?? "N/A",
+  //                           textAlign: align2,
+  //                           style: TextStyle(color: CColor.HomeScreenBGColor),
+  //                         ),
+  //                       ),
+  //                     ],
+  //                   ),
+  //                   SizedBox(
+  //                     height: gap,
+  //                   ),
+  //                   Row(
+  //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                     crossAxisAlignment: CrossAxisAlignment.start,
+  //                     children: [
+  //                       Container(
+  //                         width: _width,
+  //                         child: Text(
+  //                           "Size",
+  //                           textAlign: align1,
+  //                           style: TextStyle(color: CColor.HomeScreenBGColor),
+  //                         ),
+  //                       ),
+  //                       Container(
+  //                           width: _width,
+  //                           child: Text(
+  //                             widget.classroom.size.toString() ?? "N/A",
+  //                             textAlign: align2,
+  //                             style: TextStyle(color: CColor.HomeScreenBGColor),
+  //                           )),
+  //                     ],
+  //                   ),
+  //                   SizedBox(
+  //                     height: gap,
+  //                   ),
+  //                   Row(
+  //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                     crossAxisAlignment: CrossAxisAlignment.start,
+  //                     children: [
+  //                       Container(
+  //                         width: _width,
+  //                         child: Text(
+  //                           "Layout",
+  //                           textAlign: align1,
+  //                           style: TextStyle(color: CColor.HomeScreenBGColor),
+  //                         ),
+  //                       ),
+  //                       Container(
+  //                           width: _width,
+  //                           child: Text(
+  //                             widget.classroom.layout ?? "N/A",
+  //                             textAlign: align2,
+  //                             style: TextStyle(color: CColor.HomeScreenBGColor),
+  //                           )),
+  //                     ],
+  //                   ),
+  //                   SizedBox(
+  //                     height: gap,
+  //                   ),
+  //                 ],
+  //               ),
+  //             )
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+
 }

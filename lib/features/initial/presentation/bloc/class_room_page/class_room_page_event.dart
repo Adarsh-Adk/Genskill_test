@@ -7,4 +7,6 @@ abstract class ClassRoomPageEvent extends Equatable{
   List<Object> get props =>[];
 }
 
-class GetClassRoom extends ClassRoomPageEvent{}
+class GetClassRooms extends ClassRoomPageEvent{}
+
+

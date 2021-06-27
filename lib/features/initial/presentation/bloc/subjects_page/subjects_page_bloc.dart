@@ -21,10 +21,16 @@ class SubjectsPageBloc extends Bloc<SubjectsPageEvent, SubjectsPageState> {
   @override
   Stream<SubjectsPageState> mapEventToState(SubjectsPageEvent event) async* {
     if(event is GetSubject){
+      Failure failure;
       yield Loading();
-      final failureOrSubjects= await getSubject(NoParams());
-      print("map event to state called");
-      yield* _eitherLoadedOrErrorSubjectState(failureOrSubjects);
+      try{
+        final failureOrSubjects= await getSubject(NoParams());
+        failureOrSubjects.fold((l) => failure=l, (r) => null);
+        print("map event to state called");
+        yield* _eitherLoadedOrErrorSubjectState(failureOrSubjects);
+      }catch(e){
+        Error(message: _mapFailureToMessage(failure));
+      }
 
     }
   }
