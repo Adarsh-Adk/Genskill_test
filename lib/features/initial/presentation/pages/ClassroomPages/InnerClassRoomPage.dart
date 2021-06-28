@@ -113,39 +113,15 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                                     style: TextStyle(
                                         color: CColor.HomeScreenBGColor),
                                   ),
-                                  BlocProvider.value(
-                                    value: sl<sub.SubjectsPageBloc>(),
-                                    child: BlocBuilder<sub.SubjectsPageBloc,
-                                        sub.SubjectsPageState>(
-                                      builder: (context, state2) {
-                                        if(state2 is Loaded){
-                                          return Container(
-                                            width: _width,
-                                            child: Text(
-                                              state.classroom.subject == ""
-                                                  ? "Not Assigned"
-                                                  : state.classroom.subject,
-                                              textAlign: align2,
-                                              style: TextStyle(
-                                                  color:
-                                                  CColor.HomeScreenBGColor),
-                                            ),
-                                          );
-                                        }else{
-                                          return Container(
-                                            width: _width,
-                                            child: Text(
-                                              state.classroom.subject == ""
-                                                  ? "Not Assigned"
-                                                  : state.classroom.subject,
-                                              textAlign: align2,
-                                              style: TextStyle(
-                                                  color:
-                                                  CColor.HomeScreenBGColor),
-                                            ),
-                                          );
-                                        }
-                                      },
+                                  Container(
+                                    width: _width,
+                                    child: Text(
+                                      state.classroom.subject == ""
+                                          ? "Not Assigned"
+                                          : state.classroom.subject,
+                                      textAlign: align2,
+                                      style: TextStyle(
+                                          color: CColor.HomeScreenBGColor),
                                     ),
                                   ),
                                 ],
