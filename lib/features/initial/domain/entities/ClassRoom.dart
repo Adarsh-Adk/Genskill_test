@@ -63,7 +63,7 @@ class ClassRoomDataModel {
     layout: json["layout"],
     name: json["name"],
     size: json["size"],
-    subject: json["subject"],
+    subject: json["subject"].toString(),
   );
 
   Map<String, dynamic> toJson() => {

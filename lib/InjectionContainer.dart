@@ -34,7 +34,7 @@ Future<void> init()async{
   sl.registerLazySingleton(() => ClassRoomGetClassRoom(sl()));
   sl.registerLazySingleton<StudentsRepository>(() => StudentsRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<SubjectsRepository>(() => SubjectsRepositoryImpl(remoteDataSource: sl()));
-  sl.registerLazySingleton<ClassRoomRepository>(() => ClassRoomRepositoryImpl(remoteDataSource: sl()));
+  sl.registerLazySingleton<ClassRoomRepository>(() => ClassRoomRepositoryImpl(remoteDataSource: sl(), subjectsRemoteDataSource: sl()));
   sl.registerLazySingleton<StudentsRemoteDataSource>(() => StudentsRemoteDataSourceImpl(client: sl()));
   sl.registerLazySingleton<SubjectsRemoteDataSource>(() => SubjectsRemoteDataSourceImpl(client: sl()));
   sl.registerLazySingleton<ClassRoomRemoteDataSource>(() => ClassRoomRemoteDataSourceImpl(client: sl()));

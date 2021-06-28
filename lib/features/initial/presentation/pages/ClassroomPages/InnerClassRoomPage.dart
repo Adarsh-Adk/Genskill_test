@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genskill_test/core/constants/CColor.dart';
 import 'package:genskill_test/core/constants/SizeConfig.dart';
 import 'package:genskill_test/features/initial/presentation/bloc/inner_class_room_page/inner_class_room_page_bloc.dart';
+import 'package:genskill_test/features/initial/presentation/bloc/subjects_page/subjects_page_bloc.dart'
+    as sub;
 
 import '../../../../../InjectionContainer.dart';
 
 class InnerClasssRoomPage extends StatefulWidget {
-
-  const InnerClasssRoomPage({Key key})
-      : super(key: key);
+  const InnerClasssRoomPage({Key key}) : super(key: key);
 
   @override
   _InnerClasssRoomPageState createState() => _InnerClasssRoomPageState();
@@ -29,21 +29,22 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
         value: sl<InnerClassRoomPageBloc>(),
         child: BlocBuilder<InnerClassRoomPageBloc, InnerClassRoomPageState>(
             builder: (context, state) {
-              if (state is Loading) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is Loaded) {
-               return Scaffold(
-                  appBar: AppBar(
-                    title: Text("${state.classroom.name}"),
-                  ),
-                  body: Container(
+          if (state is Loading) {
+            return Material(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          } else if (state is Loaded) {
+            return Scaffold(
+                appBar: AppBar(
+                  title: Text("${state.classroom.name}"),
+                ),
+                body: Container(
                     height: SizeConfig.screenHeight,
                     width: SizeConfig.screenWidth,
-                child:Center(
-                    child: Card(
-
+                    child: Center(
+                        child: Card(
                       color: Colors.blue,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -55,8 +56,8 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -69,8 +70,7 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                                     child: Text(
                                       state.classroom.name ?? "N/A",
                                       textAlign: align2,
-                                      style:
-                                      TextStyle(
+                                      style: TextStyle(
                                           color: CColor.HomeScreenBGColor),
                                     ),
                                   ),
@@ -80,8 +80,8 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                                 height: gap,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -94,8 +94,7 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                                     child: Text(
                                       state.classroom.id.toString() ?? "N/A",
                                       textAlign: align2,
-                                      style:
-                                      TextStyle(
+                                      style: TextStyle(
                                           color: CColor.HomeScreenBGColor),
                                     ),
                                   ),
@@ -105,8 +104,8 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                                 height: gap,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -114,16 +113,39 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                                     style: TextStyle(
                                         color: CColor.HomeScreenBGColor),
                                   ),
-                                  Container(
-                                    width: _width,
-                                    child: Text(
-                                      state.classroom.subject == ""
-                                          ? "Not Assigned"
-                                          : "N/A",
-                                      textAlign: align2,
-                                      style:
-                                      TextStyle(
-                                          color: CColor.HomeScreenBGColor),
+                                  BlocProvider.value(
+                                    value: sl<sub.SubjectsPageBloc>(),
+                                    child: BlocBuilder<sub.SubjectsPageBloc,
+                                        sub.SubjectsPageState>(
+                                      builder: (context, state2) {
+                                        if(state2 is Loaded){
+                                          return Container(
+                                            width: _width,
+                                            child: Text(
+                                              state.classroom.subject == ""
+                                                  ? "Not Assigned"
+                                                  : state.classroom.subject,
+                                              textAlign: align2,
+                                              style: TextStyle(
+                                                  color:
+                                                  CColor.HomeScreenBGColor),
+                                            ),
+                                          );
+                                        }else{
+                                          return Container(
+                                            width: _width,
+                                            child: Text(
+                                              state.classroom.subject == ""
+                                                  ? "Not Assigned"
+                                                  : state.classroom.subject,
+                                              textAlign: align2,
+                                              style: TextStyle(
+                                                  color:
+                                                  CColor.HomeScreenBGColor),
+                                            ),
+                                          );
+                                        }
+                                      },
                                     ),
                                   ),
                                 ],
@@ -132,8 +154,8 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                                 height: gap,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -146,8 +168,7 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                                     child: Text(
                                       state.classroom.layout ?? "N/A",
                                       textAlign: align2,
-                                      style:
-                                      TextStyle(
+                                      style: TextStyle(
                                           color: CColor.HomeScreenBGColor),
                                     ),
                                   ),
@@ -157,8 +178,8 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                                 height: gap,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -171,8 +192,7 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                                     child: Text(
                                       state.classroom.size.toString() ?? "N/A",
                                       textAlign: align2,
-                                      style:
-                                      TextStyle(
+                                      style: TextStyle(
                                           color: CColor.HomeScreenBGColor),
                                     ),
                                   ),
@@ -183,21 +203,25 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                         ),
                       ),
                     ))));
-              } else if (state is Empty) {
-                return Center(
-                  child: Text("Empty"),
-                );
-              } else if (state is Error) {
-                return Center(
-                  child: Text(state.message),
-                );
-              } else {
-                return Center(
-                  child: Text("a custom error occured"),
-                );
-              }
-            }
-            )
-    );
+          } else if (state is Empty) {
+            return Material(
+              child: Center(
+                child: Text("Empty"),
+              ),
+            );
+          } else if (state is Error) {
+            return Material(
+              child: Center(
+                child: Text(state.message),
+              ),
+            );
+          } else {
+            return Material(
+              child: Center(
+                child: Text("a custom error occured"),
+              ),
+            );
+          }
+        }));
   }
 }
