@@ -178,204 +178,7 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                   ))),
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return Dialog(
-                          insetPadding: EdgeInsets.symmetric(
-                              horizontal: SizeConfig.screenWidth * 0.1,
-                              vertical: SizeConfig.screenHeight * 0.1),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: SizeConfig.screenWidth * 0.1,
-                                vertical: SizeConfig.screenHeight * 0.05),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                BlocProvider(
-                                  create: (_) => sl<sub.SubjectsPageBloc>(),
-                                  child: Builder(
-                                    builder: (context2) {
-                                      return CustomRaisedGradientButton(
-                                          child: Container(
-                                            width:
-                                                SizeConfig.screenWidth * 0.48,
-                                            child: Center(
-                                              child: Text(
-                                                state.classroom.subject == ""
-                                                    ? "Assign Subject"
-                                                    : "Change Subject",
-                                                style: GoogleFonts.roboto(
-                                                    color: CColor
-                                                        .HomeScreenBGColor,
-                                                    fontSize: SizeConfig
-                                                            .blockSizeVertical *
-                                                        3),
-                                              ),
-                                            ),
-                                          ),
-                                          gradient: LinearGradient(
-                                              colors: [
-                                                CColor
-                                                    .HomeScreenClassButtonLeft,
-                                                CColor
-                                                    .HomeScreenClassButtonRight
-                                              ],
-                                              begin: Alignment.centerLeft,
-                                              end: Alignment.centerRight),
-                                          height:
-                                              SizeConfig.blockSizeVertical * 7,
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            BlocProvider.of<
-                                                        sub.SubjectsPageBloc>(
-                                                    context2)
-                                                .add(sub.GetSubject());
-                                            showDialog(
-                                                context: context2,
-                                                builder: (context2) {
-                                                  return Dialog(
-                                                    insetPadding: EdgeInsets.symmetric(
-                                                        horizontal: SizeConfig
-                                                                .screenWidth *
-                                                            0.1,
-                                                        vertical: SizeConfig
-                                                                .screenHeight *
-                                                            0.1),
-                                                    child: Container(
-                                                        padding: EdgeInsets.symmetric(
-                                                            horizontal: SizeConfig
-                                                                    .screenWidth *
-                                                                0.1,
-                                                            vertical: SizeConfig
-                                                                    .screenHeight *
-                                                                0.05),
-                                                        child:
-                                                            BlocProvider.value(
-                                                          value: sl<
-                                                              sub.SubjectsPageBloc>(),
-                                                          child: BlocBuilder<
-                                                              sub.SubjectsPageBloc,
-                                                              sub.SubjectsPageState>(
-                                                            builder: (context2,
-                                                                state2) {
-                                                              if (state2 is sub
-                                                                  .Loading) {
-                                                                return Center(
-                                                                  child:
-                                                                      CircularProgressIndicator(),
-                                                                );
-                                                              } else if (state2
-                                                                  is sub
-                                                                      .Error) {
-                                                                return Center(
-                                                                  child: Text(state2
-                                                                      .message),
-                                                                );
-                                                              } else if (state2
-                                                                  is sub
-                                                                      .Loaded) {
-                                                                return ListView(
-                                                                  shrinkWrap:
-                                                                      true,
-                                                                  children: state2
-                                                                      .subjectsDataModel
-                                                                      .subjects
-                                                                      .map((e) =>
-                                                                          BlocProvider
-                                                                              .value(
-                                                                            value:
-                                                                                sl<InnerClassRoomPageBloc>(),
-                                                                            child:
-                                                                                Builder(
-                                                                              builder: (
-                                                                                context3,
-                                                                              ) {
-                                                                                return OutlinedButton(
-                                                                                    style: ButtonStyle(
-                                                                                      side: MaterialStateProperty.resolveWith((states) {
-                                                                                        Color _borderColor;
-
-                                                                                        if (states.contains(MaterialState.disabled)) {
-                                                                                          _borderColor = CColor.HomeScreenSubjectButtonLeft;
-                                                                                        } else if (states.contains(MaterialState.pressed)) {
-                                                                                          _borderColor = CColor.HomeScreenSubjectButtonLeft;
-                                                                                        } else {
-                                                                                          _borderColor = CColor.HomeScreenSubjectButtonLeft;
-                                                                                        }
-
-                                                                                        return BorderSide(color: _borderColor, width: 1);
-                                                                                      }),
-                                                                                    ),
-                                                                                    onPressed: () {
-                                                                                      BlocProvider.of<InnerClassRoomPageBloc>(context3).add(SetSubject(classRoomId: state.classroom.id, subjectId: e.id));
-                                                                                      Navigator.pop(context3);
-                                                                                    },
-                                                                                    child: Padding(
-                                                                                      padding: const EdgeInsets.all(8.0),
-                                                                                      child: Text(
-                                                                                        e.name,
-                                                                                        style: TextStyle(color: CColor.HomeScreenStudentButtonLeft),
-                                                                                      ),
-                                                                                    ));
-                                                                              },
-                                                                            ),
-                                                                          ))
-                                                                      .toList(),
-                                                                );
-                                                              } else {
-                                                                return Text(
-                                                                  "An error occured",
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                );
-                                                              }
-                                                            },
-                                                          ),
-                                                        )),
-                                                  );
-                                                });
-                                          },
-                                          radius:
-                                              SizeConfig.blockSizeVertical * 4);
-                                    },
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: SizeConfig.blockSizeVertical * 4,
-                                ),
-                                CustomRaisedGradientButton(
-                                    child: Container(
-                                      width: SizeConfig.screenWidth * 0.48,
-                                      child: Center(
-                                        child: Text(
-                                          "Assign Student",
-                                          style: GoogleFonts.roboto(
-                                              color: CColor.HomeScreenBGColor,
-                                              fontSize:
-                                                  SizeConfig.blockSizeVertical *
-                                                      3),
-                                        ),
-                                      ),
-                                    ),
-                                    gradient: LinearGradient(
-                                        colors: [
-                                          CColor.HomeScreenClassButtonLeft,
-                                          CColor.HomeScreenClassButtonRight
-                                        ],
-                                        begin: Alignment.centerLeft,
-                                        end: Alignment.centerRight),
-                                    height: SizeConfig.blockSizeVertical * 7,
-                                    onPressed: () {},
-                                    radius: SizeConfig.blockSizeVertical * 4)
-                              ],
-                            ),
-                          ),
-                        );
-                      });
+                  showDialoge(context, state);
                 },
                 child: Icon(
                   Icons.edit,
@@ -403,5 +206,210 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
             );
           }
         }));
+  }
+
+  void showDialoge(BuildContext context, Loaded state) {
+     showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            insetPadding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.screenWidth * 0.1,
+                vertical: SizeConfig.screenHeight * 0.1),
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.screenWidth * 0.1,
+                  vertical: SizeConfig.screenHeight * 0.05),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  BlocProvider(
+                    create: (_) => sl<sub.SubjectsPageBloc>(),
+                    child: Builder(
+                      builder: (context2) {
+                        return CustomRaisedGradientButton(
+                            child: Container(
+                              width:
+                                  SizeConfig.screenWidth * 0.48,
+                              child: Center(
+                                child: Text(
+                                  state.classroom.subject == ""
+                                      ? "Assign Subject"
+                                      : "Change Subject",
+                                  style: GoogleFonts.roboto(
+                                      color: CColor
+                                          .HomeScreenBGColor,
+                                      fontSize: SizeConfig
+                                              .blockSizeVertical *
+                                          3),
+                                ),
+                              ),
+                            ),
+                            gradient: LinearGradient(
+                                colors: [
+                                  CColor
+                                      .HomeScreenClassButtonLeft,
+                                  CColor
+                                      .HomeScreenClassButtonRight
+                                ],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight),
+                            height:
+                                SizeConfig.blockSizeVertical * 7,
+                            onPressed: () {
+                              showSubjects(context, context2, state);
+                            },
+                            radius:
+                                SizeConfig.blockSizeVertical * 4);
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: SizeConfig.blockSizeVertical * 4,
+                  ),
+                  CustomRaisedGradientButton(
+                      child: Container(
+                        width: SizeConfig.screenWidth * 0.48,
+                        child: Center(
+                          child: Text(
+                            "Assign Student",
+                            style: GoogleFonts.roboto(
+                                color: CColor.HomeScreenBGColor,
+                                fontSize:
+                                    SizeConfig.blockSizeVertical *
+                                        3),
+                          ),
+                        ),
+                      ),
+                      gradient: LinearGradient(
+                          colors: [
+                            CColor.HomeScreenClassButtonLeft,
+                            CColor.HomeScreenClassButtonRight
+                          ],
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight),
+                      height: SizeConfig.blockSizeVertical * 7,
+                      onPressed: () {},
+                      radius: SizeConfig.blockSizeVertical * 4)
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  void showSubjects(BuildContext context, BuildContext context2, Loaded state) {
+    Navigator.pop(context);
+    BlocProvider.of<
+                sub.SubjectsPageBloc>(
+            context2)
+        .add(sub.GetSubject());
+    showDialog(
+        context: context2,
+        builder: (context2) {
+          return Dialog(
+            insetPadding: EdgeInsets.symmetric(
+                horizontal: SizeConfig
+                        .screenWidth *
+                    0.1,
+                vertical: SizeConfig
+                        .screenHeight *
+                    0.1),
+            child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig
+                            .screenWidth *
+                        0.1,
+                    vertical: SizeConfig
+                            .screenHeight *
+                        0.05),
+                child:
+                    BlocProvider.value(
+                  value: sl<
+                      sub.SubjectsPageBloc>(),
+                  child: BlocBuilder<
+                      sub.SubjectsPageBloc,
+                      sub.SubjectsPageState>(
+                    builder: (context2,
+                        state2) {
+                      if (state2 is sub
+                          .Loading) {
+                        return Center(
+                          child:
+                              CircularProgressIndicator(),
+                        );
+                      } else if (state2
+                          is sub
+                              .Error) {
+                        return Center(
+                          child: Text(state2
+                              .message),
+                        );
+                      } else if (state2
+                          is sub
+                              .Loaded) {
+                        return ListView(
+                          shrinkWrap:
+                              true,
+                          children: state2
+                              .subjectsDataModel
+                              .subjects
+                              .map((e) =>
+                                  BlocProvider
+                                      .value(
+                                    value:
+                                        sl<InnerClassRoomPageBloc>(),
+                                    child:
+                                        Builder(
+                                      builder: (
+                                        context3,
+                                      ) {
+                                        return OutlinedButton(
+                                            style: ButtonStyle(
+                                              side: MaterialStateProperty.resolveWith((states) {
+                                                Color _borderColor;
+
+                                                if (states.contains(MaterialState.disabled)) {
+                                                  _borderColor = CColor.HomeScreenSubjectButtonLeft;
+                                                } else if (states.contains(MaterialState.pressed)) {
+                                                  _borderColor = CColor.HomeScreenSubjectButtonLeft;
+                                                } else {
+                                                  _borderColor = CColor.HomeScreenSubjectButtonLeft;
+                                                }
+
+                                                return BorderSide(color: _borderColor, width: 1);
+                                              }),
+                                            ),
+                                            onPressed: () {
+                                              BlocProvider.of<InnerClassRoomPageBloc>(context3).add(SetSubject(classRoomId: state.classroom.id, subjectId: e.id));
+                                              Navigator.pop(context3);
+                                            },
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                e.name,
+                                                style: TextStyle(color: CColor.HomeScreenStudentButtonLeft),
+                                              ),
+                                            ));
+                                      },
+                                    ),
+                                  ))
+                              .toList(),
+                        );
+                      } else {
+                        return Text(
+                          "An error occured",
+                          textAlign:
+                              TextAlign
+                                  .center,
+                        );
+                      }
+                    },
+                  ),
+                )),
+          );
+        });
   }
 }
