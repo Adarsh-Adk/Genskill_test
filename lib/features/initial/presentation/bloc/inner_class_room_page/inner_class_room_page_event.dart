@@ -13,3 +13,9 @@ class GetClassRoom extends InnerClassRoomPageEvent{
 
   GetClassRoom({@required this.id});
 }
+class SetSubject extends InnerClassRoomPageEvent{
+  final int subjectId;
+  final int classRoomId;
+
+  SetSubject({@required this.subjectId,@required this.classRoomId});
+}

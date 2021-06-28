@@ -6,10 +6,10 @@ import 'package:genskill_test/core/usecases/UseCase.dart';
 import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
 import 'package:genskill_test/features/initial/domain/repositories/ClassRoomRepository.dart';
 
-class ClassRoomGetClassRoom extends UseCase<ClassRoomDataModel,Params>{
+class ClassRoomGetClassRoomUseCase extends UseCase<ClassRoomDataModel,Params>{
   final ClassRoomRepository classRoomRepository;
 
-  ClassRoomGetClassRoom(this.classRoomRepository);
+  ClassRoomGetClassRoomUseCase(this.classRoomRepository);
 
 
   Future<Either<Failure, ClassRoomDataModel>> call(Params params) async {

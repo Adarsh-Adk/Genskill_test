@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:genskill_test/core/error/Failures.dart';
 import 'package:genskill_test/core/usecases/UseCase.dart';
 import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
-import 'package:genskill_test/features/initial/domain/usecases/ClassRoomGetClassRooms.dart';
+import 'package:genskill_test/features/initial/domain/usecases/ClassRoomGetClassRoomsUseCase.dart';
 import 'package:meta/meta.dart';
 
 part 'class_room_page_event.dart';
@@ -14,10 +14,10 @@ part 'class_room_page_state.dart';
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 
 class ClassRoomPageBloc extends Bloc<ClassRoomPageEvent, ClassRoomPageState> {
-  final ClassRoomGetClassRooms getClassRooms;
+  final ClassRoomGetClassRoomsUseCase getClassRooms;
 
 
-  ClassRoomPageBloc({@required ClassRoomGetClassRooms classrooms,}) :assert(classrooms!=null),getClassRooms=classrooms ,super(Empty());
+  ClassRoomPageBloc({@required ClassRoomGetClassRoomsUseCase classrooms,}) :assert(classrooms!=null),getClassRooms=classrooms ,super(Empty());
 
   ClassRoomPageState get initial=>Empty();
 

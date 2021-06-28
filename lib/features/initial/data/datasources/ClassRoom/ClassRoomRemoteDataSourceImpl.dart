@@ -40,5 +40,21 @@ class ClassRoomRemoteDataSourceImpl implements ClassRoomRemoteDataSource{
       throw ServerException;
     }
   }
+
+  @override
+  Future<ClassRoomDataModel> setSubject(int subjectId, int classRoomId) async{
+    print("set subject called");
+    Uri uri=Uri.parse("${URL.BASEURL}/classrooms/$classRoomId${URL.APIKEY}");
+    final response=await client.patch(uri,body: "subject=$subjectId",headers: {"Content-Type": "application/x-www-form-urlencoded"}, );
+    if(response.statusCode==200){
+      var result=classRoomDataModelFromJson(response.body);
+      print(result);
+      return result;
+    }else{
+      print(response.statusCode);
+      throw ServerException;
+    }
+  }
 }
+
 

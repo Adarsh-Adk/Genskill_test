@@ -46,4 +46,24 @@ class ClassRoomRepositoryImpl implements ClassRoomRepository{
     }
   }
 
+  @override
+  Future<Either<Failure, ClassRoomDataModel>> setSubject(int subjectId,int classRoomId)async {
+    try{
+      final data=await remoteDataSource.setSubject(subjectId, classRoomId);
+      if(data.subject!=""){
+        int subject=int.parse(data.subject);
+        final subName=await subjectsRemoteDataSource.getSubject(subject);
+        print("right was called");
+        ClassRoomDataModel classRoomDataModel=ClassRoomDataModel(id: data.id, layout: data.layout, name: data.name, size: data.size, subject: subName.name);
+        return Right(classRoomDataModel);
+      }else {
+        return Right(data);
+      }
+
+    }on ServerException{
+      print("left was called");
+      return Left(ServerFailure());
+    }
+  }
+
 }

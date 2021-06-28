@@ -4,7 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:genskill_test/core/error/Failures.dart';
 import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
-import 'package:genskill_test/features/initial/domain/usecases/ClassRoomGetClassRoom.dart';
+import 'package:genskill_test/features/initial/domain/usecases/ClassRoomGetClassRoomUseCase.dart';
+import 'package:genskill_test/features/initial/domain/usecases/ClassRoomSetSubject.dart' as Set;
 import 'package:meta/meta.dart';
 
 part 'inner_class_room_page_event.dart';
@@ -15,9 +16,10 @@ const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 
 class InnerClassRoomPageBloc extends Bloc<InnerClassRoomPageEvent, InnerClassRoomPageState> {
 
-  final ClassRoomGetClassRoom getClassRoom;
+  final ClassRoomGetClassRoomUseCase getClassRoom;
+  final Set.ClassRoomSetSubjectUseCase setSubjectUseCase;
 
-  InnerClassRoomPageBloc({@required ClassRoomGetClassRoom classRoom}) :assert(classRoom!=null),getClassRoom=classRoom ,super(Empty());
+  InnerClassRoomPageBloc({@required ClassRoomGetClassRoomUseCase classRoom,@required Set.ClassRoomSetSubjectUseCase setSubject}) :assert(classRoom!=null),getClassRoom=classRoom,setSubjectUseCase=setSubject ,super(Empty());
 
   InnerClassRoomPageState get initial=>Empty();
 
@@ -36,7 +38,19 @@ class InnerClassRoomPageBloc extends Bloc<InnerClassRoomPageEvent, InnerClassRoo
         yield Error(message: _mapFailureToMessage(failure));
       }
 
-    }
+    }else if(event is SetSubject){
+       Failure failure;
+       yield Loading();
+       try{
+         final failureOrClassRoom= await setSubjectUseCase(Set.Params(classRoomId:event.classRoomId ,subjectId:event.subjectId ));
+         failureOrClassRoom.fold((l) => failure=l, (r) => null);
+         print("map event to state called");
+         yield* _eitherLoadedOrErrorState2(failureOrClassRoom);
+       }catch(e){
+         yield Error(message: _mapFailureToMessage(failure));
+       }
+
+     }
 
   }
 
@@ -50,6 +64,7 @@ class InnerClassRoomPageBloc extends Bloc<InnerClassRoomPageEvent, InnerClassRoo
 
 
   String _mapFailureToMessage(Failure failure) {
+
     print("map failure called");
     switch (failure.runtimeType) {
       case ServerFailure:
