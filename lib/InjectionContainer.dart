@@ -5,7 +5,6 @@ import 'package:genskill_test/features/initial/data/datasources/Students/Student
 import 'package:genskill_test/features/initial/data/datasources/Students/StudentsRemoteDataSourceImpl.dart';
 import 'package:genskill_test/features/initial/data/repositories/ClassRoomRepositoryImpl.dart';
 import 'package:genskill_test/features/initial/data/repositories/StudentsRepositoryImpl.dart';
-import 'package:genskill_test/features/initial/domain/entities/Registrations.dart';
 import 'package:genskill_test/features/initial/domain/repositories/ClassRoomRepository.dart';
 import 'package:genskill_test/features/initial/domain/repositories/StudentsRepository.dart';
 import 'package:genskill_test/features/initial/domain/repositories/SubjectsRepository.dart';
