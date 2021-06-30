@@ -50,6 +50,7 @@ class ClassRoomDataModel {
     @required this.name,
     @required this.size,
     @required this.subject,
+    @required this.subjectId,
   });
 
   int id;
@@ -57,6 +58,7 @@ class ClassRoomDataModel {
   String name;
   int size;
   String subject;
+  String subjectId;
 
   factory ClassRoomDataModel.fromJson(Map<String, dynamic> json) => ClassRoomDataModel(
     id: json["id"],
@@ -64,6 +66,7 @@ class ClassRoomDataModel {
     name: json["name"],
     size: json["size"],
     subject: json["subject"].toString(),
+    subjectId:json["subjectId"].toString(),
   );
 
   Map<String, dynamic> toJson() => {

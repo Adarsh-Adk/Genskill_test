@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genskill_test/core/constants/CColor.dart';
 import 'package:genskill_test/core/constants/SizeConfig.dart';
+import 'package:genskill_test/features/initial/presentation/bloc/StudentsPageBloc/StudentsPageBloc.dart'
+    as stud;
 import 'package:genskill_test/features/initial/presentation/bloc/inner_class_room_page/inner_class_room_page_bloc.dart';
 import 'package:genskill_test/features/initial/presentation/bloc/subjects_page/subjects_page_bloc.dart'
     as sub;
@@ -38,6 +40,7 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
               ),
             );
           } else if (state is Loaded) {
+            print(state.classroom.subjectId);
             return Scaffold(
               appBar: AppBar(
                 title: Text("${state.classroom.name}"),
@@ -209,7 +212,7 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
   }
 
   void showDialoge(BuildContext context, Loaded state) {
-     showDialog(
+    showDialog(
         context: context,
         builder: (context) {
           return Dialog(
@@ -231,68 +234,71 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                       builder: (context2) {
                         return CustomRaisedGradientButton(
                             child: Container(
-                              width:
-                                  SizeConfig.screenWidth * 0.48,
+                              width: SizeConfig.screenWidth * 0.48,
                               child: Center(
                                 child: Text(
                                   state.classroom.subject == ""
                                       ? "Assign Subject"
                                       : "Change Subject",
                                   style: GoogleFonts.roboto(
-                                      color: CColor
-                                          .HomeScreenBGColor,
-                                      fontSize: SizeConfig
-                                              .blockSizeVertical *
-                                          3),
+                                      color: CColor.HomeScreenBGColor,
+                                      fontSize:
+                                          SizeConfig.blockSizeVertical * 3),
                                 ),
                               ),
                             ),
                             gradient: LinearGradient(
                                 colors: [
-                                  CColor
-                                      .HomeScreenClassButtonLeft,
-                                  CColor
-                                      .HomeScreenClassButtonRight
+                                  CColor.HomeScreenClassButtonLeft,
+                                  CColor.HomeScreenClassButtonRight
                                 ],
                                 begin: Alignment.centerLeft,
                                 end: Alignment.centerRight),
-                            height:
-                                SizeConfig.blockSizeVertical * 7,
+                            height: SizeConfig.blockSizeVertical * 7,
                             onPressed: () {
                               showSubjects(context, context2, state);
                             },
-                            radius:
-                                SizeConfig.blockSizeVertical * 4);
+                            radius: SizeConfig.blockSizeVertical * 4);
                       },
                     ),
                   ),
-                  SizedBox(
-                    height: SizeConfig.blockSizeVertical * 4,
-                  ),
-                  CustomRaisedGradientButton(
-                      child: Container(
-                        width: SizeConfig.screenWidth * 0.48,
-                        child: Center(
-                          child: Text(
-                            "Assign Student",
-                            style: GoogleFonts.roboto(
-                                color: CColor.HomeScreenBGColor,
-                                fontSize:
-                                    SizeConfig.blockSizeVertical *
-                                        3),
-                          ),
-                        ),
-                      ),
-                      gradient: LinearGradient(
-                          colors: [
-                            CColor.HomeScreenClassButtonLeft,
-                            CColor.HomeScreenClassButtonRight
-                          ],
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight),
-                      height: SizeConfig.blockSizeVertical * 7,
-                      onPressed: () {},
-                      radius: SizeConfig.blockSizeVertical * 4)
+                  state.classroom.subject != ""
+                      ? SizedBox(
+                          height: SizeConfig.blockSizeVertical * 4,
+                        )
+                      : SizedBox(),
+                  state.classroom.subject != ""
+                      ? BlocProvider(
+                          create: (context2) => sl<stud.StudentsPageBloc>(),
+                          child: Builder(builder: (context2) {
+                            return CustomRaisedGradientButton(
+                                child: Container(
+                                  width: SizeConfig.screenWidth * 0.48,
+                                  child: Center(
+                                    child: Text(
+                                      "Assign Student",
+                                      style: GoogleFonts.roboto(
+                                          color: CColor.HomeScreenBGColor,
+                                          fontSize:
+                                              SizeConfig.blockSizeVertical * 3),
+                                    ),
+                                  ),
+                                ),
+                                gradient: LinearGradient(
+                                    colors: [
+                                      CColor.HomeScreenClassButtonLeft,
+                                      CColor.HomeScreenClassButtonRight
+                                    ],
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight),
+                                height: SizeConfig.blockSizeVertical * 7,
+                                onPressed: () {
+                                  showStudents(context, context2, state);
+                                },
+                                radius: SizeConfig.blockSizeVertical * 4);
+                          }),
+                        )
+                      : SizedBox(),
                 ],
               ),
             ),
@@ -302,95 +308,83 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
 
   void showSubjects(BuildContext context, BuildContext context2, Loaded state) {
     Navigator.pop(context);
-    BlocProvider.of<
-                sub.SubjectsPageBloc>(
-            context2)
-        .add(sub.GetSubject());
+    BlocProvider.of<sub.SubjectsPageBloc>(context2).add(sub.GetSubject());
     showDialog(
         context: context2,
         builder: (context2) {
           return Dialog(
             insetPadding: EdgeInsets.symmetric(
-                horizontal: SizeConfig
-                        .screenWidth *
-                    0.1,
-                vertical: SizeConfig
-                        .screenHeight *
-                    0.1),
+                horizontal: SizeConfig.screenWidth * 0.1,
+                vertical: SizeConfig.screenHeight * 0.1),
             child: Container(
                 padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig
-                            .screenWidth *
-                        0.1,
-                    vertical: SizeConfig
-                            .screenHeight *
-                        0.05),
-                child:
-                    BlocProvider.value(
-                  value: sl<
-                      sub.SubjectsPageBloc>(),
-                  child: BlocBuilder<
-                      sub.SubjectsPageBloc,
-                      sub.SubjectsPageState>(
-                    builder: (context2,
-                        state2) {
-                      if (state2 is sub
-                          .Loading) {
+                    horizontal: SizeConfig.screenWidth * 0.1,
+                    vertical: SizeConfig.screenHeight * 0.05),
+                child: BlocProvider.value(
+                  value: sl<sub.SubjectsPageBloc>(),
+                  child:
+                      BlocBuilder<sub.SubjectsPageBloc, sub.SubjectsPageState>(
+                    builder: (context2, state2) {
+                      if (state2 is sub.Loading) {
                         return Center(
-                          child:
-                              CircularProgressIndicator(),
+                          child: CircularProgressIndicator(),
                         );
-                      } else if (state2
-                          is sub
-                              .Error) {
+                      } else if (state2 is sub.Error) {
                         return Center(
-                          child: Text(state2
-                              .message),
+                          child: Text(state2.message),
                         );
-                      } else if (state2
-                          is sub
-                              .Loaded) {
+                      } else if (state2 is sub.Loaded) {
                         return ListView(
-                          shrinkWrap:
-                              true,
-                          children: state2
-                              .subjectsDataModel
-                              .subjects
-                              .map((e) =>
-                                  BlocProvider
-                                      .value(
-                                    value:
-                                        sl<InnerClassRoomPageBloc>(),
-                                    child:
-                                        Builder(
+                          shrinkWrap: true,
+                          children: state2.subjectsDataModel.subjects
+                              .map((e) => BlocProvider.value(
+                                    value: sl<InnerClassRoomPageBloc>(),
+                                    child: Builder(
                                       builder: (
                                         context3,
                                       ) {
                                         return OutlinedButton(
                                             style: ButtonStyle(
-                                              side: MaterialStateProperty.resolveWith((states) {
+                                              side: MaterialStateProperty
+                                                  .resolveWith((states) {
                                                 Color _borderColor;
 
-                                                if (states.contains(MaterialState.disabled)) {
-                                                  _borderColor = CColor.HomeScreenSubjectButtonLeft;
-                                                } else if (states.contains(MaterialState.pressed)) {
-                                                  _borderColor = CColor.HomeScreenSubjectButtonLeft;
+                                                if (states.contains(
+                                                    MaterialState.disabled)) {
+                                                  _borderColor = CColor
+                                                      .HomeScreenSubjectButtonLeft;
+                                                } else if (states.contains(
+                                                    MaterialState.pressed)) {
+                                                  _borderColor = CColor
+                                                      .HomeScreenSubjectButtonLeft;
                                                 } else {
-                                                  _borderColor = CColor.HomeScreenSubjectButtonLeft;
+                                                  _borderColor = CColor
+                                                      .HomeScreenSubjectButtonLeft;
                                                 }
 
-                                                return BorderSide(color: _borderColor, width: 1);
+                                                return BorderSide(
+                                                    color: _borderColor,
+                                                    width: 1);
                                               }),
                                             ),
                                             onPressed: () {
-                                              BlocProvider.of<InnerClassRoomPageBloc>(context3).add(SetSubject(classRoomId: state.classroom.id, subjectId: e.id));
+                                              BlocProvider.of<
+                                                          InnerClassRoomPageBloc>(
+                                                      context3)
+                                                  .add(SetSubject(
+                                                      classRoomId:
+                                                          state.classroom.id,
+                                                      subjectId: e.id));
                                               Navigator.pop(context3);
                                             },
                                             child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text(
                                                 e.name,
-                                                style: TextStyle(color: CColor.HomeScreenStudentButtonLeft),
+                                                style: TextStyle(
+                                                    color: CColor
+                                                        .HomeScreenStudentButtonLeft),
                                               ),
                                             ));
                                       },
@@ -401,9 +395,7 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                       } else {
                         return Text(
                           "An error occured",
-                          textAlign:
-                              TextAlign
-                                  .center,
+                          textAlign: TextAlign.center,
                         );
                       }
                     },
@@ -411,5 +403,104 @@ class _InnerClasssRoomPageState extends State<InnerClasssRoomPage> {
                 )),
           );
         });
+  }
+
+  void showStudents(BuildContext context, BuildContext context2, Loaded state) {
+    Navigator.pop(context);
+    BlocProvider.of<stud.StudentsPageBloc>(context2).add(stud.GetStudent());
+    showDialog(
+        context: context2,
+        builder: (context2) {
+          return Dialog(
+            insetPadding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.screenWidth * 0.1,
+                vertical: SizeConfig.screenHeight * 0.1),
+            child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.screenWidth * 0.1,
+                    vertical: SizeConfig.screenHeight * 0.05),
+                child: BlocProvider.value(
+                  value: sl<stud.StudentsPageBloc>(),
+                  child:
+                  BlocBuilder<stud.StudentsPageBloc, stud.StudentsPageState>(
+                    builder: (context2, state2) {
+                      if (state2 is stud.Loading) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (state2 is stud.Error) {
+                        return Center(
+                          child: Text(state2.message),
+                        );
+                      } else if (state2 is stud.Loaded) {
+                        return ListView(
+                          shrinkWrap: true,
+                          children: state2.studentsDataModel.students.map((e) => BlocProvider.value(
+                            value: sl<InnerClassRoomPageBloc>(),
+                            child: Builder(
+                              builder: (
+                                  context3,
+                                  ) {
+                                return OutlinedButton(
+                                    style: ButtonStyle(
+                                      side: MaterialStateProperty
+                                          .resolveWith((states) {
+                                        Color _borderColor;
+
+                                        if (states.contains(
+                                            MaterialState.disabled)) {
+                                          _borderColor = CColor
+                                              .HomeScreenSubjectButtonLeft;
+                                        } else if (states.contains(
+                                            MaterialState.pressed)) {
+                                          _borderColor = CColor
+                                              .HomeScreenSubjectButtonLeft;
+                                        } else {
+                                          _borderColor = CColor
+                                              .HomeScreenSubjectButtonLeft;
+                                        }
+
+                                        return BorderSide(
+                                            color: _borderColor,
+                                            width: 1);
+                                      }),
+                                    ),
+                                    onPressed: () {
+                                      // BlocProvider.of<
+                                      //     InnerClassRoomPageBloc>(
+                                      //     context3)
+                                      //     .add(SetSubject(
+                                      //     classRoomId:
+                                      //     state.classroom.id,
+                                      //     subjectId: e.id));
+                                      // Navigator.pop(context3);
+                                    },
+                                    child: Padding(
+                                      padding:
+                                      const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        e.name,
+                                        style: TextStyle(
+                                            color: CColor
+                                                .HomeScreenStudentButtonLeft),
+                                      ),
+                                    ));
+                              },
+                            ),
+                          ))
+                              .toList(),
+                        );
+                      } else {
+                        return Text(
+                          "An error occured",
+                          textAlign: TextAlign.center,
+                        );
+                      }
+                    },
+                  ),
+                )),
+          );
+        });
+
   }
 }

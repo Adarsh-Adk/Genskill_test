@@ -34,7 +34,7 @@ class ClassRoomRepositoryImpl implements ClassRoomRepository{
         int subject=int.parse(data.subject);
         final subName=await subjectsRemoteDataSource.getSubject(subject);
         print("right was called");
-        ClassRoomDataModel classRoomDataModel=ClassRoomDataModel(id: data.id, layout: data.layout, name: data.name, size: data.size, subject: subName.name);
+        ClassRoomDataModel classRoomDataModel=ClassRoomDataModel(id: data.id, layout: data.layout, name: data.name, size: data.size, subject: subName.name, subjectId: '${data.subject}');
         return Right(classRoomDataModel);
       }else {
         return Right(data);
@@ -54,7 +54,7 @@ class ClassRoomRepositoryImpl implements ClassRoomRepository{
         int subject=int.parse(data.subject);
         final subName=await subjectsRemoteDataSource.getSubject(subject);
         print("right was called");
-        ClassRoomDataModel classRoomDataModel=ClassRoomDataModel(id: data.id, layout: data.layout, name: data.name, size: data.size, subject: subName.name);
+        ClassRoomDataModel classRoomDataModel=ClassRoomDataModel(id: data.id, layout: data.layout, name: data.name, size: data.size, subject: subName.name, subjectId: '${data.subject}');
         return Right(classRoomDataModel);
       }else {
         return Right(data);
