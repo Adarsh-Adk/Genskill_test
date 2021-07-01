@@ -24,13 +24,13 @@ class Registration {
   });
 
   int id;
-  int student;
-  int subject;
+  String student;
+  String subject;
 
   factory Registration.fromJson(Map<String, dynamic> json) => Registration(
     id: json["id"],
-    student: json["student"],
-    subject: json["subject"],
+    student: json["student"].toString(),
+    subject: json["subject"].toString(),
   );
 
   Map<String, dynamic> toJson() => {

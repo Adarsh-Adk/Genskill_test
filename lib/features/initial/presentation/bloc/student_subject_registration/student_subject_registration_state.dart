@@ -17,6 +17,15 @@ class Error extends StudentSubjectRegistrationState {
 }
 
 class Loaded extends StudentSubjectRegistrationState {
-  final String code;
-  Loaded({@required this.code});
+
+  final int code;
+  final RegistrationsDataModel registrationsDataModel;
+  Loaded({ this.code, this.registrationsDataModel});
+}
+
+class Deleted extends StudentSubjectRegistrationState{
+  final int code;
+
+  Deleted({@required this.code});
+
 }

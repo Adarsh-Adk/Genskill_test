@@ -50,13 +50,10 @@ class RegistrationsRemoteDataSourceImpl implements RegistrationsRemoteDataSource
     Uri uri=Uri.parse("${URL.BASEURL}/registration/$registrationId${URL.APIKEY}");
     final response=await client.delete(uri,headers: {'Content-Type': 'application/x-www-form-urlencoded'});
     if(response.statusCode==200){
-      var result=response.statusCode;
+      int result=200;
       print(result);
       return result;
-    }else if(response.statusCode==404){
-      var result=response.statusCode;
-      return result;
-    }else{
+    } else{
       print(response.statusCode);
       throw ServerException;
     }

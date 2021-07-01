@@ -10,6 +10,8 @@ static const Color HomeScreenSubjectButtonLeft=Color(0xff00ccff);
 static const Color HomeScreenSubjectButtonRight=Color(0xff0099ff);
 static const Color HomeScreenClassButtonLeft=Color(0xff00ccff);
 static const Color HomeScreenClassButtonRight=Color(0xff0099ff);
+static const Color thumbsUp = Colors.green;
+static const Color thumbsDown = Colors.red;
 
 
 

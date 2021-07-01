@@ -27,56 +27,54 @@ class ClassRoomPage extends StatelessWidget {
         child: SafeArea(
             child: BlocProvider(
               create: (_) => sl.get<ClassRoomPageBloc>(),
-              child: BlocBuilder<ClassRoomPageBloc, ClassRoomPageState>(
-                builder: (context, state) {
-                  if (state is Empty) {
-                    return Center(
-                      child: Text("Empty"),
-                    );
-                  } else if (state is Loading) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (state is Loaded) {
-                    return ListView.builder(
-                        itemCount: state.classrooms.classrooms.length,
-                        itemBuilder: (context, index) {
+              child: Builder(
+                builder: (context) {
+                  BlocProvider.of<ClassRoomPageBloc>(context).add(GetClassRooms());
+                  return BlocBuilder<ClassRoomPageBloc, ClassRoomPageState>(
+                    builder: (context, state) {
+                      if (state is Empty) {
+                        return Center(
+                          child: Text("Empty"),
+                        );
+                      } else if (state is Loading) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (state is Loaded) {
+                        return ListView.builder(
+                            itemCount: state.classrooms.classrooms.length,
+                            itemBuilder: (context, index) {
 
-                          return BlocProvider(
-                            create:(_)=>sl<inner.InnerClassRoomPageBloc>() ,
-                            child:Builder(
-                              builder: (context) {
-                                Classrooms classroom = state.classrooms
-                                    .classrooms[index];
-                                return GestureDetector(
-                                    onTap: () {
-                                      BlocProvider.of<
-                                          inner.InnerClassRoomPageBloc>(
-                                          context)
-                                          .add(
-                                          inner.GetClassRoom(id: classroom.id));
-                                      print(classroom.name);
-                                      Navigator.push(
-                                          context,
-                                          PageTransition(
-                                              child: InnerClasssRoomPage(),
-                                              type: PageTransitionType.fade));
-                                    },
-                                    child: ClassRoomCard(classroom: classroom));
-                              },
-                            ),
-                          );
-                        });
-                  } else if (state is Error) {
-                    return Center(
-                      child: Text(state.message),
-                    );
-                  } else {
-                    return Center(
-                      child: Text("a custom error occured"),
-                    );
-                  }
-                },
+                              return Builder(
+                                builder: (context) {
+                                  Classrooms classroom = state.classrooms
+                                      .classrooms[index];
+                                  return GestureDetector(
+                                      onTap: () {
+
+                                        print(classroom.name);
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                child: InnerClassRoomPage(id: classroom.id,),
+                                                type: PageTransitionType.fade));
+                                      },
+                                      child: ClassRoomCard(classroom: classroom));
+                                },
+                              );
+                            });
+                      } else if (state is Error) {
+                        return Center(
+                          child: Text(state.message),
+                        );
+                      } else {
+                        return Center(
+                          child: Text("a custom error occured"),
+                        );
+                      }
+                    },
+                  );
+                }
               ),
             )),
       ),

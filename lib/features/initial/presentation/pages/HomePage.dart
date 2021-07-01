@@ -5,12 +5,12 @@ import 'package:genskill_test/core/constants/SizeConfig.dart';
 import 'package:genskill_test/features/initial/presentation/bloc/StudentsPageBloc/StudentsPageBloc.dart';
 import 'package:genskill_test/features/initial/presentation/bloc/class_room_page/class_room_page_bloc.dart';
 import 'package:genskill_test/features/initial/presentation/bloc/subjects_page/subjects_page_bloc.dart';
+import 'package:genskill_test/features/initial/presentation/pages/RegistrationsPage/RegistrationsPage.dart';
 import 'package:genskill_test/features/initial/presentation/pages/StudentPages/StudentPage.dart';
 import 'package:genskill_test/features/initial/presentation/pages/SubjectPages/SubjectPage.dart';
 import 'package:genskill_test/features/initial/presentation/widgets/CustomRaisedGradientButton.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
-
 import 'ClassroomPages/ClassRoomPage.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -71,13 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
-                    gradient: LinearGradient(
-                        colors: [
-                          CColor.HomeScreenStudentButtonLeft,
-                          CColor.HomeScreenStudentButtonRight
-                        ],
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight),
+                    gradient: LinearGradient(colors: [
+                      CColor.HomeScreenStudentButtonLeft,
+                      CColor.HomeScreenStudentButtonRight
+                    ], begin: Alignment.centerLeft, end: Alignment.centerRight),
                     height: SizeConfig.blockSizeVertical * 7,
                     onPressed: () {
                       onStudentButtonPressed(context);
@@ -112,13 +109,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
-                    gradient: LinearGradient(
-                        colors: [
-                          CColor.HomeScreenSubjectButtonLeft,
-                          CColor.HomeScreenSubjectButtonRight
-                        ],
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight),
+                    gradient: LinearGradient(colors: [
+                      CColor.HomeScreenSubjectButtonLeft,
+                      CColor.HomeScreenSubjectButtonRight
+                    ], begin: Alignment.centerLeft, end: Alignment.centerRight),
                     height: SizeConfig.blockSizeVertical * 7,
                     onPressed: () {
                       onSubjectPress(context);
@@ -153,6 +147,46 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
+                    gradient: LinearGradient(colors: [
+                      CColor.HomeScreenClassButtonLeft,
+                      CColor.HomeScreenClassButtonRight
+                    ], begin: Alignment.centerLeft, end: Alignment.centerRight),
+                    height: SizeConfig.blockSizeVertical * 7,
+                    onPressed: () {
+                      onClassRoomButtonPressed(context);
+                    },
+                    radius: SizeConfig.blockSizeVertical * 4),
+                SizedBox(
+                  height: gap,
+                ),
+                CustomRaisedGradientButton(
+                    child: Container(
+                      width: SizeConfig.screenWidth * 0.48,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                                width: SizeConfig.blockSizeHorizontal * 4,
+                                child: Icon(
+                                  Icons.portrait,
+                                  color: CColor.HomeScreenBGColor,
+                                )),
+                            Text(
+                              "Registrations",
+                              style: GoogleFonts.roboto(
+                                  color: CColor.HomeScreenBGColor,
+                                  fontSize:
+                                  SizeConfig.blockSizeVertical * 3),
+                            ),
+                            Container(
+                                color: Colors.transparent,
+                                width: SizeConfig.blockSizeHorizontal * 4)
+                          ],
+                        ),
+                      ),
+                    ),
                     gradient: LinearGradient(
                         colors: [
                           CColor.HomeScreenClassButtonLeft,
@@ -162,9 +196,70 @@ class _MyHomePageState extends State<MyHomePage> {
                         end: Alignment.centerRight),
                     height: SizeConfig.blockSizeVertical * 7,
                     onPressed: () {
-                      onClassRoomButtonPressed(context);
+                      // BlocProvider.of<StudentSubjectRegistrationBloc>(
+                      //         context2)
+                      //     .add(GetRegistrations());
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              child: RegistrationsPage(),
+                              type: PageTransitionType.fade));
                     },
                     radius: SizeConfig.blockSizeVertical * 4),
+                // BlocProvider(
+                //   create: (context2) => sl<StudentSubjectRegistrationBloc>(),
+                //   child: Builder(
+                //     builder: (context2) {
+                //       return CustomRaisedGradientButton(
+                //           child: Container(
+                //             width: SizeConfig.screenWidth * 0.48,
+                //             child: Center(
+                //               child: Row(
+                //                 mainAxisAlignment:
+                //                     MainAxisAlignment.spaceBetween,
+                //                 children: [
+                //                   Container(
+                //                       width: SizeConfig.blockSizeHorizontal * 4,
+                //                       child: Icon(
+                //                         Icons.portrait,
+                //                         color: CColor.HomeScreenBGColor,
+                //                       )),
+                //                   Text(
+                //                     "Registrations",
+                //                     style: GoogleFonts.roboto(
+                //                         color: CColor.HomeScreenBGColor,
+                //                         fontSize:
+                //                             SizeConfig.blockSizeVertical * 3),
+                //                   ),
+                //                   Container(
+                //                       color: Colors.transparent,
+                //                       width: SizeConfig.blockSizeHorizontal * 4)
+                //                 ],
+                //               ),
+                //             ),
+                //           ),
+                //           gradient: LinearGradient(
+                //               colors: [
+                //                 CColor.HomeScreenClassButtonLeft,
+                //                 CColor.HomeScreenClassButtonRight
+                //               ],
+                //               begin: Alignment.centerLeft,
+                //               end: Alignment.centerRight),
+                //           height: SizeConfig.blockSizeVertical * 7,
+                //           onPressed: () {
+                //             // BlocProvider.of<StudentSubjectRegistrationBloc>(
+                //             //         context2)
+                //             //     .add(GetRegistrations());
+                //             Navigator.push(
+                //                 context,
+                //                 PageTransition(
+                //                     child: RegistrationsPage(),
+                //                     type: PageTransitionType.fade));
+                //           },
+                //           radius: SizeConfig.blockSizeVertical * 4);
+                //     },
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -174,31 +269,17 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void onSubjectPress(BuildContext context) {
-
-        BlocProvider.of<SubjectsPageBloc>(context).add(GetSubject());
-
     Navigator.push(context,
         PageTransition(child: SubjectPage(), type: PageTransitionType.fade));
-
   }
 
   void onStudentButtonPressed(BuildContext context) {
-
-       BlocProvider.of<StudentsPageBloc>(context).add(GetStudent());
-
     Navigator.push(context,
         PageTransition(child: StudentPage(), type: PageTransitionType.fade));
-
   }
+
   void onClassRoomButtonPressed(BuildContext context) {
-
-    BlocProvider.of<ClassRoomPageBloc>(context).add(GetClassRooms());
-
     Navigator.push(context,
         PageTransition(child: ClassRoomPage(), type: PageTransitionType.fade));
-
   }
-
-
-
 }

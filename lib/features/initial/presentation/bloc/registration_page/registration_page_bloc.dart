@@ -5,27 +5,28 @@ import 'package:equatable/equatable.dart';
 import 'package:genskill_test/core/error/Failures.dart';
 import 'package:genskill_test/core/usecases/UseCase.dart';
 import 'package:genskill_test/features/initial/domain/entities/Registrations.dart';
-import 'package:genskill_test/features/initial/domain/usecases/RegistrationsDeleteRegistrationUseCase.dart'as del;
 import 'package:genskill_test/features/initial/domain/usecases/RegistrationsGetRegistrationsUseCase.dart';
 import 'package:genskill_test/features/initial/domain/usecases/RegistrationsSetRegistrationUseCase.dart';
 import 'package:meta/meta.dart';
+import 'package:genskill_test/features/initial/domain/usecases/RegistrationsDeleteRegistrationUseCase.dart'as del;
 
-part 'student_subject_registration_event.dart';
+part 'registration_page_event.dart';
 
-part 'student_subject_registration_state.dart';
+part 'registration_page_state.dart';
+
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 
-class StudentSubjectRegistrationBloc extends Bloc<StudentSubjectRegistrationEvent, StudentSubjectRegistrationState> {
+class RegistrationPageBloc extends Bloc<RegistrationPageEvent, RegistrationPageState> {
   final RegistrationsSetRegistrationUseCase setRegistrationUseCase;
   final del.RegistrationsDeleteRegistrationUseCase deleteRegistrationUseCase;
   final RegistrationsGetRegistrationsUseCase getRegistrationsUseCase;
-  StudentSubjectRegistrationBloc({@required RegistrationsSetRegistrationUseCase setRegistration,@required del.RegistrationsDeleteRegistrationUseCase deleteRegistration,@required  RegistrationsGetRegistrationsUseCase getRegistrations}) :setRegistrationUseCase=setRegistration,getRegistrationsUseCase=getRegistrations,deleteRegistrationUseCase=deleteRegistration, super(Empty());
+  RegistrationPageBloc({@required RegistrationsSetRegistrationUseCase setRegistration,@required del.RegistrationsDeleteRegistrationUseCase deleteRegistration,@required  RegistrationsGetRegistrationsUseCase getRegistrations}) : setRegistrationUseCase=setRegistration,getRegistrationsUseCase=getRegistrations,deleteRegistrationUseCase=deleteRegistration, super(Empty());
 
-  StudentSubjectRegistrationState get initial=>Empty();
+  RegistrationPageState get initial=>Empty();
 
   @override
-  Stream<StudentSubjectRegistrationState> mapEventToState(StudentSubjectRegistrationEvent event) async* {
-
+  Stream<RegistrationPageState> mapEventToState(
+      RegistrationPageEvent event) async* {
     if(event is RegisterStudentSubject){
       Failure failure;
       yield Loading();
@@ -61,9 +62,8 @@ class StudentSubjectRegistrationBloc extends Bloc<StudentSubjectRegistrationEven
         yield Error(message: _mapFailureToMessage(failure));
       }
     }
-
   }
-  Stream<StudentSubjectRegistrationState> _eitherLoadedOrErrorState2(Either<Failure,int> failureOrTrivia,) async* {
+  Stream<RegistrationPageState> _eitherLoadedOrErrorState2(Either<Failure,int> failureOrTrivia,) async* {
     print("either loaded called");
     yield failureOrTrivia.fold(
           (failure) => Error(message: _mapFailureToMessage(failure)),
@@ -71,7 +71,7 @@ class StudentSubjectRegistrationBloc extends Bloc<StudentSubjectRegistrationEven
     );
   }
 
-  Stream<StudentSubjectRegistrationState> _eitherLoadedOrErrorState(Either<Failure,RegistrationsDataModel> failureOrTrivia,) async* {
+  Stream<RegistrationPageState> _eitherLoadedOrErrorState(Either<Failure,RegistrationsDataModel> failureOrTrivia,) async* {
     print("either loaded called");
     yield failureOrTrivia.fold(
           (failure) => Error(message: _mapFailureToMessage(failure)),
@@ -90,5 +90,4 @@ class StudentSubjectRegistrationBloc extends Bloc<StudentSubjectRegistrationEven
         return 'Unexpected error';
     }
   }
-
 }

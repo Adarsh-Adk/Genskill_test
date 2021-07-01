@@ -7,6 +7,7 @@ import 'package:genskill_test/features/initial/presentation/bloc/subjects_page/s
 import 'package:genskill_test/features/initial/presentation/widgets/SubjectsCard.dart';
 
 import '../../../../../InjectionContainer.dart';
+
 class SubjectPage extends StatelessWidget {
   const SubjectPage({Key key}) : super(key: key);
 
@@ -20,25 +21,31 @@ class SubjectPage extends StatelessWidget {
         color: CColor.HomeScreenBGColor,
         child: SafeArea(
             child: BlocProvider(
-              create: (_) =>sl.get<SubjectsPageBloc>(),
-              child: BlocBuilder<SubjectsPageBloc, SubjectsPageState>(
-                builder: (context, state) {
-                  if (state is Empty) {
-                    return Center(child: Text("Empty"),);
-                  } else if (state is Loading) {
-                    return Center(child: CircularProgressIndicator(),);
-                  } else if (state is Loaded) {
-                    return ListView.builder(
-                        itemCount: state.subjectsDataModel.subjects.length,
-                        itemBuilder: (context,index){
-                          Subject subject=state.subjectsDataModel.subjects[index];
-                          return SubjectsCard(subject: subject,);
-                        });
-                  } else if (state is Error) {
-                    return Center(child: Text(state.message),);
-                  } else {
-                    return Center(child: Text("a custom error occured"),);
-                  }
+              create: (_) => sl.get<SubjectsPageBloc>(),
+              child: Builder(
+                builder: (context) {
+                  BlocProvider.of<SubjectsPageBloc>(context).add(GetSubject());
+                  return BlocBuilder<SubjectsPageBloc, SubjectsPageState>(
+                    builder: (context, state) {
+                      if (state is Empty) {
+                        return Center(child: Text("Empty"),);
+                      } else if (state is Loading) {
+                        return Center(child: CircularProgressIndicator(),);
+                      } else if (state is Loaded) {
+                        return ListView.builder(
+                            itemCount: state.subjectsDataModel.subjects.length,
+                            itemBuilder: (context, index) {
+                              Subject subject = state.subjectsDataModel
+                                  .subjects[index];
+                              return SubjectsCard(subject: subject,);
+                            });
+                      } else if (state is Error) {
+                        return Center(child: Text(state.message),);
+                      } else {
+                        return Center(child: Text("a custom error occured"),);
+                      }
+                    },
+                  );
                 },
               ),
             )
