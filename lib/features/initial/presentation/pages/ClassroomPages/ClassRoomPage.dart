@@ -4,8 +4,6 @@ import 'package:genskill_test/core/constants/CColor.dart';
 import 'package:genskill_test/core/constants/SizeConfig.dart';
 import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
 import 'package:genskill_test/features/initial/presentation/bloc/class_room_page/class_room_page_bloc.dart';
-import 'package:genskill_test/features/initial/presentation/bloc/inner_class_room_page/inner_class_room_page_bloc.dart'
-as inner;
 import 'package:genskill_test/features/initial/presentation/widgets/ClassRoomCard.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../../../../InjectionContainer.dart';
