@@ -13,7 +13,7 @@ class StudentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Students"),),
+      appBar: AppBar(title: Text("Students",style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),),
       body: Container(
         width: SizeConfig.screenWidth,
         height: SizeConfig.screenHeight,
@@ -27,7 +27,7 @@ class StudentPage extends StatelessWidget {
                   return BlocBuilder<StudentsPageBloc, StudentsPageState>(
                     builder: (context, state) {
                       if (state is Empty) {
-                        return Center(child: Text("Empty"),);
+                        return Center(child: Text("Empty",style: Theme.of(context).textTheme.headline2,),);
                       } else if (state is Loading) {
                         return Center(child: CircularProgressIndicator(),);
                       } else if (state is Loaded) {
@@ -38,9 +38,9 @@ class StudentPage extends StatelessWidget {
                           return StudentsCard(student: student,);
                         });
                       } else if (state is Error) {
-                        return Center(child: Text(state.message),);
+                        return Center(child: Text(state.message,style: Theme.of(context).textTheme.headline2,),);
                       } else {
-                        return Center(child: Text("a custom error occured"),);
+                        return Center(child: Text("a custom error occured",style: Theme.of(context).textTheme.headline2,),);
                       }
                     },
                   );

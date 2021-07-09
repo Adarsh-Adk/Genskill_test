@@ -27,7 +27,7 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
           BlocProvider.of<RegistrationPageBloc>(context).add(GetRegistrations());
           return Scaffold(
           appBar: AppBar(
-            title: Text("Registrations"),
+            title: Text("Registrations",style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
           ),
           body: Container(
             height: SizeConfig.screenHeight,
@@ -48,18 +48,18 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
                     }else{ if (state.registrationsDataModel.registrations.length ==
                         0) {
                       return Center(
-                        child: Text("Registrations list is empty",textAlign: TextAlign.center,style: TextStyle(fontFamily:'Ubuntu',fontSize: SizeConfig.blockSizeHorizontal*5),),
+                        child: Text("Registrations list is empty",textAlign: TextAlign.center,style:Theme.of(context).textTheme.headline2.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5)),
                       );
                     } else {
                       return listViewWidget(state);
                     }}
                   } else if (state is Error) {
                     return Center(
-                      child: Text("${state.message}"),
+                      child: Text("${state.message}",style: Theme.of(context).textTheme.headline2,),
                     );
                   } else {
                     return Center(
-                      child: Text("An unexpected error occurred"),
+                      child: Text("An unexpected error occurred",style: Theme.of(context).textTheme.headline2,),
                     );
                   }
                 },
@@ -113,24 +113,24 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
                 crossAxisAlignment:
                 CrossAxisAlignment.start,
                 children: [
-                  Text("Id",style: CStyles.registrationCardTextStyle,),
+                  Text("Id",style: Theme.of(context).textTheme.headline1,),
                   SizedBox(
                     height:
                     SizeConfig.blockSizeVertical * 1,
                   ),
-                  Text("Subject",style: CStyles.registrationCardTextStyle),
+                  Text("Subject",style: Theme.of(context).textTheme.headline1),
                   SizedBox(
                     height:
                     SizeConfig.blockSizeVertical * 1,
                   ),
-                  Text("Student",style: CStyles.registrationCardTextStyle),
+                  Text("Student",style: Theme.of(context).textTheme.headline1),
                 ],
               ),
             ),
             IconButton(
                 icon: Icon(
                   Icons.delete,
-                  color: CColor.HomeScreenBGColor,
+                  color:Theme.of(context).backgroundColor,
                 ),
                 onPressed: () {
                   BlocProvider.of<
@@ -153,17 +153,17 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
                 crossAxisAlignment:
                 CrossAxisAlignment.end,
                 children: [
-                  Text(data.id.toString(),style: CStyles.registrationCardTextStyle),
+                  Text(data.id.toString(),style: Theme.of(context).textTheme.headline1),
                   SizedBox(
                     height:
                     SizeConfig.blockSizeVertical * 1,
                   ),
-                  Text(data.subject.toString(),style: CStyles.registrationCardTextStyle),
+                  Text(data.subject.toString(),style: Theme.of(context).textTheme.headline1),
                   SizedBox(
                     height:
                     SizeConfig.blockSizeVertical * 1,
                   ),
-                  Text(data.student.toString(),style: CStyles.registrationCardTextStyle),
+                  Text(data.student.toString(),style:Theme.of(context).textTheme.headline1),
                 ],
               ),
             ),

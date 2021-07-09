@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/CColor.dart';
 import '../../../../core/constants/SizeConfig.dart';
 import '../../domain/entities/Subjects.dart';
 
@@ -58,14 +57,14 @@ class _SubjectsCardState extends State<SubjectsCard> {
                       children: [
                         Text(
                           "Subject",
-                          style: TextStyle(color: CColor.HomeScreenBGColor),
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                         Container(
                           width: _width,
                           child: Text(
                             widget.subject.name ?? "N/A",
                             textAlign: align2,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                         ),
                       ],
@@ -90,14 +89,14 @@ class _SubjectsCardState extends State<SubjectsCard> {
                       children: [
                         Text(
                           "Id",
-                          style: TextStyle(color: CColor.HomeScreenBGColor),
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                         Container(
                           width: _width,
                           child: Text(
                             widget.subject.id.toString() ?? "N/A",
                             textAlign: align2,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                         ),
                       ],
@@ -114,7 +113,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                           child: Text(
                             "Credits",
                             textAlign: align1,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                         ),
                         Container(
@@ -122,7 +121,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                             child: Text(
                               widget.subject.credits.toString() ?? "N/A",
                               textAlign: align2,
-                              style: TextStyle(color: CColor.HomeScreenBGColor),
+                              style:Theme.of(context).textTheme.headline1,
                             )),
                       ],
                     ),
@@ -138,7 +137,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                           child: Text(
                             "Teacher",
                             textAlign: align1,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                         ),
                         Container(
@@ -146,7 +145,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                             child: Text(
                               widget.subject.teacher ?? "N/A",
                               textAlign: align2,
-                              style: TextStyle(color: CColor.HomeScreenBGColor),
+                              style: Theme.of(context).textTheme.headline1,
                             )),
                       ],
                     ),

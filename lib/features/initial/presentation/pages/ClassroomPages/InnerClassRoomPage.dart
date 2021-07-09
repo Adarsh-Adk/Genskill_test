@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/CColor.dart';
 import '../../../../../core/constants/SizeConfig.dart';
-import '../../bloc/StudentsPageBloc/StudentsPageBloc.dart'
-    as stud;
+import '../../bloc/StudentsPageBloc/StudentsPageBloc.dart' as stud;
 import '../../bloc/inner_class_room_page/inner_class_room_page_bloc.dart';
-import '../../bloc/student_subject_registration/student_subject_registration_bloc.dart'
-    as studsub;
-import '../../bloc/subjects_page/subjects_page_bloc.dart'
-    as sub;
+import '../../bloc/student_subject_registration/student_subject_registration_bloc.dart' as studsub;
+import '../../bloc/subjects_page/subjects_page_bloc.dart' as sub;
 import '../../widgets/CustomRaisedGradientButton.dart';
 import '../../../../../InjectionContainer.dart';
 
@@ -48,7 +45,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
               print(state.classroom.subjectId);
               return Scaffold(
                 appBar: AppBar(
-                  title: Text("${state.classroom.name}"),
+                  title: Text("${state.classroom.name}",style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
                 ),
                 body: Container(
                     height: SizeConfig.screenHeight,
@@ -81,16 +78,14 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                               children: [
                                 Text(
                                   "Classroom Name",
-                                  style: TextStyle(
-                                      color: CColor.HomeScreenBGColor),
+                                  style: Theme.of(context).textTheme.headline1,
                                 ),
                                 Container(
                                   width: _width,
                                   child: Text(
                                     state.classroom.name ?? "N/A",
                                     textAlign: align2,
-                                    style: TextStyle(
-                                        color: CColor.HomeScreenBGColor),
+                                    style: Theme.of(context).textTheme.headline1,
                                   ),
                                 ),
                               ],
@@ -104,16 +99,14 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                               children: [
                                 Text(
                                   "Classroom Id",
-                                  style: TextStyle(
-                                      color: CColor.HomeScreenBGColor),
+                                  style: Theme.of(context).textTheme.headline1,
                                 ),
                                 Container(
                                   width: _width,
                                   child: Text(
                                     state.classroom.id.toString() ?? "N/A",
                                     textAlign: align2,
-                                    style: TextStyle(
-                                        color: CColor.HomeScreenBGColor),
+                                    style: Theme.of(context).textTheme.headline1,
                                   ),
                                 ),
                               ],
@@ -127,8 +120,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                               children: [
                                 Text(
                                   "Classroom Subject",
-                                  style: TextStyle(
-                                      color: CColor.HomeScreenBGColor),
+                                  style: Theme.of(context).textTheme.headline1,
                                 ),
                                 Container(
                                   width: _width,
@@ -137,8 +129,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                         ? "Not Assigned"
                                         : state.classroom.subject,
                                     textAlign: align2,
-                                    style: TextStyle(
-                                        color: CColor.HomeScreenBGColor),
+                                    style: Theme.of(context).textTheme.headline1,
                                   ),
                                 ),
                               ],
@@ -152,16 +143,14 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                               children: [
                                 Text(
                                   "Classroom Layout",
-                                  style: TextStyle(
-                                      color: CColor.HomeScreenBGColor),
+                                  style: Theme.of(context).textTheme.headline1,
                                 ),
                                 Container(
                                   width: _width,
                                   child: Text(
                                     state.classroom.layout ?? "N/A",
                                     textAlign: align2,
-                                    style: TextStyle(
-                                        color: CColor.HomeScreenBGColor),
+                                    style: Theme.of(context).textTheme.headline1,
                                   ),
                                 ),
                               ],
@@ -175,16 +164,14 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                               children: [
                                 Text(
                                   "Classroom Size",
-                                  style: TextStyle(
-                                      color: CColor.HomeScreenBGColor),
+                                  style: Theme.of(context).textTheme.headline1,
                                 ),
                                 Container(
                                   width: _width,
                                   child: Text(
                                     state.classroom.size.toString() ?? "N/A",
                                     textAlign: align2,
-                                    style: TextStyle(
-                                        color: CColor.HomeScreenBGColor),
+                                    style: Theme.of(context).textTheme.headline1,
                                   ),
                                 ),
                               ],
@@ -206,19 +193,19 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
             } else if (state is Empty) {
               return Material(
                 child: Center(
-                  child: Text("Empty"),
+                  child: Text("Empty",style:Theme.of(context).textTheme.headline2),
                 ),
               );
             } else if (state is Error) {
               return Material(
                 child: Center(
-                  child: Text(state.message),
+                  child: Text(state.message,style: Theme.of(context).textTheme.headline2,),
                 ),
               );
             } else {
               return Material(
                 child: Center(
-                  child: Text("a custom error occured"),
+                  child: Text("a custom error occurred",style: Theme.of(context).textTheme.headline1,),
                 ),
               );
             }
@@ -255,11 +242,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                   state.classroom.subject == ""
                                       ? "Assign Subject"
                                       : "Change Subject",
-                                  style: TextStyle(
-                                      color: CColor.HomeScreenBGColor,
-                                      fontFamily: 'Roboto',
-                                      fontSize:
-                                          SizeConfig.blockSizeVertical * 3),
+                                  style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*4.5),
                                 ),
                               ),
                             ),
@@ -293,11 +276,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                   child: Center(
                                     child: Text(
                                       "Assign Student",
-                                      style:TextStyle(
-                                        fontFamily: 'Roboto',
-                                          color: CColor.HomeScreenBGColor,
-                                          fontSize:
-                                              SizeConfig.blockSizeVertical * 3),
+                                      style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*4.5),
                                     ),
                                   ),
                                 ),
@@ -350,7 +329,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                           );
                         } else if (state2 is sub.Error) {
                           return Center(
-                            child: Text(state2.message),
+                            child: Text(state2.message,style: Theme.of(context2).textTheme.headline2,),
                           );
                         } else if (state2 is sub.Loaded) {
                           return ListView(
@@ -403,9 +382,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(
                                               e.name,
-                                              style: TextStyle(
-                                                  color: CColor
-                                                      .HomeScreenStudentButtonLeft),
+                                              style: Theme.of(context3).textTheme.headline1.copyWith(color: CColor.HomeScreenStudentButtonLeft),
                                             ),
                                           ));
                                     })))
@@ -414,6 +391,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                         } else {
                           return Text(
                             "An error occured",
+                            style: Theme.of(context2).textTheme.headline2,
                             textAlign: TextAlign.center,
                           );
                         }
@@ -452,7 +430,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                           );
                         } else if (state2 is stud.Error) {
                           return Center(
-                            child: Text(state2.message),
+                            child: Text(state2.message,style: Theme.of(context2).textTheme.headline2,),
                           );
                         } else if (state2 is stud.Loaded) {
                           return BlocProvider(
@@ -566,7 +544,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                                         ? "Student already registered"
                                                                                         : "An error occurred",
                                                                                 textAlign: TextAlign.center,
-                                                                                style: TextStyle(color: CColor.thumbsUp,fontFamily: 'Ubuntu' ,fontSize: SizeConfig.blockSizeHorizontal * 5),
+                                                                                style: Theme.of(context3).textTheme.headline1.copyWith(color: CColor.thumbsUp,fontSize: SizeConfig.blockSizeHorizontal*5),
                                                                               ),
                                                                             )),
                                                                       ),
@@ -618,10 +596,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                           "${state4.message}",
                                                                           textAlign:
                                                                               TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            fontFamily: 'Ubuntu',
-                                                                              color: CColor.thumbsDown,
-                                                                              fontSize: SizeConfig.blockSizeHorizontal * 5),
+                                                                          style: Theme.of(context3).textTheme.headline1.copyWith(color: CColor.thumbsDown,fontSize: SizeConfig.blockSizeHorizontal*5),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -632,7 +607,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                         EdgeInsets.all(SizeConfig.screenWidth *
                                                                             0.2),
                                                                     child: Text(
-                                                                        "An error occured"),
+                                                                        "An error occured",style: Theme.of(context3).textTheme.headline2,),
                                                                   );
                                                                 }
                                                               },
@@ -646,9 +621,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                       const EdgeInsets.all(8.0),
                                                   child: Text(
                                                     e.name,
-                                                    style: TextStyle(
-                                                        color: CColor
-                                                            .HomeScreenStudentButtonLeft),
+                                                    style: Theme.of(context3).textTheme.headline2.copyWith(color:CColor.HomeScreenStudentButtonLeft),
                                                   ),
                                                 ));
                                           },
@@ -660,6 +633,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                         } else {
                           return Text(
                             "An error occured",
+                            style: Theme.of(context2).textTheme.headline2,
                             textAlign: TextAlign.center,
                           );
                         }

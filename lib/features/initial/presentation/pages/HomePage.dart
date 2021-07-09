@@ -23,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text("Home",style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
       ),
       body: Container(
         width: SizeConfig.screenWidth,
@@ -55,10 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )),
                             Text(
                               "Students",
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                  color: CColor.HomeScreenBGColor,
-                                  fontSize: SizeConfig.blockSizeVertical * 3),
+                              style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
                             ),
                             Container(
                                 color: Colors.transparent,
@@ -94,10 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )),
                             Text(
                               "Subjects",
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                  color: CColor.HomeScreenBGColor,
-                                  fontSize: SizeConfig.blockSizeVertical * 3),
+                              style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
                             ),
                             Container(
                                 color: Colors.transparent,
@@ -133,10 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )),
                             Text(
                               "Classroom",
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                  color: CColor.HomeScreenBGColor,
-                                  fontSize: SizeConfig.blockSizeVertical * 3),
+                              style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
                             ),
                             Container(
                                 color: Colors.transparent,
@@ -173,11 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )),
                             Text(
                               "Registrations",
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                  color: CColor.HomeScreenBGColor,
-                                  fontSize:
-                                  SizeConfig.blockSizeVertical * 3),
+                              style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
                             ),
                             Container(
                                 color: Colors.transparent,

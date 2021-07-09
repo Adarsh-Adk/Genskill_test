@@ -27,7 +27,7 @@ class SubjectPage extends StatelessWidget {
                   return BlocBuilder<SubjectsPageBloc, SubjectsPageState>(
                     builder: (context, state) {
                       if (state is Empty) {
-                        return Center(child: Text("Empty"),);
+                        return Center(child: Text("Empty",style: Theme.of(context).textTheme.headline2,),);
                       } else if (state is Loading) {
                         return Center(child: CircularProgressIndicator(),);
                       } else if (state is Loaded) {
@@ -39,9 +39,9 @@ class SubjectPage extends StatelessWidget {
                               return SubjectsCard(subject: subject,);
                             });
                       } else if (state is Error) {
-                        return Center(child: Text(state.message),);
+                        return Center(child: Text(state.message,style: Theme.of(context).textTheme.headline2,),);
                       } else {
-                        return Center(child: Text("a custom error occured"),);
+                        return Center(child: Text("a custom error occurred",style: Theme.of(context).textTheme.headline2,),);
                       }
                     },
                   );

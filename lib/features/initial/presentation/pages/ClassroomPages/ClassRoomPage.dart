@@ -16,7 +16,7 @@ class ClassRoomPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ClassRooms"),
+        title: Text("Classrooms",style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
       ),
       body: Container(
         width: SizeConfig.screenWidth,
@@ -32,7 +32,7 @@ class ClassRoomPage extends StatelessWidget {
                     builder: (context, state) {
                       if (state is Empty) {
                         return Center(
-                          child: Text("Empty"),
+                          child: Text("Empty",style: Theme.of(context).textTheme.headline2,),
                         );
                       } else if (state is Loading) {
                         return Center(
@@ -63,11 +63,11 @@ class ClassRoomPage extends StatelessWidget {
                             });
                       } else if (state is Error) {
                         return Center(
-                          child: Text(state.message),
+                          child: Text(state.message,style: Theme.of(context).textTheme.headline2,),
                         );
                       } else {
                         return Center(
-                          child: Text("a custom error occured"),
+                          child: Text("a custom error occured",style: Theme.of(context).textTheme.headline2,),
                         );
                       }
                     },

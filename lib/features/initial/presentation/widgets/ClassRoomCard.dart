@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/CColor.dart';
 import '../../../../core/constants/SizeConfig.dart';
 import '../../domain/entities/ClassRoom.dart';
 
@@ -46,14 +45,14 @@ class _ClassRoomCardState extends State<ClassRoomCard> {
           children: [
             Text(
               "Classroom Name",
-              style: TextStyle(color: CColor.HomeScreenBGColor),
+              style: Theme.of(context).textTheme.headline1,
             ),
             Container(
               width: _width,
               child: Text(
                 widget.classroom.name ?? "N/A",
                 textAlign: align2,
-                style: TextStyle(color: CColor.HomeScreenBGColor),
+                style:Theme.of(context).textTheme.headline1,
               ),
             ),
           ],

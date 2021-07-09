@@ -58,14 +58,14 @@ class _StudentsCardState extends State<StudentsCard> {
                       children: [
                         Text(
                           "Name",
-                          style: TextStyle(color: CColor.HomeScreenBGColor),
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                         Container(
                           width: _width,
                           child: Text(
                             widget.student.name ?? "N/A",
                             textAlign: align2,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                         ),
                       ],
@@ -97,7 +97,7 @@ class _StudentsCardState extends State<StudentsCard> {
                           child: Text(
                             widget.student.id.toString() ?? "N/A",
                             textAlign: align2,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                         ),
                       ],
@@ -114,7 +114,7 @@ class _StudentsCardState extends State<StudentsCard> {
                           child: Text(
                             "Age",
                             textAlign: align1,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                         ),
                         Container(
@@ -122,7 +122,7 @@ class _StudentsCardState extends State<StudentsCard> {
                             child: Text(
                               widget.student.age.toString() ?? "N/A",
                               textAlign: align2,
-                              style: TextStyle(color: CColor.HomeScreenBGColor),
+                              style: Theme.of(context).textTheme.headline1,
                             )),
                       ],
                     ),
@@ -138,7 +138,7 @@ class _StudentsCardState extends State<StudentsCard> {
                           child: Text(
                             "Email",
                             textAlign: align1,
-                            style: TextStyle(color: CColor.HomeScreenBGColor),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                         ),
                         Container(
@@ -146,7 +146,7 @@ class _StudentsCardState extends State<StudentsCard> {
                             child: Text(
                               widget.student.email ?? "N/A",
                               textAlign: align2,
-                              style: TextStyle(color: CColor.HomeScreenBGColor),
+                              style: Theme.of(context).textTheme.headline1,
                             )),
                       ],
                     ),
