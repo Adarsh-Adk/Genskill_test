@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import '../../../../core/error/Failures.dart';
 import '../../../../core/usecases/UseCase.dart';
 import '../repositories/RegistrationsRepository.dart';
-import 'package:meta/meta.dart';
 
 
 class RegistrationsSetRegistrationUseCase extends UseCase<int,Params>{
@@ -21,7 +20,7 @@ class Params extends Equatable {
   final int subjectId;
   final int studentId;
 
-  Params({@required this.subjectId,@required this.studentId,});
+  Params({required this.subjectId,required this.studentId,});
 
   @override
   List<Object> get props => [];

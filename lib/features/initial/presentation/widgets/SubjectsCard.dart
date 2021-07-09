@@ -6,7 +6,7 @@ class SubjectsCard extends StatefulWidget{
   final Subject subject;
 
 
-  SubjectsCard({Key key,@required this.subject}) : super(key: key);
+  SubjectsCard({Key? key,required this.subject}) : super(key: key);
 
   @override
   _SubjectsCardState createState() => _SubjectsCardState();
@@ -15,7 +15,7 @@ class SubjectsCard extends StatefulWidget{
 class _SubjectsCardState extends State<SubjectsCard> {
   final double gap = SizeConfig.blockSizeVertical * 1;
 
-  final double _width = SizeConfig.screenWidth * 0.45;
+  final double _width = SizeConfig.screenWidth! * 0.45;
 
   final TextAlign align2 = TextAlign.end;
 
@@ -94,7 +94,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                         Container(
                           width: _width,
                           child: Text(
-                            widget.subject.id.toString() ?? "N/A",
+                            widget.subject.id.toString(),
                             textAlign: align2,
                             style: Theme.of(context).textTheme.headline1,
                           ),
@@ -119,7 +119,7 @@ class _SubjectsCardState extends State<SubjectsCard> {
                         Container(
                             width: _width,
                             child: Text(
-                              widget.subject.credits.toString() ?? "N/A",
+                              widget.subject.credits.toString(),
                               textAlign: align2,
                               style:Theme.of(context).textTheme.headline1,
                             )),

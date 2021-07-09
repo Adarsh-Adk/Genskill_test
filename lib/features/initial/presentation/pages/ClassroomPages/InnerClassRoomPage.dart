@@ -10,8 +10,8 @@ import '../../widgets/CustomRaisedGradientButton.dart';
 import '../../../../../InjectionContainer.dart';
 
 class InnerClassRoomPage extends StatefulWidget {
-  final int id;
-  const InnerClassRoomPage({Key key, @required this.id}) : super(key: key);
+  final int? id;
+  const InnerClassRoomPage({Key? key, required this.id}) : super(key: key);
 
   @override
   _InnerClassRoomPageState createState() => _InnerClassRoomPageState();
@@ -20,7 +20,7 @@ class InnerClassRoomPage extends StatefulWidget {
 class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
   final double gap = SizeConfig.blockSizeVertical * 1;
 
-  final double _width = SizeConfig.screenWidth * 0.35;
+  final double _width = SizeConfig.screenWidth! * 0.35;
 
   final TextAlign align2 = TextAlign.end;
 
@@ -42,10 +42,10 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                 ),
               );
             } else if (state is Loaded) {
-              print(state.classroom.subjectId);
+              print(state.classroom!.subjectId);
               return Scaffold(
                 appBar: AppBar(
-                  title: Text("${state.classroom.name}",style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
+                  title: Text("${state.classroom!.name}",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
                 ),
                 body: Container(
                     height: SizeConfig.screenHeight,
@@ -56,7 +56,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                       child: Container(
-                        width: SizeConfig.screenWidth * 0.8,
+                        width: SizeConfig.screenWidth! * 0.8,
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
@@ -83,7 +83,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                 Container(
                                   width: _width,
                                   child: Text(
-                                    state.classroom.name ?? "N/A",
+                                    state.classroom!.name ?? "N/A",
                                     textAlign: align2,
                                     style: Theme.of(context).textTheme.headline1,
                                   ),
@@ -104,7 +104,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                 Container(
                                   width: _width,
                                   child: Text(
-                                    state.classroom.id.toString() ?? "N/A",
+                                    state.classroom?.id.toString() ?? "N/A",
                                     textAlign: align2,
                                     style: Theme.of(context).textTheme.headline1,
                                   ),
@@ -125,9 +125,9 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                 Container(
                                   width: _width,
                                   child: Text(
-                                    state.classroom.subject == ""
+                                    state.classroom!.subject == ""
                                         ? "Not Assigned"
-                                        : state.classroom.subject,
+                                        : state.classroom!.subject!,
                                     textAlign: align2,
                                     style: Theme.of(context).textTheme.headline1,
                                   ),
@@ -148,7 +148,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                 Container(
                                   width: _width,
                                   child: Text(
-                                    state.classroom.layout ?? "N/A",
+                                    state.classroom!.layout ?? "N/A",
                                     textAlign: align2,
                                     style: Theme.of(context).textTheme.headline1,
                                   ),
@@ -169,7 +169,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                 Container(
                                   width: _width,
                                   child: Text(
-                                    state.classroom.size.toString() ?? "N/A",
+                                    state.classroom?.size.toString() ?? "N/A",
                                     textAlign: align2,
                                     style: Theme.of(context).textTheme.headline1,
                                   ),
@@ -186,7 +186,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                   },
                   child: Icon(
                     Icons.edit,
-                    color: CColor.HomeScreenBGColor,
+                    color: Theme.of(context).backgroundColor,
                   ),
                 ),
               );
@@ -199,7 +199,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
             } else if (state is Error) {
               return Material(
                 child: Center(
-                  child: Text(state.message,style: Theme.of(context).textTheme.headline2,),
+                  child: Text(state.message!,style: Theme.of(context).textTheme.headline2,),
                 ),
               );
             } else {
@@ -219,12 +219,12 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
         builder: (context) {
           return Dialog(
             insetPadding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.screenWidth * 0.1,
-                vertical: SizeConfig.screenHeight * 0.1),
+                horizontal: SizeConfig.screenWidth! * 0.1,
+                vertical: SizeConfig.screenHeight! * 0.1),
             child: Container(
               padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.screenWidth * 0.1,
-                  vertical: SizeConfig.screenHeight * 0.05),
+                  horizontal: SizeConfig.screenWidth! * 0.1,
+                  vertical: SizeConfig.screenHeight! * 0.05),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -236,13 +236,13 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                       builder: (context2) {
                         return CustomRaisedGradientButton(
                             child: Container(
-                              width: SizeConfig.screenWidth * 0.48,
+                              width: SizeConfig.screenWidth! * 0.48,
                               child: Center(
                                 child: Text(
-                                  state.classroom.subject == ""
+                                  state.classroom!.subject == ""
                                       ? "Assign Subject"
                                       : "Change Subject",
-                                  style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*4.5),
+                                  style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*4.5),
                                 ),
                               ),
                             ),
@@ -261,22 +261,22 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                       },
                     ),
                   ),
-                  state.classroom.subject != ""
+                  state.classroom!.subject != ""
                       ? SizedBox(
                           height: SizeConfig.blockSizeVertical * 4,
                         )
                       : SizedBox(),
-                  state.classroom.subject != ""
+                  state.classroom!.subject != ""
                       ? BlocProvider(
                           create: (context2) => sl<stud.StudentsPageBloc>(),
                           child: Builder(builder: (context2) {
                             return CustomRaisedGradientButton(
                                 child: Container(
-                                  width: SizeConfig.screenWidth * 0.48,
+                                  width: SizeConfig.screenWidth! * 0.48,
                                   child: Center(
                                     child: Text(
                                       "Assign Student",
-                                      style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*4.5),
+                                      style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*4.5),
                                     ),
                                   ),
                                 ),
@@ -309,12 +309,12 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
         builder: (context2) {
           return Dialog(
             insetPadding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.screenWidth * 0.1,
-                vertical: SizeConfig.screenHeight * 0.1),
+                horizontal: SizeConfig.screenWidth! * 0.1,
+                vertical: SizeConfig.screenHeight! * 0.1),
             child: Container(
                 padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig.screenWidth * 0.1,
-                    vertical: SizeConfig.screenHeight * 0.05),
+                    horizontal: SizeConfig.screenWidth! * 0.1,
+                    vertical: SizeConfig.screenHeight! * 0.05),
                 child: BlocProvider.value(
                   value: sl<sub.SubjectsPageBloc>(),
                   child: Builder(builder: (context2) {
@@ -329,12 +329,12 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                           );
                         } else if (state2 is sub.Error) {
                           return Center(
-                            child: Text(state2.message,style: Theme.of(context2).textTheme.headline2,),
+                            child: Text(state2.message!,style: Theme.of(context2).textTheme.headline2,),
                           );
                         } else if (state2 is sub.Loaded) {
                           return ListView(
                             shrinkWrap: true,
-                            children: state2.subjectsDataModel.subjects
+                            children: state2.subjectsDataModel!.subjects
                                 .map((e) => BlocProvider.value(
                                     value: sl<InnerClassRoomPageBloc>(),
                                     child: Builder(builder: (context3) {
@@ -368,21 +368,21 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                     context3)
                                                 .add(SetSubject(
                                                     classRoomId:
-                                                        state.classroom.id,
+                                                        state.classroom!.id,
                                                     subjectId: e.id));
                                             BlocProvider.of<
                                                         InnerClassRoomPageBloc>(
                                                     context3)
                                                 .add(GetClassRoom(
-                                                    id: state.classroom.id));
+                                                    id: state.classroom!.id));
                                             Navigator.pop(context3);
                                             setState(() {});
                                           },
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(
-                                              e.name,
-                                              style: Theme.of(context3).textTheme.headline1.copyWith(color: CColor.HomeScreenStudentButtonLeft),
+                                              e.name!,
+                                              style: Theme.of(context3).textTheme.headline1!.copyWith(color: CColor.HomeScreenStudentButtonLeft),
                                             ),
                                           ));
                                     })))
@@ -410,12 +410,12 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
         builder: (context2) {
           return Dialog(
             insetPadding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.screenWidth * 0.1,
-                vertical: SizeConfig.screenHeight * 0.1),
+                horizontal: SizeConfig.screenWidth! * 0.1,
+                vertical: SizeConfig.screenHeight! * 0.1),
             child: Container(
                 padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig.screenWidth * 0.1,
-                    vertical: SizeConfig.screenHeight * 0.05),
+                    horizontal: SizeConfig.screenWidth! * 0.1,
+                    vertical: SizeConfig.screenHeight! * 0.05),
                 child: BlocProvider.value(
                   value: sl<stud.StudentsPageBloc>(),
                   child: Builder(builder: (context2) {
@@ -430,7 +430,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                           );
                         } else if (state2 is stud.Error) {
                           return Center(
-                            child: Text(state2.message,style: Theme.of(context2).textTheme.headline2,),
+                            child: Text(state2.message!,style: Theme.of(context2).textTheme.headline2,),
                           );
                         } else if (state2 is stud.Loaded) {
                           return BlocProvider(
@@ -489,7 +489,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                     context3)
                                                                 .add(studsub.RegisterStudentSubject(
                                                                     subjectId: int.parse(state
-                                                                        .classroom
+                                                                        .classroom!
                                                                         .subjectId),
                                                                     studentId:
                                                                         e.id));
@@ -504,37 +504,37 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                 if (state4
                                                                     is studsub
                                                                         .Deleted) {
-                                                                  if (state4
-                                                                          .code ==
-                                                                      null) {
-                                                                    return Dialog(
-                                                                        insetPadding:
-                                                                            EdgeInsets.all(SizeConfig.screenWidth *
-                                                                                0.2),
-                                                                        child:
-                                                                            Container(
-                                                                          width:
-                                                                              SizeConfig.screenWidth * 0.4,
-                                                                          height:
-                                                                              SizeConfig.screenHeight * 0.2,
-                                                                          padding:
-                                                                              EdgeInsets.all(15),
-                                                                          child:
-                                                                              Center(
-                                                                            child:
-                                                                                CircularProgressIndicator(),
-                                                                          ),
-                                                                        ));
-                                                                  } else {
+                                                                  // if (state4
+                                                                  //         .code ==
+                                                                  //     null) {
+                                                                  //   return Dialog(
+                                                                  //       insetPadding:
+                                                                  //           EdgeInsets.all(SizeConfig.screenWidth! *
+                                                                  //               0.2),
+                                                                  //       child:
+                                                                  //           Container(
+                                                                  //         width:
+                                                                  //             SizeConfig.screenWidth! * 0.4,
+                                                                  //         height:
+                                                                  //             SizeConfig.screenHeight! * 0.2,
+                                                                  //         padding:
+                                                                  //             EdgeInsets.all(15),
+                                                                  //         child:
+                                                                  //             Center(
+                                                                  //           child:
+                                                                  //               CircularProgressIndicator(),
+                                                                  //         ),
+                                                                  //       ));
+                                                                  // } else {
                                                                     return Dialog(
                                                                       insetPadding:
-                                                                          EdgeInsets.all(SizeConfig.screenWidth *
+                                                                          EdgeInsets.all(SizeConfig.screenWidth! *
                                                                               0.2),
                                                                       child:
                                                                           Card(
                                                                         child: Container(
-                                                                            width: SizeConfig.screenWidth * 0.4,
-                                                                            height: SizeConfig.screenHeight * 0.2,
+                                                                            width: SizeConfig.screenWidth! * 0.4,
+                                                                            height: SizeConfig.screenHeight! * 0.2,
                                                                             padding: EdgeInsets.all(15),
                                                                             child: Center(
                                                                               child: Text(
@@ -544,24 +544,24 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                                         ? "Student already registered"
                                                                                         : "An error occurred",
                                                                                 textAlign: TextAlign.center,
-                                                                                style: Theme.of(context3).textTheme.headline1.copyWith(color: CColor.thumbsUp,fontSize: SizeConfig.blockSizeHorizontal*5),
+                                                                                style: Theme.of(context3).textTheme.headline1!.copyWith(color: CColor.thumbsUp,fontSize: SizeConfig.blockSizeHorizontal*5),
                                                                               ),
                                                                             )),
                                                                       ),
                                                                     );
-                                                                  }
+                                                                  // }
                                                                 } else if (state4
                                                                     is studsub
                                                                         .Loading) {
                                                                   return Dialog(
                                                                       insetPadding:
-                                                                          EdgeInsets.all(SizeConfig.screenWidth *
+                                                                          EdgeInsets.all(SizeConfig.screenWidth! *
                                                                               0.2),
                                                                       child:
                                                                           Container(
-                                                                        width: SizeConfig.screenWidth *
+                                                                        width: SizeConfig.screenWidth! *
                                                                             0.4,
-                                                                        height: SizeConfig.screenHeight *
+                                                                        height: SizeConfig.screenHeight! *
                                                                             0.2,
                                                                         padding:
                                                                             EdgeInsets.all(15),
@@ -576,15 +576,15 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                         .Error) {
                                                                   return Dialog(
                                                                     insetPadding:
-                                                                        EdgeInsets.all(SizeConfig.screenWidth *
+                                                                        EdgeInsets.all(SizeConfig.screenWidth! *
                                                                             0.2),
                                                                     child:
                                                                         Container(
                                                                       width: SizeConfig
-                                                                              .screenWidth *
+                                                                              .screenWidth! *
                                                                           0.4,
                                                                       height:
-                                                                          SizeConfig.screenHeight *
+                                                                          SizeConfig.screenHeight! *
                                                                               0.2,
                                                                       padding:
                                                                           EdgeInsets.all(
@@ -596,7 +596,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                           "${state4.message}",
                                                                           textAlign:
                                                                               TextAlign.center,
-                                                                          style: Theme.of(context3).textTheme.headline1.copyWith(color: CColor.thumbsDown,fontSize: SizeConfig.blockSizeHorizontal*5),
+                                                                          style: Theme.of(context3).textTheme.headline1!.copyWith(color: CColor.thumbsDown,fontSize: SizeConfig.blockSizeHorizontal*5),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -604,7 +604,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                 } else {
                                                                   return Dialog(
                                                                     insetPadding:
-                                                                        EdgeInsets.all(SizeConfig.screenWidth *
+                                                                        EdgeInsets.all(SizeConfig.screenWidth! *
                                                                             0.2),
                                                                     child: Text(
                                                                         "An error occured",style: Theme.of(context3).textTheme.headline2,),
@@ -620,8 +620,8 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                   padding:
                                                       const EdgeInsets.all(8.0),
                                                   child: Text(
-                                                    e.name,
-                                                    style: Theme.of(context3).textTheme.headline2.copyWith(color:CColor.HomeScreenStudentButtonLeft),
+                                                    e.name!,
+                                                    style: Theme.of(context3).textTheme.headline2!.copyWith(color:CColor.HomeScreenStudentButtonLeft),
                                                   ),
                                                 ));
                                           },

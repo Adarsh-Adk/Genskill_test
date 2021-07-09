@@ -10,18 +10,18 @@ import '../../../../../InjectionContainer.dart';
 import 'InnerClassRoomPage.dart';
 
 class ClassRoomPage extends StatelessWidget {
-  const ClassRoomPage({Key key}) : super(key: key);
+  const ClassRoomPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Classrooms",style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
+        title: Text("Classrooms",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
       ),
       body: Container(
         width: SizeConfig.screenWidth,
         height: SizeConfig.screenHeight,
-        color: CColor.HomeScreenBGColor,
+        color: Theme.of(context).backgroundColor,
         child: SafeArea(
             child: BlocProvider(
               create: (_) => sl.get<ClassRoomPageBloc>(),
@@ -40,12 +40,12 @@ class ClassRoomPage extends StatelessWidget {
                         );
                       } else if (state is Loaded) {
                         return ListView.builder(
-                            itemCount: state.classrooms.classrooms.length,
+                            itemCount: state.classrooms!.classrooms.length,
                             itemBuilder: (context, index) {
 
                               return Builder(
                                 builder: (context) {
-                                  Classrooms classroom = state.classrooms
+                                  Classrooms classroom = state.classrooms!
                                       .classrooms[index];
                                   return GestureDetector(
                                       onTap: () {
@@ -63,7 +63,7 @@ class ClassRoomPage extends StatelessWidget {
                             });
                       } else if (state is Error) {
                         return Center(
-                          child: Text(state.message,style: Theme.of(context).textTheme.headline2,),
+                          child: Text(state.message!,style: Theme.of(context).textTheme.headline2,),
                         );
                       } else {
                         return Center(

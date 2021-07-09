@@ -4,13 +4,11 @@ import '../../../../../core/error/Exception.dart';
 import '../../models/SubjectsDataModel.dart';
 import '../../../domain/entities/Subjects.dart';
 import 'package:http/http.dart'as http;
-import 'package:meta/meta.dart';
-
 import 'SubjectsRemoteDataSource.dart';
 class SubjectsRemoteDataSourceImpl implements SubjectsRemoteDataSource{
   final http.Client client;
 
-  SubjectsRemoteDataSourceImpl({@required this.client});
+  SubjectsRemoteDataSourceImpl({required this.client});
 
   @override
   Future<SubjectsDataModel> getSubjects() async{

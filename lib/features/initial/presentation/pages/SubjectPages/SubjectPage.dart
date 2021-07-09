@@ -8,7 +8,7 @@ import '../../widgets/SubjectsCard.dart';
 import '../../../../../InjectionContainer.dart';
 
 class SubjectPage extends StatelessWidget {
-  const SubjectPage({Key key}) : super(key: key);
+  const SubjectPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class SubjectPage extends StatelessWidget {
       body: Container(
         width: SizeConfig.screenWidth,
         height: SizeConfig.screenHeight,
-        color: CColor.HomeScreenBGColor,
+        color: Theme.of(context).backgroundColor,
         child: SafeArea(
             child: BlocProvider(
               create: (_) => sl.get<SubjectsPageBloc>(),
@@ -32,14 +32,14 @@ class SubjectPage extends StatelessWidget {
                         return Center(child: CircularProgressIndicator(),);
                       } else if (state is Loaded) {
                         return ListView.builder(
-                            itemCount: state.subjectsDataModel.subjects.length,
+                            itemCount: state.subjectsDataModel!.subjects.length,
                             itemBuilder: (context, index) {
-                              Subject subject = state.subjectsDataModel
+                              Subject subject = state.subjectsDataModel!
                                   .subjects[index];
                               return SubjectsCard(subject: subject,);
                             });
                       } else if (state is Error) {
-                        return Center(child: Text(state.message,style: Theme.of(context).textTheme.headline2,),);
+                        return Center(child: Text(state.message!,style: Theme.of(context).textTheme.headline2,),);
                       } else {
                         return Center(child: Text("a custom error occurred",style: Theme.of(context).textTheme.headline2,),);
                       }

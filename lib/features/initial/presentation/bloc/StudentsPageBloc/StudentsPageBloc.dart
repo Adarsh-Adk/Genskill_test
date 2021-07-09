@@ -4,7 +4,6 @@ import 'package:equatable/equatable.dart';
 import '../../../../../core/error/Failures.dart';
 import '../../../../../core/usecases/UseCase.dart';
 import '../../../domain/entities/Students.dart';
-import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 import '../../../domain/usecases/StudentsUseCase.dart';
 
@@ -19,7 +18,7 @@ class StudentsPageBloc extends Bloc<StudentsPageEvent, StudentsPageState> {
 
   final StudentsUseCase getStudent;
 
-  StudentsPageBloc( {@required StudentsUseCase student}) : assert(student!=null),getStudent=student, super(Empty());
+  StudentsPageBloc( {required StudentsUseCase student}) : getStudent=student, super(Empty());
 
   StudentsPageState get initialState=> Empty();
 
@@ -28,7 +27,7 @@ class StudentsPageBloc extends Bloc<StudentsPageEvent, StudentsPageState> {
     StudentsPageEvent event,
   ) async* {
     if(event is GetStudent){
-      Failure failure;
+      Failure? failure;
       yield Loading();
       try{
         final failureOrStudents= await getStudent(NoParams());
@@ -52,7 +51,7 @@ class StudentsPageBloc extends Bloc<StudentsPageEvent, StudentsPageState> {
           (result) => Loaded(studentsDataModel: result),
     );
   }
-  String _mapFailureToMessage(Failure failure) {
+  String _mapFailureToMessage(Failure? failure) {
     print("map failure called");
     switch (failure.runtimeType) {
       case ServerFailure:

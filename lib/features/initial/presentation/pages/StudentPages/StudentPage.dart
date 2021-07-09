@@ -8,16 +8,16 @@ import '../../bloc/StudentsPageBloc/StudentsPageBloc.dart';
 import '../../widgets/StudentsCard.dart';
 
 class StudentPage extends StatelessWidget {
-  const StudentPage({Key key}) : super(key: key);
+  const StudentPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Students",style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),),
+      appBar: AppBar(title: Text("Students",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),),
       body: Container(
         width: SizeConfig.screenWidth,
         height: SizeConfig.screenHeight,
-        color: CColor.HomeScreenBGColor,
+        color:Theme.of(context).backgroundColor,
         child: SafeArea(
             child: BlocProvider(
               create: (_) =>sl.get<StudentsPageBloc>(),
@@ -38,7 +38,7 @@ class StudentPage extends StatelessWidget {
                           return StudentsCard(student: student,);
                         });
                       } else if (state is Error) {
-                        return Center(child: Text(state.message,style: Theme.of(context).textTheme.headline2,),);
+                        return Center(child: Text(state.message!,style: Theme.of(context).textTheme.headline2,),);
                       } else {
                         return Center(child: Text("a custom error occured",style: Theme.of(context).textTheme.headline2,),);
                       }

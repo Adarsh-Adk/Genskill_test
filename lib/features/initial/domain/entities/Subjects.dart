@@ -1,7 +1,6 @@
-import 'package:meta/meta.dart';
 class SubjectsDataModel {
   SubjectsDataModel({
-    @required this.subjects,
+    required this.subjects,
   });
 
   List<Subject> subjects;
@@ -16,16 +15,16 @@ class SubjectsDataModel {
 }
 class Subject {
   Subject({
-    @required this.credits,
-    @required this.id,
-    @required this.name,
-    @required this.teacher,
+    required this.credits,
+    required this.id,
+    required this.name,
+    required this.teacher,
   });
 
-  int credits;
-  int id;
-  String name;
-  String teacher;
+  int? credits;
+  int? id;
+  String? name;
+  String? teacher;
 
   factory Subject.fromJson(Map<String, dynamic> json) => Subject(
     credits: json["credits"],

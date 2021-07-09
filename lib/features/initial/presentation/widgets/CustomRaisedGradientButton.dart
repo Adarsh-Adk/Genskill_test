@@ -10,12 +10,12 @@ class CustomRaisedGradientButton extends StatelessWidget {
 
   const CustomRaisedGradientButton(
       {
-        @required this.child,
-        @required this.gradient,
+        required this.child,
+        required this.gradient,
         this.width = double.infinity,
-        @required this.height,
-        @required this.onPressed,
-        @required this.radius});
+        required this.height,
+        required this.onPressed,
+        required this.radius});
 
 
   @override
@@ -28,7 +28,7 @@ class CustomRaisedGradientButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(radius),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey[500],
+              color: Colors.grey[500]!,
               offset: Offset(0.0, 1.5),
               blurRadius: 1.5,
             ),
@@ -37,7 +37,7 @@ class CustomRaisedGradientButton extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
             borderRadius: BorderRadius.circular(radius),
-            onTap: onPressed,
+            onTap: onPressed as void Function()?,
             child: Center(
               child: child,
             )),

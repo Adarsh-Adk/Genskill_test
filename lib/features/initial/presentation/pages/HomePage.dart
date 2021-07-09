@@ -9,7 +9,7 @@ import 'package:page_transition/page_transition.dart';
 import 'ClassroomPages/ClassRoomPage.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -23,18 +23,18 @@ class _MyHomePageState extends State<MyHomePage> {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home",style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
+        title: Text("Home",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
       ),
       body: Container(
         width: SizeConfig.screenWidth,
         height: SizeConfig.screenHeight,
-        color: CColor.HomeScreenBGColor,
+        color: Theme.of(context).backgroundColor,
         child: SafeArea(
             child: Center(
           child: Container(
-            width: SizeConfig.screenWidth * 0.65,
+            width: SizeConfig.screenWidth! * 0.65,
             height: SizeConfig.screenHeight,
-            color: CColor.HomeScreenBGColor,
+            color: Theme.of(context).backgroundColor,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 CustomRaisedGradientButton(
                     child: Container(
-                      width: SizeConfig.screenWidth * 0.48,
+                      width: SizeConfig.screenWidth! * 0.48,
                       child: Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,11 +51,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 width: SizeConfig.blockSizeHorizontal * 4,
                                 child: Icon(
                                   Icons.school,
-                                  color: CColor.HomeScreenBGColor,
+                                  color: Theme.of(context).backgroundColor,
                                 )),
                             Text(
                               "Students",
-                              style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
+                              style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
                             ),
                             Container(
                                 color: Colors.transparent,
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 CustomRaisedGradientButton(
                     child: Container(
-                      width: SizeConfig.screenWidth * 0.48,
+                      width: SizeConfig.screenWidth! * 0.48,
                       child: Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,11 +87,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 width: SizeConfig.blockSizeHorizontal * 4,
                                 child: Icon(
                                   Icons.book,
-                                  color: CColor.HomeScreenBGColor,
+                                  color: Theme.of(context).backgroundColor,
                                 )),
                             Text(
                               "Subjects",
-                              style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
+                              style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
                             ),
                             Container(
                                 color: Colors.transparent,
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 CustomRaisedGradientButton(
                     child: Container(
-                      width: SizeConfig.screenWidth * 0.48,
+                      width: SizeConfig.screenWidth! * 0.48,
                       child: Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,11 +123,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 width: SizeConfig.blockSizeHorizontal * 4,
                                 child: Icon(
                                   Icons.portrait,
-                                  color: CColor.HomeScreenBGColor,
+                                  color: Theme.of(context).backgroundColor,
                                 )),
                             Text(
                               "Classroom",
-                              style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
+                              style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
                             ),
                             Container(
                                 color: Colors.transparent,
@@ -150,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 CustomRaisedGradientButton(
                     child: Container(
-                      width: SizeConfig.screenWidth * 0.48,
+                      width: SizeConfig.screenWidth! * 0.48,
                       child: Center(
                         child: Row(
                           mainAxisAlignment:
@@ -160,11 +160,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 width: SizeConfig.blockSizeHorizontal * 4,
                                 child: Icon(
                                   Icons.how_to_reg,
-                                  color: CColor.HomeScreenBGColor,
+                                  color: Theme.of(context).backgroundColor,
                                 )),
                             Text(
                               "Registrations",
-                              style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
+                              style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),
                             ),
                             Container(
                                 color: Colors.transparent,

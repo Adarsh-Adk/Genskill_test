@@ -9,13 +9,13 @@ abstract class InnerClassRoomPageEvent extends Equatable{
 }
 
 class GetClassRoom extends InnerClassRoomPageEvent{
-  final int id;
+  final int? id;
 
-  GetClassRoom({@required this.id});
+  GetClassRoom({required this.id});
 }
 class SetSubject extends InnerClassRoomPageEvent{
-  final int subjectId;
-  final int classRoomId;
+  final int? subjectId;
+  final int? classRoomId;
 
-  SetSubject({@required this.subjectId,@required this.classRoomId});
+  SetSubject({required this.subjectId,required this.classRoomId});
 }

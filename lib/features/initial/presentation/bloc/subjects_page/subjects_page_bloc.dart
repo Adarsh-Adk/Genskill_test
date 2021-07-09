@@ -14,14 +14,14 @@ const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 
 class SubjectsPageBloc extends Bloc<SubjectsPageEvent, SubjectsPageState> {
   final SubjectsUseCase getSubject;
-  SubjectsPageBloc({@required SubjectsUseCase subject}) :assert(subject!=null),getSubject=subject, super(Empty());
+  SubjectsPageBloc({required SubjectsUseCase subject}) :getSubject=subject, super(Empty());
 
   SubjectsPageState get initialState=> Empty();
 
   @override
   Stream<SubjectsPageState> mapEventToState(SubjectsPageEvent event) async* {
     if(event is GetSubject){
-      Failure failure;
+      Failure? failure;
       yield Loading();
       try{
         final failureOrSubjects= await getSubject(NoParams());
@@ -43,7 +43,7 @@ class SubjectsPageBloc extends Bloc<SubjectsPageEvent, SubjectsPageState> {
           (result) => Loaded(subjectsDataModel: result),
     );
   }
-  String _mapFailureToMessage(Failure failure) {
+  String _mapFailureToMessage(Failure? failure) {
     print("map failure called");
     switch (failure.runtimeType) {
       case ServerFailure:

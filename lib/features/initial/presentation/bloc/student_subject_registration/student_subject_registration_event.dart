@@ -8,13 +8,13 @@ abstract class StudentSubjectRegistrationEvent extends Equatable{
 }
 
 class RegisterStudentSubject extends StudentSubjectRegistrationEvent{
-  final int subjectId;
-  final int studentId;
+  final int? subjectId;
+  final int? studentId;
   RegisterStudentSubject({this.subjectId,this.studentId});
 }
 
 class DeleteRegistration extends StudentSubjectRegistrationEvent{
-  final int registrationId;
+  final int? registrationId;
   DeleteRegistration({this.registrationId});
 }
 

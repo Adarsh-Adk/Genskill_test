@@ -17,10 +17,10 @@ part 'registration_page_state.dart';
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 
 class RegistrationPageBloc extends Bloc<RegistrationPageEvent, RegistrationPageState> {
-  final RegistrationsSetRegistrationUseCase setRegistrationUseCase;
-  final del.RegistrationsDeleteRegistrationUseCase deleteRegistrationUseCase;
-  final RegistrationsGetRegistrationsUseCase getRegistrationsUseCase;
-  RegistrationPageBloc({@required RegistrationsSetRegistrationUseCase setRegistration,@required del.RegistrationsDeleteRegistrationUseCase deleteRegistration,@required  RegistrationsGetRegistrationsUseCase getRegistrations}) : setRegistrationUseCase=setRegistration,getRegistrationsUseCase=getRegistrations,deleteRegistrationUseCase=deleteRegistration, super(Empty());
+  final RegistrationsSetRegistrationUseCase? setRegistrationUseCase;
+  final del.RegistrationsDeleteRegistrationUseCase? deleteRegistrationUseCase;
+  final RegistrationsGetRegistrationsUseCase? getRegistrationsUseCase;
+  RegistrationPageBloc({required RegistrationsSetRegistrationUseCase? setRegistration,required del.RegistrationsDeleteRegistrationUseCase? deleteRegistration,required  RegistrationsGetRegistrationsUseCase? getRegistrations}) : setRegistrationUseCase=setRegistration,getRegistrationsUseCase=getRegistrations,deleteRegistrationUseCase=deleteRegistration, super(Empty());
 
   RegistrationPageState get initial=>Empty();
 
@@ -28,10 +28,10 @@ class RegistrationPageBloc extends Bloc<RegistrationPageEvent, RegistrationPageS
   Stream<RegistrationPageState> mapEventToState(
       RegistrationPageEvent event) async* {
     if(event is RegisterStudentSubject){
-      Failure failure;
+      Failure? failure;
       yield Loading();
       try{
-        final failureOrClassRoom= await setRegistrationUseCase(Params(subjectId: event.subjectId, studentId: event.studentId));
+        final failureOrClassRoom= await setRegistrationUseCase!(Params(subjectId: event.subjectId!, studentId: event.studentId!));
         failureOrClassRoom.fold((l) => failure=l, (r) => null);
         print("map event to state called");
         yield* _eitherLoadedOrErrorState2(failureOrClassRoom);
@@ -39,10 +39,10 @@ class RegistrationPageBloc extends Bloc<RegistrationPageEvent, RegistrationPageS
         yield Error(message: _mapFailureToMessage(failure));
       }
     }else if(event is DeleteRegistration){
-      Failure failure;
+      Failure? failure;
       yield Loading();
       try{
-        final failureOrClassRoom= await deleteRegistrationUseCase(del.Params(registrationId: event.registrationId));
+        final failureOrClassRoom= await deleteRegistrationUseCase!(del.Params(registrationId: event.registrationId!));
         failureOrClassRoom.fold((l) => failure=l, (r) => null);
         print("map event to state called");
         yield* _eitherLoadedOrErrorState2(failureOrClassRoom);
@@ -51,10 +51,10 @@ class RegistrationPageBloc extends Bloc<RegistrationPageEvent, RegistrationPageS
       }
 
     }else if(event is GetRegistrations){
-      Failure failure;
+      Failure? failure;
       yield Loading();
       try{
-        final failureOrClassRoom= await getRegistrationsUseCase(NoParams());
+        final failureOrClassRoom= await getRegistrationsUseCase!(NoParams());
         failureOrClassRoom.fold((l) => failure=l, (r) => null);
         print("map event to state called");
         yield* _eitherLoadedOrErrorState(failureOrClassRoom);
@@ -80,7 +80,7 @@ class RegistrationPageBloc extends Bloc<RegistrationPageEvent, RegistrationPageS
   }
 
 
-  String _mapFailureToMessage(Failure failure) {
+  String _mapFailureToMessage(Failure? failure) {
 
     print("map failure called");
     switch (failure.runtimeType) {

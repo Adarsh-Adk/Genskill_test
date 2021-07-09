@@ -1,8 +1,6 @@
-import 'package:meta/meta.dart';
-
 class RegistrationsDataModel {
   RegistrationsDataModel({
-    @required this.registrations,
+    required this.registrations,
   });
 
   List<Registration> registrations;
@@ -18,14 +16,14 @@ class RegistrationsDataModel {
 
 class Registration {
   Registration({
-    @required this.id,
-    @required this.student,
-    @required this.subject,
+    required this.id,
+    required this.student,
+    required this.subject,
   });
 
-  int id;
-  String student;
-  String subject;
+  int? id;
+  String? student;
+  String? subject;
 
   factory Registration.fromJson(Map<String, dynamic> json) => Registration(
     id: json["id"],
@@ -41,7 +39,7 @@ class Registration {
 }
 class RegistrationDataModel {
   RegistrationDataModel({
-    @required this.registration,
+    required this.registration,
   });
 
   Registration registration;

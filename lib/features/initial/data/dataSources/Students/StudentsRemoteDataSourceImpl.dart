@@ -5,11 +5,10 @@ import '../../datasources/Students/StudentsRemoteDataSource.dart';
 import '../../models/StudentsDataModel.dart';
 import '../../../domain/entities/Students.dart';
 import 'package:http/http.dart'as http;
-import 'package:meta/meta.dart';
 class StudentsRemoteDataSourceImpl implements StudentsRemoteDataSource{
   final http.Client client;
 
-  StudentsRemoteDataSourceImpl({@required this.client});
+  StudentsRemoteDataSourceImpl({required this.client});
 
   @override
   Future<StudentsDataModel> getStudents() async{

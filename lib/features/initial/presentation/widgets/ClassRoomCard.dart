@@ -7,7 +7,7 @@ class ClassRoomCard extends StatefulWidget{
   final Classrooms classroom;
 
 
-  ClassRoomCard({Key key,@required this.classroom}) : super(key: key);
+  ClassRoomCard({Key? key,required this.classroom}) : super(key: key);
 
   @override
   _ClassRoomCardState createState() => _ClassRoomCardState();
@@ -16,7 +16,7 @@ class ClassRoomCard extends StatefulWidget{
 class _ClassRoomCardState extends State<ClassRoomCard> {
   final double gap = SizeConfig.blockSizeVertical * 1;
 
-  final double _width = SizeConfig.screenWidth * 0.45;
+  final double _width = SizeConfig.screenWidth! * 0.45;
 
   final TextAlign align2 = TextAlign.end;
 

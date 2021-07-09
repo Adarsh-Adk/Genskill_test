@@ -2,14 +2,13 @@ import '../../../../../core/constants/URL.dart';
 import '../../../../../core/error/Exception.dart';
 import '../../models/RegistrationsDataModel.dart';
 import '../../../domain/entities/Registrations.dart';
-import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 
 import 'RegistrationsRemoteDataSource.dart';
 class RegistrationsRemoteDataSourceImpl implements RegistrationsRemoteDataSource{
   final http.Client client;
 
-  RegistrationsRemoteDataSourceImpl({@required this.client});
+  RegistrationsRemoteDataSourceImpl({required this.client});
 
   @override
   Future<RegistrationsDataModel> getRegistrations() async{

@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 import '../../../../core/error/Failures.dart';
 import '../../../../core/usecases/UseCase.dart';
@@ -21,7 +20,7 @@ class ClassRoomGetClassRoomUseCase extends UseCase<ClassRoomDataModel,Params>{
 class Params extends Equatable {
   final int id;
 
-  Params({@required this.id});
+  Params({required this.id});
 
   @override
   List<Object> get props => [id];

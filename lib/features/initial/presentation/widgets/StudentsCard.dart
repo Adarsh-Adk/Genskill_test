@@ -7,7 +7,7 @@ class StudentsCard extends StatefulWidget{
   final Student student;
 
 
-  StudentsCard({Key key,@required this.student}) : super(key: key);
+  StudentsCard({Key? key,required this.student}) : super(key: key);
 
   @override
   _StudentsCardState createState() => _StudentsCardState();
@@ -16,7 +16,7 @@ class StudentsCard extends StatefulWidget{
 class _StudentsCardState extends State<StudentsCard> {
   final double gap = SizeConfig.blockSizeVertical * 1;
 
-  final double _width = SizeConfig.screenWidth * 0.45;
+  final double _width = SizeConfig.screenWidth! * 0.45;
 
   final TextAlign align2 = TextAlign.end;
 
@@ -90,12 +90,12 @@ class _StudentsCardState extends State<StudentsCard> {
                       children: [
                         Text(
                           "Id",
-                          style: TextStyle(color: CColor.HomeScreenBGColor),
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                         Container(
                           width: _width,
                           child: Text(
-                            widget.student.id.toString() ?? "N/A",
+                            widget.student.id.toString(),
                             textAlign: align2,
                             style: Theme.of(context).textTheme.headline1,
                           ),
@@ -120,7 +120,7 @@ class _StudentsCardState extends State<StudentsCard> {
                         Container(
                             width: _width,
                             child: Text(
-                              widget.student.age.toString() ?? "N/A",
+                              widget.student.age.toString(),
                               textAlign: align2,
                               style: Theme.of(context).textTheme.headline1,
                             )),

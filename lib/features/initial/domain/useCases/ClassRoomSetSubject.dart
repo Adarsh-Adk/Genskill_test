@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import '../../../../core/error/Failures.dart';
 import '../../../../core/usecases/UseCase.dart';
-import 'package:meta/meta.dart';
 import '../entities/ClassRoom.dart';
 import '../repositories/ClassRoomRepository.dart';
 
@@ -22,7 +21,7 @@ class Params extends Equatable {
   final int subjectId;
   final int classRoomId;
 
-  Params({@required this.subjectId,@required this.classRoomId,});
+  Params({required this.subjectId,required this.classRoomId,});
 
   @override
   List<Object> get props => [];

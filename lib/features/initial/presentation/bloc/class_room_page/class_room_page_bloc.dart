@@ -17,7 +17,7 @@ class ClassRoomPageBloc extends Bloc<ClassRoomPageEvent, ClassRoomPageState> {
   final ClassRoomGetClassRoomsUseCase getClassRooms;
 
 
-  ClassRoomPageBloc({@required ClassRoomGetClassRoomsUseCase classrooms,}) :assert(classrooms!=null),getClassRooms=classrooms ,super(Empty());
+  ClassRoomPageBloc({required ClassRoomGetClassRoomsUseCase classrooms,}) :getClassRooms=classrooms ,super(Empty());
 
   ClassRoomPageState get initial=>Empty();
 
@@ -25,7 +25,7 @@ class ClassRoomPageBloc extends Bloc<ClassRoomPageEvent, ClassRoomPageState> {
   Stream<ClassRoomPageState> mapEventToState(ClassRoomPageEvent event) async* {
 
     if(event is GetClassRooms){
-      Failure failure;
+      Failure? failure;
 
       yield Loading();
       try{
@@ -56,7 +56,7 @@ class ClassRoomPageBloc extends Bloc<ClassRoomPageEvent, ClassRoomPageState> {
   }
 
 
-  String _mapFailureToMessage(Failure failure) {
+  String _mapFailureToMessage(Failure? failure) {
     print("map failure called");
     switch (failure.runtimeType) {
       case ServerFailure:

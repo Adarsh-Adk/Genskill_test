@@ -25,7 +25,7 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
           BlocProvider.of<RegistrationPageBloc>(context).add(GetRegistrations());
           return Scaffold(
           appBar: AppBar(
-            title: Text("Registrations",style: Theme.of(context).textTheme.headline1.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
+            title: Text("Registrations",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5),),
           ),
           body: Container(
             height: SizeConfig.screenHeight,
@@ -43,10 +43,10 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
                   } else if (state is Loaded) {
                     if(state.registrationsDataModel.toString()=="null"){
                       return Center(child: CircularProgressIndicator(),);
-                    }else{ if (state.registrationsDataModel.registrations.length ==
+                    }else{ if (state.registrationsDataModel!.registrations.length ==
                         0) {
                       return Center(
-                        child: Text("Registrations list is empty",textAlign: TextAlign.center,style:Theme.of(context).textTheme.headline2.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5)),
+                        child: Text("Registrations list is empty",textAlign: TextAlign.center,style:Theme.of(context).textTheme.headline2!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5)),
                       );
                     } else {
                       return listViewWidget(state);
@@ -71,10 +71,10 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
   ListView listViewWidget(Loaded state) {
     return ListView.builder(
       itemCount:
-      state.registrationsDataModel.registrations.length,
+      state.registrationsDataModel!.registrations.length,
       itemBuilder: (context, index) {
         Registration data =
-        state.registrationsDataModel.registrations[index];
+        state.registrationsDataModel!.registrations[index];
         return customRegistrationCard(context, data);
       },
     );
@@ -94,7 +94,7 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
                   Colors.lightBlueAccent,
                   Colors.lightBlue
                 ])),
-        width: SizeConfig.screenWidth * 9,
+        width: SizeConfig.screenWidth! * 9,
         padding: EdgeInsets.all(20),
         child: Row(
           mainAxisAlignment:
@@ -103,7 +103,7 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: SizeConfig.screenWidth * 0.28,
+              width: SizeConfig.screenWidth! * 0.28,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment:
@@ -143,7 +143,7 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
 
                 }),
             Container(
-              width: SizeConfig.screenWidth * 0.28,
+              width: SizeConfig.screenWidth! * 0.28,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment:

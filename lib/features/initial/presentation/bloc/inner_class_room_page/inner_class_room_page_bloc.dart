@@ -17,9 +17,9 @@ const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 class InnerClassRoomPageBloc extends Bloc<InnerClassRoomPageEvent, InnerClassRoomPageState> {
 
   final ClassRoomGetClassRoomUseCase getClassRoom;
-  final Set.ClassRoomSetSubjectUseCase setSubjectUseCase;
+  final Set.ClassRoomSetSubjectUseCase? setSubjectUseCase;
 
-  InnerClassRoomPageBloc({@required ClassRoomGetClassRoomUseCase classRoom,@required Set.ClassRoomSetSubjectUseCase setSubject}) :assert(classRoom!=null),getClassRoom=classRoom,setSubjectUseCase=setSubject ,super(Empty());
+  InnerClassRoomPageBloc({required ClassRoomGetClassRoomUseCase classRoom,required Set.ClassRoomSetSubjectUseCase? setSubject}) :getClassRoom=classRoom,setSubjectUseCase=setSubject ,super(Empty());
 
   InnerClassRoomPageState get initial=>Empty();
 
@@ -27,10 +27,10 @@ class InnerClassRoomPageBloc extends Bloc<InnerClassRoomPageEvent, InnerClassRoo
   Stream<InnerClassRoomPageState> mapEventToState(InnerClassRoomPageEvent event) async* {
 
      if(event is GetClassRoom){
-       Failure failure;
+       Failure? failure;
       yield Loading();
       try{
-        final failureOrClassRoom= await getClassRoom(Params(id:event.id));
+        final failureOrClassRoom= await getClassRoom(Params(id:event.id!));
         failureOrClassRoom.fold((l) => failure=l, (r) => null);
         print("map event to state called");
         yield* _eitherLoadedOrErrorState2(failureOrClassRoom);
@@ -39,10 +39,10 @@ class InnerClassRoomPageBloc extends Bloc<InnerClassRoomPageEvent, InnerClassRoo
       }
 
     }else if(event is SetSubject){
-       Failure failure;
+       Failure? failure;
        yield Loading();
        try{
-         final failureOrClassRoom= await setSubjectUseCase(Set.Params(classRoomId:event.classRoomId ,subjectId:event.subjectId ));
+         final failureOrClassRoom= await setSubjectUseCase!(Set.Params(classRoomId:event.classRoomId! ,subjectId:event.subjectId! ));
          failureOrClassRoom.fold((l) => failure=l, (r) => null);
          print("map event to state called");
          yield* _eitherLoadedOrErrorState2(failureOrClassRoom);
@@ -63,7 +63,7 @@ class InnerClassRoomPageBloc extends Bloc<InnerClassRoomPageEvent, InnerClassRoo
   }
 
 
-  String _mapFailureToMessage(Failure failure) {
+  String _mapFailureToMessage(Failure? failure) {
 
     print("map failure called");
     switch (failure.runtimeType) {

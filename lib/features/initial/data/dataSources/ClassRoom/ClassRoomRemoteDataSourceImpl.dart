@@ -4,12 +4,12 @@ import '../../models/ClassRoomDataModel.dart';
 import '../../../domain/entities/ClassRoom.dart';
 import 'package:http/http.dart'as http;
 import 'ClassRoomRemoteDataSource.dart';
-import 'package:meta/meta.dart';
+
 
 class ClassRoomRemoteDataSourceImpl implements ClassRoomRemoteDataSource{
   final http.Client client;
 
-  ClassRoomRemoteDataSourceImpl({@required this.client});
+  ClassRoomRemoteDataSourceImpl({required this.client});
 
   @override
   Future<ClassRoomsDataModel> getClassRooms() async{

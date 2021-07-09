@@ -1,7 +1,6 @@
-import 'package:meta/meta.dart';
 class ClassRoomsDataModel {
   ClassRoomsDataModel({
-    @required this.classrooms,
+    required this.classrooms,
   });
 
   List<Classrooms> classrooms;
@@ -17,16 +16,16 @@ class ClassRoomsDataModel {
 
 class Classrooms {
   Classrooms({
-    @required this.id,
-    @required this.layout,
-    @required this.name,
-    @required this.size,
+    required this.id,
+    required this.layout,
+    required this.name,
+    required this.size,
   });
 
-  int id;
-  String layout;
-  String name;
-  int size;
+  int? id;
+  String? layout;
+  String? name;
+  int? size;
 
   factory Classrooms.fromJson(Map<String, dynamic> json) => Classrooms(
     id: json["id"],
@@ -45,19 +44,19 @@ class Classrooms {
 
 class ClassRoomDataModel {
   ClassRoomDataModel({
-    @required this.id,
-    @required this.layout,
-    @required this.name,
-    @required this.size,
-    @required this.subject,
-    @required this.subjectId,
+    required this.id,
+    required this.layout,
+    required this.name,
+    required this.size,
+    required this.subject,
+    required this.subjectId,
   });
 
-  int id;
-  String layout;
-  String name;
-  int size;
-  String subject;
+  int? id;
+  String? layout;
+  String? name;
+  int? size;
+  String? subject;
   String subjectId;
 
   factory ClassRoomDataModel.fromJson(Map<String, dynamic> json) => ClassRoomDataModel(
