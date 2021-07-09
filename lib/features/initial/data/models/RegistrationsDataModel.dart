@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final registrationsDataModel = registrationsDataModelFromJson(jsonString);
-
 import '../../domain/entities/Registrations.dart';
 import 'dart:convert';
 

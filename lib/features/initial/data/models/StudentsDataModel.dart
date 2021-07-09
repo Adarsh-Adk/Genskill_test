@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final studentsDataModel = studentsDataModelFromJson(jsonString);
-
 import '../../domain/entities/Students.dart';
 import 'dart:convert';
 
