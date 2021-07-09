@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:genskill_test/InjectionContainer.dart';
-import 'package:genskill_test/core/constants/CColor.dart';
-import 'package:genskill_test/core/constants/SizeConfig.dart';
-import 'package:genskill_test/features/initial/domain/entities/Students.dart';
-import 'package:genskill_test/features/initial/presentation/bloc/StudentsPageBloc/StudentsPageBloc.dart';
-import 'package:genskill_test/features/initial/presentation/widgets/StudentsCard.dart';
+import '../../../../../InjectionContainer.dart';
+import '../../../../../core/constants/CColor.dart';
+import '../../../../../core/constants/SizeConfig.dart';
+import '../../../domain/entities/Students.dart';
+import '../../bloc/StudentsPageBloc/StudentsPageBloc.dart';
+import '../../widgets/StudentsCard.dart';
 
 class StudentPage extends StatelessWidget {
   const StudentPage({Key key}) : super(key: key);

@@ -1,9 +1,8 @@
 import 'dart:convert';
-
-import 'package:genskill_test/core/constants/URL.dart';
-import 'package:genskill_test/core/error/Exception.dart';
-import 'package:genskill_test/features/initial/data/models/SubjectsDataModel.dart';
-import 'package:genskill_test/features/initial/domain/entities/Subjects.dart';
+import '../../../../../core/constants/URL.dart';
+import '../../../../../core/error/Exception.dart';
+import '../../models/SubjectsDataModel.dart';
+import '../../../domain/entities/Subjects.dart';
 import 'package:http/http.dart'as http;
 import 'package:meta/meta.dart';
 

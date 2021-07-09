@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:genskill_test/core/error/Failures.dart';
-import 'package:genskill_test/core/usecases/UseCase.dart';
-import 'package:genskill_test/features/initial/domain/entities/Students.dart';
-import 'package:genskill_test/features/initial/domain/repositories/StudentsRepository.dart';
+import '../../../../core/error/Failures.dart';
+import '../../../../core/usecases/UseCase.dart';
+import '../entities/Students.dart';
+import '../repositories/StudentsRepository.dart';
 
 class StudentsUseCase extends UseCase<StudentsDataModel,NoParams>{
   final StudentsRepository repository;

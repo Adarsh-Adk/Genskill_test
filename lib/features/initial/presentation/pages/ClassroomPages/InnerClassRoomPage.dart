@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:genskill_test/core/constants/CColor.dart';
-import 'package:genskill_test/core/constants/SizeConfig.dart';
-import 'package:genskill_test/features/initial/presentation/bloc/StudentsPageBloc/StudentsPageBloc.dart'
+import '../../../../../core/constants/CColor.dart';
+import '../../../../../core/constants/SizeConfig.dart';
+import '../../bloc/StudentsPageBloc/StudentsPageBloc.dart'
     as stud;
-import 'package:genskill_test/features/initial/presentation/bloc/inner_class_room_page/inner_class_room_page_bloc.dart';
-import 'package:genskill_test/features/initial/presentation/bloc/student_subject_registration/student_subject_registration_bloc.dart'
+import '../../bloc/inner_class_room_page/inner_class_room_page_bloc.dart';
+import '../../bloc/student_subject_registration/student_subject_registration_bloc.dart'
     as studsub;
-import 'package:genskill_test/features/initial/presentation/bloc/subjects_page/subjects_page_bloc.dart'
+import '../../bloc/subjects_page/subjects_page_bloc.dart'
     as sub;
-import 'package:genskill_test/features/initial/presentation/widgets/CustomRaisedGradientButton.dart';
+import '../../widgets/CustomRaisedGradientButton.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../../../InjectionContainer.dart';
 
 class InnerClassRoomPage extends StatefulWidget {

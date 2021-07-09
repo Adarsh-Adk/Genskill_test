@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:genskill_test/core/error/Failures.dart';
-import 'package:genskill_test/core/usecases/UseCase.dart';
-import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
-import 'package:genskill_test/features/initial/domain/usecases/ClassRoomGetClassRoomsUseCase.dart';
+import '../../../../../core/error/Failures.dart';
+import '../../../../../core/usecases/UseCase.dart';
+import '../../../domain/entities/ClassRoom.dart';
+import '../../../domain/usecases/ClassRoomGetClassRoomsUseCase.dart';
 import 'package:meta/meta.dart';
 
 part 'class_room_page_event.dart';

@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:genskill_test/core/error/Exception.dart';
-import 'package:genskill_test/core/error/Failures.dart';
-import 'package:genskill_test/features/initial/data/datasources/ClassRoom/ClassRoomRemoteDataSource.dart';
-import 'package:genskill_test/features/initial/data/datasources/Subjects/SubjectsRemoteDataSource.dart';
-import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
-import 'package:genskill_test/features/initial/domain/repositories/ClassRoomRepository.dart';
+import '../../../../core/error/Exception.dart';
+import '../../../../core/error/Failures.dart';
+import '../datasources/ClassRoom/ClassRoomRemoteDataSource.dart';
+import '../datasources/Subjects/SubjectsRemoteDataSource.dart';
+import '../../domain/entities/ClassRoom.dart';
+import '../../domain/repositories/ClassRoomRepository.dart';
 import 'package:meta/meta.dart';
 
 class ClassRoomRepositoryImpl implements ClassRoomRepository{

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:genskill_test/core/error/Failures.dart';
-import 'package:genskill_test/core/usecases/UseCase.dart';
-import 'package:genskill_test/features/initial/domain/repositories/RegistrationsRepository.dart';
+import '../../../../core/error/Failures.dart';
+import '../../../../core/usecases/UseCase.dart';
+import '../repositories/RegistrationsRepository.dart';
 import 'package:meta/meta.dart';
 
 

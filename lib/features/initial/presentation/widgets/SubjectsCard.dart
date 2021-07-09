@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:genskill_test/core/constants/CColor.dart';
-import 'package:genskill_test/core/constants/SizeConfig.dart';
-import 'package:genskill_test/features/initial/domain/entities/Subjects.dart';
+import '../../../../core/constants/CColor.dart';
+import '../../../../core/constants/SizeConfig.dart';
+import '../../domain/entities/Subjects.dart';
 
 class SubjectsCard extends StatefulWidget{
   final Subject subject;

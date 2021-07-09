@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genskill_test/features/initial/presentation/pages/HomePage.dart';
-import 'package:genskill_test/InjectionContainer.dart' as di;
+import 'features/initial/presentation/pages/HomePage.dart';
+import 'InjectionContainer.dart' as di;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

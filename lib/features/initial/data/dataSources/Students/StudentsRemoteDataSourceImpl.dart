@@ -1,10 +1,9 @@
 import 'dart:convert';
-
-import 'package:genskill_test/core/constants/URL.dart';
-import 'package:genskill_test/core/error/Exception.dart';
-import 'package:genskill_test/features/initial/data/datasources/Students/StudentsRemoteDataSource.dart';
-import 'package:genskill_test/features/initial/data/models/StudentsDataModel.dart';
-import 'package:genskill_test/features/initial/domain/entities/Students.dart';
+import '../../../../../core/constants/URL.dart';
+import '../../../../../core/error/Exception.dart';
+import '../../datasources/Students/StudentsRemoteDataSource.dart';
+import '../../models/StudentsDataModel.dart';
+import '../../../domain/entities/Students.dart';
 import 'package:http/http.dart'as http;
 import 'package:meta/meta.dart';
 class StudentsRemoteDataSourceImpl implements StudentsRemoteDataSource{

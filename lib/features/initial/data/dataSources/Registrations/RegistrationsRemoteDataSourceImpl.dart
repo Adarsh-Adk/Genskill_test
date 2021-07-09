@@ -1,7 +1,7 @@
-import 'package:genskill_test/core/constants/URL.dart';
-import 'package:genskill_test/core/error/Exception.dart';
-import 'package:genskill_test/features/initial/data/models/RegistrationsDataModel.dart';
-import 'package:genskill_test/features/initial/domain/entities/Registrations.dart';
+import '../../../../../core/constants/URL.dart';
+import '../../../../../core/error/Exception.dart';
+import '../../models/RegistrationsDataModel.dart';
+import '../../../domain/entities/Registrations.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 

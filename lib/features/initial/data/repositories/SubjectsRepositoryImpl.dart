@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:genskill_test/core/error/Exception.dart';
-import 'package:genskill_test/core/error/Failures.dart';
-import 'package:genskill_test/features/initial/data/datasources/Subjects/SubjectsRemoteDataSource.dart';
-import 'package:genskill_test/features/initial/domain/entities/Subjects.dart';
-import 'package:genskill_test/features/initial/domain/repositories/SubjectsRepository.dart';
+import '../../../../core/error/Exception.dart';
+import '../../../../core/error/Failures.dart';
+import '../datasources/Subjects/SubjectsRemoteDataSource.dart';
+import '../../domain/entities/Subjects.dart';
+import '../../domain/repositories/SubjectsRepository.dart';
 import 'package:meta/meta.dart';
 class SubjectsRepositoryImpl implements SubjectsRepository{
 

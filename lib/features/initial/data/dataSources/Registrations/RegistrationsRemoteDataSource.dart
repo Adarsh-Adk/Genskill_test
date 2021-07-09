@@ -1,4 +1,4 @@
-import 'package:genskill_test/features/initial/domain/entities/Registrations.dart';
+import '../../../domain/entities/Registrations.dart';
 
 abstract class RegistrationsRemoteDataSource{
   Future <RegistrationsDataModel> getRegistrations();

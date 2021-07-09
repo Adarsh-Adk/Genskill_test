@@ -1,7 +1,7 @@
-import 'package:genskill_test/core/constants/URL.dart';
-import 'package:genskill_test/core/error/Exception.dart';
-import 'package:genskill_test/features/initial/data/models/ClassRoomDataModel.dart';
-import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
+import '../../../../../core/constants/URL.dart';
+import '../../../../../core/error/Exception.dart';
+import '../../models/ClassRoomDataModel.dart';
+import '../../../domain/entities/ClassRoom.dart';
 import 'package:http/http.dart'as http;
 import 'ClassRoomRemoteDataSource.dart';
 import 'package:meta/meta.dart';

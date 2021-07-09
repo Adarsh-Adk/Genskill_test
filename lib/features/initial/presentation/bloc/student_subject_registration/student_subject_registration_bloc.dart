@@ -2,12 +2,12 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:genskill_test/core/error/Failures.dart';
-import 'package:genskill_test/core/usecases/UseCase.dart';
-import 'package:genskill_test/features/initial/domain/entities/Registrations.dart';
-import 'package:genskill_test/features/initial/domain/usecases/RegistrationsDeleteRegistrationUseCase.dart'as del;
-import 'package:genskill_test/features/initial/domain/usecases/RegistrationsGetRegistrationsUseCase.dart';
-import 'package:genskill_test/features/initial/domain/usecases/RegistrationsSetRegistrationUseCase.dart';
+import '../../../../../core/error/Failures.dart';
+import '../../../../../core/usecases/UseCase.dart';
+import '../../../domain/entities/Registrations.dart';
+import '../../../domain/usecases/RegistrationsDeleteRegistrationUseCase.dart'as del;
+import '../../../domain/usecases/RegistrationsGetRegistrationsUseCase.dart';
+import '../../../domain/usecases/RegistrationsSetRegistrationUseCase.dart';
 import 'package:meta/meta.dart';
 
 part 'student_subject_registration_event.dart';

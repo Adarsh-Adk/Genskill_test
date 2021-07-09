@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:genskill_test/InjectionContainer.dart';
-import 'package:genskill_test/core/constants/CColor.dart';
-import 'package:genskill_test/core/constants/CStyles.dart';
-import 'package:genskill_test/core/constants/SizeConfig.dart';
-import 'package:genskill_test/features/initial/domain/entities/Registrations.dart';
-import 'package:genskill_test/features/initial/presentation/bloc/registration_page/registration_page_bloc.dart';
+import '../../../../../InjectionContainer.dart';
+import '../../../../../core/constants/CColor.dart';
+import '../../../../../core/constants/CStyles.dart';
+import '../../../../../core/constants/SizeConfig.dart';
+import '../../../domain/entities/Registrations.dart';
+import '../../bloc/registration_page/registration_page_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegistrationsPage extends StatefulWidget{

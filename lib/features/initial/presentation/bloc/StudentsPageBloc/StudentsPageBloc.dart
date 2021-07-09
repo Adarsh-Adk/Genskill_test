@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:genskill_test/core/error/Failures.dart';
-import 'package:genskill_test/core/usecases/UseCase.dart';
-import 'package:genskill_test/features/initial/domain/entities/Students.dart';
+import '../../../../../core/error/Failures.dart';
+import '../../../../../core/usecases/UseCase.dart';
+import '../../../domain/entities/Students.dart';
 import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
-import 'package:genskill_test/features/initial/domain/usecases/StudentsUseCase.dart';
+import '../../../domain/usecases/StudentsUseCase.dart';
 
 part 'StudentsPageEvent.dart';
 part 'StudentsPageState.dart';

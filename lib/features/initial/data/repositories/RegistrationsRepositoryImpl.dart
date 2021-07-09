@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:genskill_test/core/error/Exception.dart';
-import 'package:genskill_test/core/error/Failures.dart';
-import 'package:genskill_test/features/initial/data/datasources/Registrations/RegistrationsRemoteDataSource.dart';
-import 'package:genskill_test/features/initial/data/datasources/Students/StudentsRemoteDataSource.dart';
-import 'package:genskill_test/features/initial/data/datasources/Subjects/SubjectsRemoteDataSource.dart';
-import 'package:genskill_test/features/initial/domain/entities/Registrations.dart';
-import 'package:genskill_test/features/initial/domain/repositories/RegistrationsRepository.dart';
+import '../../../../core/error/Exception.dart';
+import '../../../../core/error/Failures.dart';
+import '../datasources/Registrations/RegistrationsRemoteDataSource.dart';
+import '../datasources/Students/StudentsRemoteDataSource.dart';
+import '../datasources/Subjects/SubjectsRemoteDataSource.dart';
+import '../../domain/entities/Registrations.dart';
+import '../../domain/repositories/RegistrationsRepository.dart';
 import 'package:meta/meta.dart';
 
 class RegistrationsRepositoryImpl implements RegistrationsRepository{

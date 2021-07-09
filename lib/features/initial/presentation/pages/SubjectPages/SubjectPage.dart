@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:genskill_test/core/constants/CColor.dart';
-import 'package:genskill_test/core/constants/SizeConfig.dart';
-import 'package:genskill_test/features/initial/domain/entities/Subjects.dart';
-import 'package:genskill_test/features/initial/presentation/bloc/subjects_page/subjects_page_bloc.dart';
-import 'package:genskill_test/features/initial/presentation/widgets/SubjectsCard.dart';
-
+import '../../../../../core/constants/CColor.dart';
+import '../../../../../core/constants/SizeConfig.dart';
+import '../../../domain/entities/Subjects.dart';
+import '../../bloc/subjects_page/subjects_page_bloc.dart';
+import '../../widgets/SubjectsCard.dart';
 import '../../../../../InjectionContainer.dart';
 
 class SubjectPage extends StatelessWidget {

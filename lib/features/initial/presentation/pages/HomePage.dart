@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:genskill_test/core/constants/CColor.dart';
-import 'package:genskill_test/core/constants/SizeConfig.dart';
-import 'package:genskill_test/features/initial/presentation/pages/RegistrationsPage/RegistrationsPage.dart';
-import 'package:genskill_test/features/initial/presentation/pages/StudentPages/StudentPage.dart';
-import 'package:genskill_test/features/initial/presentation/pages/SubjectPages/SubjectPage.dart';
-import 'package:genskill_test/features/initial/presentation/widgets/CustomRaisedGradientButton.dart';
+import '../../../../core/constants/CColor.dart';
+import '../../../../core/constants/SizeConfig.dart';
+import 'RegistrationsPage/RegistrationsPage.dart';
+import 'StudentPages/StudentPage.dart';
+import 'SubjectPages/SubjectPage.dart';
+import '../widgets/CustomRaisedGradientButton.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'ClassroomPages/ClassRoomPage.dart';

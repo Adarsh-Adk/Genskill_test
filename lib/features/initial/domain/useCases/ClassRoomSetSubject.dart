@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:genskill_test/core/error/Failures.dart';
-import 'package:genskill_test/core/usecases/UseCase.dart';
+import '../../../../core/error/Failures.dart';
+import '../../../../core/usecases/UseCase.dart';
 import 'package:meta/meta.dart';
-import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
-import 'package:genskill_test/features/initial/domain/repositories/ClassRoomRepository.dart';
+import '../entities/ClassRoom.dart';
+import '../repositories/ClassRoomRepository.dart';
 
 class ClassRoomSetSubjectUseCase extends UseCase<ClassRoomDataModel,Params>{
   final ClassRoomRepository classRoomRepository;
