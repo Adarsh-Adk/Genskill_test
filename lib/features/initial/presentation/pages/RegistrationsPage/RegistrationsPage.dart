@@ -6,7 +6,7 @@ import '../../../../../core/constants/CStyles.dart';
 import '../../../../../core/constants/SizeConfig.dart';
 import '../../../domain/entities/Registrations.dart';
 import '../../bloc/registration_page/registration_page_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class RegistrationsPage extends StatefulWidget{
 
@@ -48,7 +48,7 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
                     }else{ if (state.registrationsDataModel.registrations.length ==
                         0) {
                       return Center(
-                        child: Text("Registrations list is empty",textAlign: TextAlign.center,style: GoogleFonts.ubuntu(fontSize: SizeConfig.blockSizeHorizontal*5),),
+                        child: Text("Registrations list is empty",textAlign: TextAlign.center,style: TextStyle(fontFamily:'Ubuntu',fontSize: SizeConfig.blockSizeHorizontal*5),),
                       );
                     } else {
                       return listViewWidget(state);

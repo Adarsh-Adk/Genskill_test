@@ -5,7 +5,6 @@ import 'RegistrationsPage/RegistrationsPage.dart';
 import 'StudentPages/StudentPage.dart';
 import 'SubjectPages/SubjectPage.dart';
 import '../widgets/CustomRaisedGradientButton.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'ClassroomPages/ClassRoomPage.dart';
 
@@ -56,7 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )),
                             Text(
                               "Students",
-                              style: GoogleFonts.roboto(
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
                                   color: CColor.HomeScreenBGColor,
                                   fontSize: SizeConfig.blockSizeVertical * 3),
                             ),
@@ -94,7 +94,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )),
                             Text(
                               "Subjects",
-                              style: GoogleFonts.roboto(
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
                                   color: CColor.HomeScreenBGColor,
                                   fontSize: SizeConfig.blockSizeVertical * 3),
                             ),
@@ -132,7 +133,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )),
                             Text(
                               "Classroom",
-                              style: GoogleFonts.roboto(
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
                                   color: CColor.HomeScreenBGColor,
                                   fontSize: SizeConfig.blockSizeVertical * 3),
                             ),
@@ -171,7 +173,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )),
                             Text(
                               "Registrations",
-                              style: GoogleFonts.roboto(
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
                                   color: CColor.HomeScreenBGColor,
                                   fontSize:
                                   SizeConfig.blockSizeVertical * 3),

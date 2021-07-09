@@ -10,7 +10,6 @@ import '../../bloc/student_subject_registration/student_subject_registration_blo
 import '../../bloc/subjects_page/subjects_page_bloc.dart'
     as sub;
 import '../../widgets/CustomRaisedGradientButton.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../../../InjectionContainer.dart';
 
 class InnerClassRoomPage extends StatefulWidget {
@@ -24,7 +23,7 @@ class InnerClassRoomPage extends StatefulWidget {
 class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
   final double gap = SizeConfig.blockSizeVertical * 1;
 
-  final double _width = SizeConfig.screenWidth * 0.45;
+  final double _width = SizeConfig.screenWidth * 0.35;
 
   final TextAlign align2 = TextAlign.end;
 
@@ -256,8 +255,9 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                   state.classroom.subject == ""
                                       ? "Assign Subject"
                                       : "Change Subject",
-                                  style: GoogleFonts.roboto(
+                                  style: TextStyle(
                                       color: CColor.HomeScreenBGColor,
+                                      fontFamily: 'Roboto',
                                       fontSize:
                                           SizeConfig.blockSizeVertical * 3),
                                 ),
@@ -293,7 +293,8 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                   child: Center(
                                     child: Text(
                                       "Assign Student",
-                                      style: GoogleFonts.roboto(
+                                      style:TextStyle(
+                                        fontFamily: 'Roboto',
                                           color: CColor.HomeScreenBGColor,
                                           fontSize:
                                               SizeConfig.blockSizeVertical * 3),
@@ -565,7 +566,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                                         ? "Student already registered"
                                                                                         : "An error occurred",
                                                                                 textAlign: TextAlign.center,
-                                                                                style: GoogleFonts.ubuntu(color: CColor.thumbsUp, fontSize: SizeConfig.blockSizeHorizontal * 5),
+                                                                                style: TextStyle(color: CColor.thumbsUp,fontFamily: 'Ubuntu' ,fontSize: SizeConfig.blockSizeHorizontal * 5),
                                                                               ),
                                                                             )),
                                                                       ),
@@ -617,7 +618,8 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                           "${state4.message}",
                                                                           textAlign:
                                                                               TextAlign.center,
-                                                                          style: GoogleFonts.ubuntu(
+                                                                          style: TextStyle(
+                                                                            fontFamily: 'Ubuntu',
                                                                               color: CColor.thumbsDown,
                                                                               fontSize: SizeConfig.blockSizeHorizontal * 5),
                                                                         ),
