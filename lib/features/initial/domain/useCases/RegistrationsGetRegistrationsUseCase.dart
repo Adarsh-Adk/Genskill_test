@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:genskill_test/core/error/Failures.dart';
-import 'package:genskill_test/core/usecases/UseCase.dart';
-import 'package:genskill_test/features/initial/domain/entities/Registrations.dart';
+import '../../../../core/error/Failures.dart';
+import '../../../../core/usecases/UseCase.dart';
+import '../entities/Registrations.dart';
 import '../repositories/RegistrationsRepository.dart';
 
 class RegistrationsGetRegistrationsUseCase extends UseCase<RegistrationsDataModel,NoParams>{

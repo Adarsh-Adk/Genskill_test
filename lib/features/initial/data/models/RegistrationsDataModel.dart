@@ -2,7 +2,7 @@
 //
 //     final registrationsDataModel = registrationsDataModelFromJson(jsonString);
 
-import 'package:genskill_test/features/initial/domain/entities/Registrations.dart';
+import '../../domain/entities/Registrations.dart';
 import 'dart:convert';
 
 RegistrationsDataModel registrationsDataModelFromJson(String str) => RegistrationsDataModel.fromJson(json.decode(str));

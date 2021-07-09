@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:genskill_test/core/constants/CColor.dart';
-import 'package:genskill_test/core/constants/SizeConfig.dart';
+import '../../../../../core/constants/CColor.dart';
+import '../../../../../core/constants/SizeConfig.dart';
 import '../../../domain/entities/ClassRoom.dart';
 import '../../bloc/class_room_page/class_room_page_bloc.dart';
 import '../../widgets/ClassRoomCard.dart';

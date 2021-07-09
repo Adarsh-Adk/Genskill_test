@@ -2,7 +2,7 @@
 //
 //     final classRoomDataModel = classRoomDataModelFromJson(jsonString);
 
-import 'package:genskill_test/features/initial/domain/entities/ClassRoom.dart';
+import '../../domain/entities/ClassRoom.dart';
 import 'dart:convert';
 
 ClassRoomsDataModel classRoomsDataModelFromJson(String str) => ClassRoomsDataModel.fromJson(json.decode(str));

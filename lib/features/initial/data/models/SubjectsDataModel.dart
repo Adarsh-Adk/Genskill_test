@@ -2,7 +2,7 @@
 //
 //     final subjectsDataModel = subjectsDataModelFromJson(jsonString);
 
-import 'package:genskill_test/features/initial/domain/entities/Subjects.dart';
+import '../../domain/entities/Subjects.dart';
 import 'dart:convert';
 
 SubjectsDataModel subjectsDataModelFromJson(String str) => SubjectsDataModel.fromJson(json.decode(str));
