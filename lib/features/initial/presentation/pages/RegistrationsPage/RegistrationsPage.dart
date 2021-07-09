@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../InjectionContainer.dart';
-import '../../../../../core/constants/CColor.dart';
-import '../../../../../core/constants/CStyles.dart';
 import '../../../../../core/constants/SizeConfig.dart';
 import '../../../domain/entities/Registrations.dart';
 import '../../bloc/registration_page/registration_page_bloc.dart';
