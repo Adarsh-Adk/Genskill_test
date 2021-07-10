@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../InjectionContainer.dart';
-import '../../../../../core/constants/CColor.dart';
 import '../../../../../core/constants/SizeConfig.dart';
 import '../../../domain/entities/Students.dart';
 import '../../bloc/StudentsPageBloc/StudentsPageBloc.dart';

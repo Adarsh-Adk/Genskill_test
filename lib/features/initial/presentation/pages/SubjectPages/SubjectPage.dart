@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/constants/CColor.dart';
 import '../../../../../core/constants/SizeConfig.dart';
 import '../../../domain/entities/Subjects.dart';
 import '../../bloc/subjects_page/subjects_page_bloc.dart';

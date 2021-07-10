@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/constants/CColor.dart';
 import '../../../../../core/constants/SizeConfig.dart';
 import '../../../domain/entities/ClassRoom.dart';
 import '../../bloc/class_room_page/class_room_page_bloc.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/CColor.dart';
 import '../../../../core/constants/SizeConfig.dart';
 import '../../domain/entities/Students.dart';
 
