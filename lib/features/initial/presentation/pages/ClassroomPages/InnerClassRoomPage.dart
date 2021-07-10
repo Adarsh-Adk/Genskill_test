@@ -1,9 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:genskill_test/core/constants/CDecoration.dart';
+import '../../../../../core/constants/CDecoration.dart';
 import '../../../../../core/constants/CColor.dart';
 import '../../../../../core/constants/SizeConfig.dart';
 import '../../bloc/StudentsPageBloc/StudentsPageBloc.dart' as stud;
@@ -381,12 +380,14 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
         context: context2,
         builder: (context2) {
           return Dialog(
+            backgroundColor: Colors.transparent,
             insetPadding: EdgeInsets.symmetric(
                 horizontal: SizeConfig.screenWidth! * 0.1,
-                vertical: SizeConfig.screenHeight! * 0.1),
+                vertical: SizeConfig.screenHeight! * 0.2),
             child: Container(
+              decoration: CDecoration.InnerClassRoomDialogue,
                 padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig.screenWidth! * 0.1,
+                    horizontal: SizeConfig.screenWidth! * 0.05,
                     vertical: SizeConfig.screenHeight! * 0.05),
                 child: BlocProvider.value(
                   value: sl<sub.SubjectsPageBloc>(),
@@ -416,23 +417,29 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                     child: Builder(builder: (context3) {
                                       return OutlinedButton(
                                           style: ButtonStyle(
+                                            shape: MaterialStateProperty.resolveWith((states) {
+                                              BorderRadiusGeometry radius;
+
+                                              if(states.contains(MaterialState.disabled)){
+                                                radius=BorderRadius.circular(10);
+                                              }else{
+                                                radius=BorderRadius.circular(10);
+                                              }
+                                              return RoundedRectangleBorder(borderRadius: radius);
+                                            }),
                                             side: MaterialStateProperty
                                                 .resolveWith((states) {
                                               Color _borderColor;
 
                                               if (states.contains(
                                                   MaterialState.disabled)) {
-                                                _borderColor = CColor
-                                                    .HomeScreenSubjectButtonLeft;
+                                                _borderColor = Theme.of(context3).primaryColor;
                                               } else if (states.contains(
                                                   MaterialState.pressed)) {
-                                                _borderColor = CColor
-                                                    .HomeScreenSubjectButtonLeft;
+                                                _borderColor = Theme.of(context3).primaryColor;
                                               } else {
-                                                _borderColor = CColor
-                                                    .HomeScreenSubjectButtonLeft;
+                                                _borderColor = Theme.of(context3).primaryColor;
                                               }
-
                                               return BorderSide(
                                                   color: _borderColor,
                                                   width: 1);
@@ -460,10 +467,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                               e.name!,
                                               style: Theme.of(context3)
                                                   .textTheme
-                                                  .headline1!
-                                                  .copyWith(
-                                                      color: CColor
-                                                          .HomeScreenStudentButtonLeft),
+                                                  .headline1,
                                             ),
                                           ));
                                     })))
@@ -490,10 +494,13 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
         context: context2,
         builder: (context2) {
           return Dialog(
+            backgroundColor: Colors.transparent,
+            clipBehavior: Clip.antiAlias,
             insetPadding: EdgeInsets.symmetric(
                 horizontal: SizeConfig.screenWidth! * 0.1,
                 vertical: SizeConfig.screenHeight! * 0.1),
             child: Container(
+                decoration: CDecoration.InnerClassRoomDialogue,
                 padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.screenWidth! * 0.1,
                     vertical: SizeConfig.screenHeight! * 0.05),
@@ -531,6 +538,16 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                           ) {
                                             return OutlinedButton(
                                                 style: ButtonStyle(
+                                                  shape: MaterialStateProperty.resolveWith((states) {
+                                                    BorderRadiusGeometry radius;
+
+                                                    if(states.contains(MaterialState.disabled)){
+                                                      radius=BorderRadius.circular(10);
+                                                    }else{
+                                                      radius=BorderRadius.circular(10);
+                                                    }
+                                                    return RoundedRectangleBorder(borderRadius: radius);
+                                                  }),
                                                   side: MaterialStateProperty
                                                       .resolveWith((states) {
                                                     Color _borderColor;
@@ -538,16 +555,13 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                     if (states.contains(
                                                         MaterialState
                                                             .disabled)) {
-                                                      _borderColor = CColor
-                                                          .HomeScreenSubjectButtonLeft;
+                                                      _borderColor = Theme.of(context3).primaryColor;
                                                     } else if (states.contains(
                                                         MaterialState
                                                             .pressed)) {
-                                                      _borderColor = CColor
-                                                          .HomeScreenSubjectButtonLeft;
+                                                      _borderColor = Theme.of(context3).primaryColor;
                                                     } else {
-                                                      _borderColor = CColor
-                                                          .HomeScreenSubjectButtonLeft;
+                                                      _borderColor = Theme.of(context3).primaryColor;
                                                     }
 
                                                     return BorderSide(
@@ -588,28 +602,6 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                 if (state4
                                                                     is studsub
                                                                         .Deleted) {
-                                                                  // if (state4
-                                                                  //         .code ==
-                                                                  //     null) {
-                                                                  //   return Dialog(
-                                                                  //       insetPadding:
-                                                                  //           EdgeInsets.all(SizeConfig.screenWidth! *
-                                                                  //               0.2),
-                                                                  //       child:
-                                                                  //           Container(
-                                                                  //         width:
-                                                                  //             SizeConfig.screenWidth! * 0.4,
-                                                                  //         height:
-                                                                  //             SizeConfig.screenHeight! * 0.2,
-                                                                  //         padding:
-                                                                  //             EdgeInsets.all(15),
-                                                                  //         child:
-                                                                  //             Center(
-                                                                  //           child:
-                                                                  //               CircularProgressIndicator(),
-                                                                  //         ),
-                                                                  //       ));
-                                                                  // } else {
                                                                   return Dialog(
                                                                     insetPadding:
                                                                         EdgeInsets.all(SizeConfig.screenWidth! *
@@ -715,10 +707,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                     e.name!,
                                                     style: Theme.of(context3)
                                                         .textTheme
-                                                        .headline2!
-                                                        .copyWith(
-                                                            color: CColor
-                                                                .HomeScreenStudentButtonLeft),
+                                                        .headline1,
                                                   ),
                                                 ));
                                           },

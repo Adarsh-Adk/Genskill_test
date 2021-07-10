@@ -7,7 +7,7 @@ class CDecoration{
   );
 
   static BoxDecoration InnerClassRoomDialogue=BoxDecoration(
-    borderRadius: BorderRadius.circular(30),
+    borderRadius: BorderRadius.circular(15),
     color: CColor.HomeScreenBGColor
   );
 }

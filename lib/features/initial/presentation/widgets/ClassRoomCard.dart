@@ -26,6 +26,7 @@ class _ClassRoomCardState extends State<ClassRoomCard> {
   Widget build(BuildContext context) {
 
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       clipBehavior: Clip.antiAlias,
       elevation: 10,
       child: Container(
