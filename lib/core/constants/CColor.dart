@@ -4,7 +4,8 @@ class CColor {
 
 static const Color HomeScreenAppbarIcon=Color(0xff71747b);
 static const Color TextBlack=Colors.black;
-static const Color PrimaryColor=Color(0xff0099ff);
+// static const Color PrimaryColor=Color(0xff0099ff);
+static const Color PrimaryColor=Color(0xff2264ab);
 static const Color HomeScreenBGColor=Colors.white;
 static const Color HomeScreenStudentButtonLeft=Color(0xff00ccff);
 static const Color HomeScreenStudentButtonRight=Color(0xff0099ff);

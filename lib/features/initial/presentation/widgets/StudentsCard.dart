@@ -15,7 +15,7 @@ class StudentsCard extends StatefulWidget{
 class _StudentsCardState extends State<StudentsCard> {
   final double gap = SizeConfig.blockSizeVertical * 1;
 
-  final double _width = SizeConfig.screenWidth! * 0.45;
+  final double _width = SizeConfig.screenWidth! * 0.40;
 
   final TextAlign align2 = TextAlign.end;
 
@@ -26,22 +26,23 @@ class _StudentsCardState extends State<StudentsCard> {
     return Card(
       clipBehavior: Clip.antiAlias,
       elevation: 10,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       child: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors: [
-                  Colors.lightBlue,
-                  Colors.lightBlueAccent,
-                  Colors.lightBlue
+                  Theme.of(context).backgroundColor,
+                  Theme.of(context).backgroundColor,
                 ])),
         child: Theme(
           data: ThemeData(
             unselectedWidgetColor: Colors.white,
           ),
           child: ExpansionTile(
+            iconColor: Theme.of(context).primaryColor,
+            collapsedIconColor: Theme.of(context).primaryColor,
             backgroundColor: Colors.transparent,
             initiallyExpanded: false,
             title: Padding(
@@ -50,24 +51,33 @@ class _StudentsCardState extends State<StudentsCard> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Name",
-                          style: Theme.of(context).textTheme.headline1,
-                        ),
-                        Container(
-                          width: _width,
-                          child: Text(
-                            widget.student.name ?? "N/A",
-                            textAlign: align2,
-                            style: Theme.of(context).textTheme.headline1,
-                          ),
-                        ),
-                      ],
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   children: [
+                    //     Text(
+                    //       "Name",
+                    //       style: Theme.of(context).textTheme.headline1,
+                    //     ),
+                    //     Container(
+                    //       width: _width,
+                    //       child: Text(
+                    //         widget.student.name ?? "N/A",
+                    //         textAlign: align2,
+                    //         style: Theme.of(context).textTheme.headline1,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    Container(
+                      width: _width,
+                      child: Text(
+                        widget.student.name ?? "N/A",
+                        textAlign: TextAlign.start,
+                        style: Theme.of(context).textTheme.headline1,
+                      ),
                     ),
                     SizedBox(
                       height: gap,
