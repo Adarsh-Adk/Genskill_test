@@ -20,7 +20,7 @@ class _ClassRoomCardState extends State<ClassRoomCard> {
 
   final TextAlign align2 = TextAlign.end;
 
-  final TextAlign align1 = TextAlign.start;
+  final TextAlign align1 = TextAlign.center;
 
   @override
   Widget build(BuildContext context) {
@@ -34,29 +34,38 @@ class _ClassRoomCardState extends State<ClassRoomCard> {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors: [
-                  Colors.lightBlue,
-                  Colors.lightBlueAccent,
-                  Colors.lightBlue
+                  Theme.of(context).backgroundColor,
+                  Theme.of(context).backgroundColor
                 ])),
-        child: Padding(padding: EdgeInsets.symmetric(horizontal:10.0,vertical: 15),
-          child:  Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Classroom Name",
-              style: Theme.of(context).textTheme.headline1,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal:10.0,vertical: 20),
+        //   child:  Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     Text(
+        //       "Classroom Name",
+        //       style: Theme.of(context).textTheme.headline1,
+        //     ),
+        //     Container(
+        //       width: _width,
+        //       child: Text(
+        //         widget.classroom.name ?? "N/A",
+        //         textAlign: align2,
+        //         style:Theme.of(context).textTheme.headline1,
+        //       ),
+        //     ),
+        //   ],
+        // ),
+          child: Container(
+            width: _width,
+            child: Text(
+              widget.classroom.name ?? "N/A",
+              textAlign: align1,
+              style:Theme.of(context).textTheme.headline1,
             ),
-            Container(
-              width: _width,
-              child: Text(
-                widget.classroom.name ?? "N/A",
-                textAlign: align2,
-                style:Theme.of(context).textTheme.headline1,
-              ),
-            ),
-          ],
-        ),),
+          ),
+        ),
       ),
     );
   }
