@@ -53,24 +53,6 @@ class _StudentsCardState extends State<StudentsCard> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    //   children: [
-                    //     Text(
-                    //       "Name",
-                    //       style: Theme.of(context).textTheme.headline1,
-                    //     ),
-                    //     Container(
-                    //       width: _width,
-                    //       child: Text(
-                    //         widget.student.name ?? "N/A",
-                    //         textAlign: align2,
-                    //         style: Theme.of(context).textTheme.headline1,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                     Container(
                       width: _width,
                       child: Text(

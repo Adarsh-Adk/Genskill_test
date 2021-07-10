@@ -24,7 +24,6 @@ class ClassRoomPage extends StatelessWidget {
           body: Container(
             width: SizeConfig.screenWidth,
             height: SizeConfig.screenHeight,
-            // color: Theme.of(context).backgroundColor,
             child: SafeArea(
                 child: BlocProvider(
                   create: (_) => sl.get<ClassRoomPageBloc>(),

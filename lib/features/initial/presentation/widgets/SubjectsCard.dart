@@ -53,24 +53,6 @@ class _SubjectsCardState extends State<SubjectsCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    //   children: [
-                    //     Text(
-                    //       "Subject",
-                    //       style: Theme.of(context).textTheme.headline1,
-                    //     ),
-                    //     Container(
-                    //       width: _width,
-                    //       child: Text(
-                    //         widget.subject.name ?? "N/A",
-                    //         textAlign: align2,
-                    //         style: Theme.of(context).textTheme.headline1,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                     Container(
                       width: _width,
                       child: Text(

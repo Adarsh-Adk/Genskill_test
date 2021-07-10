@@ -622,7 +622,6 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                                                                           )),
                                                                     ),
                                                                   );
-                                                                  // }
                                                                 } else if (state4
                                                                     is studsub
                                                                         .Loading) {

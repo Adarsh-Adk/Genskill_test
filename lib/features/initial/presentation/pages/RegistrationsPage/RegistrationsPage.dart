@@ -146,23 +146,6 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
                     ],
                   ),
                 ),
-                // IconButton(
-                //     icon: Icon(
-                //       Icons.delete,
-                //       color:Theme.of(context).primaryColor,
-                //     ),
-                //     onPressed: () {
-                //       // BlocProvider.of<
-                //       //     RegistrationPageBloc>(
-                //       //     context)
-                //       //     .add(DeleteRegistration(registrationId: data.id));
-                //       //
-                //       // BlocProvider.of<
-                //       //     RegistrationPageBloc>(
-                //       //     context)
-                //       //     .add(GetRegistrations());
-                //
-                //     }),
                 Container(
                   width: SizeConfig.screenWidth! * 0.28,
                   child: Column(
