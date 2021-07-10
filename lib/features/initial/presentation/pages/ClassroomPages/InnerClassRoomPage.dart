@@ -55,10 +55,7 @@ class _InnerClassRoomPageState extends State<InnerClassRoomPage> {
                   } else if (state is Loaded) {
                     print(state.classroom!.subjectId);
                     return Scaffold(
-                      backgroundColor: Colors.transparent,
                       appBar: AppBar(
-                        elevation: 0,
-                        backgroundColor: Colors.transparent,
                         title: Text(
                           "${state.classroom!.name}",
                           style: Theme.of(context)

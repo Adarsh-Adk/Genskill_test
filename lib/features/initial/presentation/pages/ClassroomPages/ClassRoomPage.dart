@@ -18,10 +18,7 @@ class ClassRoomPage extends StatelessWidget {
       children: [
         SvgPicture.asset('assets/images/Wave.svg',height: SizeConfig.screenHeight,fit: BoxFit.fitHeight,),
         Scaffold(
-          backgroundColor: Colors.transparent,
           appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
             title: Text("Classrooms",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5,color: Theme.of(context).backgroundColor),),
           ),
           body: Container(

@@ -28,10 +28,7 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
             child: Builder(builder: (context){
               BlocProvider.of<RegistrationPageBloc>(context).add(GetRegistrations());
               return Scaffold(
-                backgroundColor: Colors.transparent,
               appBar: AppBar(
-                elevation: 0,
-                backgroundColor: Colors.transparent,
                 actions: [Padding(padding: EdgeInsets.symmetric(horizontal: 10),child: IconButton(onPressed: (){ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Swipe card horizontally to delete")));}, icon: Icon(Icons.help_outline_outlined,color: Theme.of(context).backgroundColor,)),)],
                 title: Text("Registrations",style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5,color: Theme.of(context).backgroundColor),),
               ),

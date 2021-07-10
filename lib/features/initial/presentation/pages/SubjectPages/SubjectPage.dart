@@ -70,8 +70,7 @@ class SubjectPage extends StatelessWidget {
       children: [
         SvgPicture.asset('assets/images/Wave.svg',height: SizeConfig.screenHeight,fit: BoxFit.fitHeight,),
         Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(elevation: 0,backgroundColor: Colors.transparent,title: Text("Subjects",style: Theme.of(context).textTheme.headline1?.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5,color: Theme.of(context).backgroundColor),),),
+          appBar: AppBar(title: Text("Subjects",style: Theme.of(context).textTheme.headline1?.copyWith(fontSize: SizeConfig.blockSizeHorizontal*5,color: Theme.of(context).backgroundColor),),),
           body: Container(
             width: SizeConfig.screenWidth,
             height: SizeConfig.screenHeight,
